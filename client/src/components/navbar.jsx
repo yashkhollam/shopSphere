@@ -147,7 +147,7 @@ useEffect(()=>{
            <ul className='group-list p-0'>
              <li className='logo-cont'>
 
-               <NavLink to='/home'>
+               <NavLink to='/'>
                     <img src="shopeSpherelogo.jpeg" alt="shopeSpherelogo"
                   className='logo-img img-fluid' />
                </NavLink>

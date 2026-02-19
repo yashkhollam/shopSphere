@@ -32,7 +32,7 @@ const submitform=async(e)=>{
   try{
        const res=await dispatch(loginthunk(formdata)).unwrap()
        toast.success(res.message)
-       navigate('/home');
+       navigate('/');
        setFormdata({email:"",password:""})
   }
   catch(err){
