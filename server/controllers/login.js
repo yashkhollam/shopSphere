@@ -50,7 +50,9 @@ export const login=async(req,res)=>{
        
             res.cookie('JWTTOKEN',token,{
                 httpOnly:true,
-                  secure:process.env.NODE_ENV==="production", //true in production
+                //   secure:process.env.NODE_ENV==="production", //true in production
+          
+            secure:true,      
                 sameSite:"none", //none in production
                 maxAge:24*60*60*1000
             })
