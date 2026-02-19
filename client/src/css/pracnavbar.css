@@ -1,0 +1,116 @@
+.nav-container{
+   
+    height:60px;
+   background-color:bisque;
+   padding:0;
+   display: flex;
+   justify-content: center;
+   z-index:9;
+   position: fixed;
+   top:0;
+   
+}
+
+.navbar{
+  
+    height: 100%;
+    /* background-color:blue; */
+    /* max-width:95%;
+    width: auto; */
+    width:95%;
+
+   
+}
+
+.group-list{
+   
+    width:100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    list-style-type: none;
+     height: 100%;
+   
+    
+
+}
+
+
+
+
+.logo-img{
+     height:10%; 
+    width:130px;
+}
+
+.searchbar-cont{
+ 
+   flex:1;
+   margin:0 25px;
+   display: flex;
+  justify-content: center;
+   
+}
+
+.search-wrapper{
+    width:100%;
+    max-width:550px;
+  
+  
+}
+
+.search-icon{
+    position: absolute;
+    height:22px;
+  
+    margin-top:8px;
+   
+    padding-left:10px;
+
+
+
+
+}
+
+.searchbar{
+   width:100%;
+   
+    font-family: "Poppins", sans-serif;
+ 
+}
+
+.profile-cont,
+.cart-cont{
+    background-color: rgb(255, 255, 255);
+    width:95px;
+     font-family: "Poppins", sans-serif;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     padding:0;
+     margin:0;
+      height:40px;
+      border-radius:10px;
+      gap:6px;
+     
+}
+
+
+
+
+.profile-txt,
+.cart-txt{
+    
+    margin:0;
+   
+}
+
+
+.profile-icon,
+.cart-icon{
+  height:25px;
+  width:25px;
+  display: block;
+ 
+
+}

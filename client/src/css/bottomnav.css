@@ -1,0 +1,44 @@
+.nav-contianer{
+   /* background-color: red; */
+   box-shadow:0 0 2px 1px black;
+   background-color: white;
+   z-index:9;
+   position: fixed;
+   
+}
+
+
+
+.navitem-icons-cont{
+  
+  
+}
+.navitem-text{
+  font-size:15px;
+  color: black;
+   
+}
+
+.navitem-icons{
+   height:30px;
+}
+
+
+.active .navitem-icons,
+.active .bottom-navitem-text{
+   color: blue;
+  
+
+}
+.bottomnav-links{
+   text-decoration: none;
+     color:rgba(0, 0, 0, 0.673); 
+}
+.cart-count{
+  position: absolute;
+  top:2px;
+  margin-left:10px;
+  background-color:red;
+  border-radius:50%;
+  width: 24px;
+}
