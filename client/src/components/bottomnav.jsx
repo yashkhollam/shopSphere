@@ -3,11 +3,13 @@ import { useSelector } from 'react-redux';
 import '../css/bottomnav.css'
 import { NavLink } from 'react-router-dom';
 import {Solidhome,Regularhome,RegularCart,SolidCart, RegularProfile,SolidProfile, RegularProduct,SolidProduct} from '../library/icons.jsx'
- const {cart}=useSelector((state)=>state.cartopeartion)
+
 
 
 
 function Bottomnav() {
+
+   const {cart}=useSelector((state)=>state.cartopeartion)
   return (
    <div className="container-fluid nav-contianer d-sm-none"
        style={{  
