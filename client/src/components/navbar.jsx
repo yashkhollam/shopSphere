@@ -116,7 +116,7 @@ import Profiledropdown from './profiledropdown.jsx';
 import '../css/pracnavbar.css'
 
 import {useDispatch,useSelector} from 'react-redux'
-import { setSearchtext, } from './redux/features/productSlice.js';
+import { setSearchtext} from './redux/features/productSlice.js';
 
 
 function Navbar() {
@@ -178,14 +178,14 @@ useEffect(()=>{
             
              </li>
 
-            <li className='list-items'>
+            {/* <li className='list-items'>
 
                <NavLink to='/products'>
                    products
                </NavLink>
                
                
-             </li>
+             </li> */}
              
 
              <li className='d-none d-sm-flex gap-2 ' >

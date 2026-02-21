@@ -3,6 +3,9 @@ import React from 'react'
 import '../css/bottomnav.css'
 import { NavLink } from 'react-router-dom';
 import {Solidhome,Regularhome,RegularCart,SolidCart, RegularProfile,SolidProfile, RegularProduct,SolidProduct} from '../library/icons.jsx'
+ const {cart}=useSelector((state)=>state.cartopeartion)
+
+
 
 function Bottomnav() {
   return (
@@ -100,7 +103,7 @@ function Bottomnav() {
             :<RegularCart  className='navitem-icons'/>
           }
         
-         <p className='cart-count'>10</p>
+         <p className='cart-count'>{cart.length}</p>
          <p className='navitem-text'>cart</p>
       </div>
 
