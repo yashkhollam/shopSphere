@@ -1,0 +1,215 @@
+.cartcont{
+
+margin-top:80px;  
+
+
+   background-color:rgba(255, 255, 255, 0.437) ;
+   /* background-color:red; */
+   min-height:100vh;
+   height: auto;
+
+   max-width:1300px;
+  
+   justify-content:center; 
+    
+}
+
+
+.cartcontrow{
+  
+}
+
+.cardwrapper{
+ /* background-color:red;   */
+ box-shadow:0 0 2px 2px rgba(0, 0, 0, 0.46);
+ height:fit-content;
+ padding-bottom:20px;
+}
+
+
+
+.cartcard{
+   height:150px;
+   /* max-width:600px; */
+
+   margin-top:20px;
+   box-shadow:0 0 2px 1px rgba(0, 0, 0, 0.46);
+   border-radius:10px;
+   background-color:white;
+ 
+  
+}
+
+.prodimgcont{
+   /* background-color:pink; */
+    /* height:100%; */
+   width:100%; 
+   display:flex;
+   justify-content: center;
+   align-items: center;
+  /* border:2px solid black; */
+   /* position: relative; */
+ 
+
+}
+
+.prodinfocont{
+  /* background-color:blue; */
+ width:100%;
+ position: relative;
+ 
+
+  
+}
+
+.cartimg{
+  height:90px;
+  width:100%;
+ 
+  object-fit:contain;
+  /* position: relative; */
+  padding-left:10px;
+}
+
+.prodname{
+     /* background-color:red; */
+   /* padding:0;
+    margin:0; */
+    font-size:1.3rem;
+    white-space:nowrap
+
+
+}
+
+.prodbrand{
+/* padding:0; */
+margin:0;
+color:white;
+/* box-shadow:0 0 1px 1px black; */
+width:fit-content;
+border-radius:20px;
+padding:0 10px;
+margin-top:4px;
+background-color:rgb(109, 211, 109);
+border:none;
+
+}
+
+.proddescription{
+   background-color:yellow;
+    padding:0;
+    margin:0;
+    overflow:hidden;
+    height:50px;
+ 
+
+   
+}
+
+.stocks{
+     /* background-color:rgb(0, 255, 238); */
+ padding:0;
+    margin:0;
+    margin-top:3px;
+    color:green;
+    text-decoration:underline;
+    width:fit-content;
+
+}
+
+
+.prodtotalprice{
+     /* background-color:rgb(0, 0, 255); */
+     padding:0;
+    margin:0;
+}
+
+.prodtotaldiscprice{
+    font-weight:bold;
+    text-decoration: underline;
+}
+
+
+.qtycont{
+  display: flex;
+  align-items:center;
+  justify-content:center; 
+  width:100px;
+  border:2px solid yellow;
+  height:35px;
+  border-radius:5px;
+ /* background-color:red; */
+ gap:10px;
+ padding: 0 5px;
+
+}
+
+.quantity{
+     /* background-color:rgb(255, 0, 234); */
+  padding:0;
+  padding-top:4px;
+    /* margin:0 auto; */
+    margin:0;
+    border-left:2px solid yellow;
+    border-right:2px solid yellow;
+    /* height:29px; */
+    width:100%;
+    text-align: center;
+    height:35px;
+   
+    
+}
+
+.minusicon,.plusicon{
+    height:35px;
+    /* background-color:white; */
+    /* border:1px solid gray; */
+
+}
+
+
+.totalpricecont{
+   
+   box-shadow:0 0 2px 2px rgba(0, 0, 0, 0.46);
+   /* border-radius:20px; */
+ 
+    background-color:white;
+   padding:30px;
+
+  
+   right:0;
+  
+
+}
+
+.totalpricewrapper{
+    background-color:rgba(0, 0, 0, 0.025);
+    box-shadow:0 0 2px 1px rgba(0, 0, 0, 0.286);
+    border-radius:10px;
+      padding:10px 20px;
+}
+
+.pricerow{
+   /* display: grid;
+   grid-template-columns: repeat(2,auto);
+    white-space: */
+    display: flex;
+    justify-content:space-between;
+    padding-right:10px;
+
+}
+
+.ordertotalcont {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+
+   width: 100%;
+   padding: 10px 15px;
+
+   font-weight: bold;
+   color: rgb(21, 120, 21);
+   background-color: rgb(163, 232, 163);
+   border: 2px solid rgb(29, 184, 29);
+   border-radius: 6px;
+}

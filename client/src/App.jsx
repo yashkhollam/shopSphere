@@ -6,7 +6,7 @@ import Layout from './components/layout'
 import Home from './pages/home.jsx';
 import Login from './pages/login.jsx';
 import Signup from './pages/signup.jsx';
-import Product from './pages/products.jsx';
+// import Product from './pages/products.jsx';
 import Signupotpverify from './pages/signupotpverify.jsx';
 import Cart from './pages/cart.jsx';
 import Profile from './pages/profile.jsx';
@@ -45,10 +45,10 @@ const router=createBrowserRouter([
         path:"/signup",
         element:<Signup/>
       },
-      {
-        path:"/product",
-        element:<Product/>
-      },
+      // {
+      //   path:"/product",
+      //   element:<Product/>
+      // },
       {
         path:"/signupotpverify",
         element:<Signupotpverify/>
@@ -58,11 +58,18 @@ const router=createBrowserRouter([
         element:<Products/>
       },
        {
-        path:"/cart",
-        element:
-        <Protectedroutes>
-            <Cart/>
-        </Protectedroutes>
+       
+        element:<Protectedroutes/>,
+        children:[
+         { 
+           path:'/cart' ,
+           element:<Cart/>,
+           }
+        ]
+      
+            
+       
+        
         
       },
       {

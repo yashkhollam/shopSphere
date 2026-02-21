@@ -101,11 +101,11 @@ const ProductSlice=createSlice({
         product:null,
         error:null,
         loading:{
-            getallprodloading:null,
-            getprodbyIDloading:null,
-           addprodloading:null,
-           deleteprodloading:null,
-           updateprodloading:null,
+            getallprodloading:true,
+            getprodbyIDloading:false,
+           addprodloading:false,
+           deleteprodloading:false,
+           updateprodloading:false,
            
         }
     },
@@ -135,7 +135,7 @@ const ProductSlice=createSlice({
             state.error=false;
          })
          .addCase(getallprodthunk.rejected,(state,action)=>{
-              state.loading.getallprodloading=true;
+              state.loading.getallprodloading=false;
              state.error=action.payload;
          })
 

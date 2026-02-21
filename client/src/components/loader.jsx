@@ -1,18 +1,11 @@
 import React from 'react'
-import { Navigate, Outlet } from 'react-router-dom'
-import { useSelector } from 'react-redux'
 
-function Protectedroutes({childern}) {
-
-
-
-const {isAuthenticated,isauthChecked}=useSelector((state)=>state.userAuth)
-
-
-if(!isauthChecked){
-    return <div  style={{
+function Loader() {
+  return (
+   <div  style={{
                  position:"absolute",
-                 background: "rgba(255,255,255,0.4)",
+                  background: "rgba(255,255,255,0.4)",
+               
                  display:"flex",
                  justifyContent:"center",
                  alignItems:"center",
@@ -25,19 +18,7 @@ if(!isauthChecked){
           }}>
               <div className="spinner-border" role="status" />
          </div>
+  )
 }
 
-
-
-if(!isAuthenticated){
-  return  <Navigate  to='/login' replace/>
-}
-
-
-  return  <Outlet/>
-  
- 
-  
-}
-
-export default Protectedroutes
+export default Loader

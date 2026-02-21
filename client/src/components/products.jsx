@@ -4,19 +4,21 @@ import {useSelector,useDispatch} from 'react-redux'
 import { getallprodthunk } from "./redux/features/productSlice.js"
 
 import { Regularheart,Solidheart } from '../library/icons.jsx';
+import { addtocartthunk } from './redux/features/cartSlice.js';
+import toast from 'react-hot-toast';
+import Loader from './loader.jsx';
 
 function Products() {
     //  const [category,setcategory]=useState("all")
 // const [search,setsearch]=
 const [islike,setIslike]=useState(false)
  
-const {Allproducts,searchtext,category}=useSelector((state)=>state.productoperation)
+const {Allproducts,searchtext,category,getallprodloading}=useSelector((state)=>state.productoperation)
    const dispatch=useDispatch()
 
 
-useEffect(()=>{
 
-})
+   
 
 useEffect(()=>{
     console.log("component mounted")
@@ -29,9 +31,20 @@ useEffect(()=>{
 
 
 
+const handleaddcart=async(productId)=>{
+    console.log(productId)
+
+  const res= await dispatch(addtocartthunk(productId)).unwrap()
+
+  toast.success(res.message)
+}
 
   return (
-   <>
+   <>   
+     {
+        getallprodloading && <Loader/>
+     }
+       
        <div className={`container-fluid  ${styles.products_container}`}> 
         <div className={`${styles.cardcontainer}`}>
             {
@@ -76,7 +89,7 @@ useEffect(()=>{
                             mt-4
                             ${styles.cont}`} >
 
-                            <button className='cart btn text-light bg-warning'>Add to Cart</button>
+                            <button className='cart btn text-light bg-warning' onClick={()=>handleaddcart(data._id)}>Add to Cart</button>
 
                             <p className=' card-text'>view Details</p>
                         </div>

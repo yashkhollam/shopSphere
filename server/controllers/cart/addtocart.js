@@ -1,10 +1,10 @@
-import cartModel from "../../../model/cart.js"
+import cartModel from "../../model/cart.js"
 
 
 export const addtoCart=async(req,res)=>{
     try{
-    //    const userId=req.user.id
-      const {userId}=req.body
+        const userId=req.user.id
+    //   const {userId}=req.body
        const {productId}=req.params
 
        let cart=await cartModel.findOne({userId})
@@ -17,7 +17,7 @@ export const addtoCart=async(req,res)=>{
            })
        }
        else{
-        const prodIndex=cart.findIndex((p)=>p.productId.toString()===productId)
+        const prodIndex= cart.products.findIndex((p)=>p.productId.toString()===productId.toString())
        
 
 

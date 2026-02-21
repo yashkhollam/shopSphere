@@ -20,3 +20,9 @@ export {FolderPlusIcon as AddimageIcon} from '@heroicons/react/24/outline'
 export { HeartIcon as Regularheart} from '@heroicons/react/24/outline'
 
 export { HeartIcon as Solidheart} from '@heroicons/react/24/solid'
+
+
+export {TrashIcon as Deleteicon} from '@heroicons/react/24/solid'
+
+export {PlusIcon} from '@heroicons/react/24/outline'
+export{MinusIcon}  from '@heroicons/react/24/outline'

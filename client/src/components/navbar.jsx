@@ -115,11 +115,12 @@ import Profiledropdown from './profiledropdown.jsx';
 // import React from 'react'
 import '../css/pracnavbar.css'
 
-import {useDispatch} from 'react-redux'
-import { setSearchtext } from './redux/features/productSlice.js';
+import {useDispatch,useSelector} from 'react-redux'
+import { setSearchtext, } from './redux/features/productSlice.js';
+
 
 function Navbar() {
-
+ const {cart}=useSelector((state)=>state.cartopeartion)
  const navigate=useNavigate()
    const [searchdata,setSearchdata]=useState("")
   const [isshowprofiledropdown,setisshowprofiledropdown]=useState(false)
@@ -130,9 +131,12 @@ const dispatch=useDispatch();
 
 const handlesearch=(e)=>{
    setSearchdata(e.target.value)
+   setCategory("")
    navigate('/products')
     
 }
+
+
 
 
 useEffect(()=>{
@@ -217,12 +221,19 @@ useEffect(()=>{
                 
                 
 
-              
+                
                 {({isActive})=>(
                    <div className='d-flex  cart-cont'>
                     {isActive ? <SolidCart className='cart-icon'/>:<RegularCart  className='cart-icon'/> 
                      }
                       <p className='cart-txt'>cart</p>
+                      <p style={{backgroundColor:"yellowgreen",
+                                 width:"20px",
+                                 height:"20px",
+                                 textAlign:"center",
+                                  borderRadius:"50%",
+                                  position:"absolute",
+                                  right:"0"}}>{cart.length}</p>
                     
               </div>
                 )}

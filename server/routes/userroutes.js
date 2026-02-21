@@ -18,4 +18,4 @@ userRouter.post('/resendotp',resendotp)
 userRouter.post('/login',LoginValidation,login);
 userRouter.post('/logout',logout)
 
-userRouter.post('/getMe',userAuthMiddleware,userProfile)
+userRouter.get('/getMe',userAuthMiddleware,userProfile)

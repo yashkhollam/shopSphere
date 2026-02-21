@@ -7,9 +7,12 @@ export const userAuthMiddleware=async(req,res,next)=>{
       if(!token){
         return res.status(401).json({
             success:false,
-            message:"Authenticaion token missing"
+            // message:"Authenticaion token missing"
+            message:"Please login to continue"
         })
       }
+
+    //    console.log("Cookie received:", req.cookies);
 
       const decoded=jwt.verify(token,process.env.JWTSECRET)
 
@@ -23,7 +26,7 @@ export const userAuthMiddleware=async(req,res,next)=>{
         console.log(err.message)
         return res.status(401).json({
             success:false,
-            message:"Invalied or expired tokken"
+            message:"Invalid or expired token"
         })
     }
 }

@@ -52,7 +52,7 @@ export const login=async(req,res)=>{
                 httpOnly:true,
                 //   secure:process.env.NODE_ENV==="production", //true in production
           
-            secure:true,      
+                secure:true,      
                 sameSite:"none", //none in production
                 maxAge:24*60*60*1000
             })

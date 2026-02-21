@@ -15,7 +15,7 @@ export const cretaeaccthunk=createAsyncThunk('userAuth/createacc',async(formdata
     }
 
     catch(err){
-       console.log(err.response.data?.message);
+       console.log(err.response?.data?.message);
        return rejectWithValue(err.response.data?.message)
     }
 })
@@ -32,7 +32,7 @@ export const accOTPverifythunk=createAsyncThunk('userAuth/accOTPverifythunk',asy
 
    catch(err){
      console.log(err);
-     return rejectWithValue(err.response.data?.message)
+     return rejectWithValue(err.response?.data?.message)
    }
 })
 
@@ -45,7 +45,7 @@ export const loginthunk=createAsyncThunk('userAuth/loginthunk',async(formdata,{r
 
     catch(err){
         console.log(err);
-       return rejectWithValue(err.response.data?.message)
+       return rejectWithValue(err.response?.data?.message)
     }
     
 })
@@ -57,7 +57,7 @@ export const logoutthunk=createAsyncThunk('userAuth/logoutthunk',async(_,{reject
    }
    catch(err){
           console.log(err);
-         return rejectWithValue(err.response.data?.message)
+         return rejectWithValue(err.response?.data?.message)
    }
 })
 
@@ -67,14 +67,14 @@ export const logoutthunk=createAsyncThunk('userAuth/logoutthunk',async(_,{reject
 
 export const getMeThunk=createAsyncThunk('userAuth/getMeThunk',async(_,{rejectWithValue})=>{
    try{
-       const res=await axios.post(`${import.meta.env.VITE_API_URL}/userauth/getMe`,{},{withCredentials:true})
+       const res=await axios.get(`${import.meta.env.VITE_API_URL}/userauth/getMe`,{withCredentials:true})
        return res.data
 
        
    }
    catch(err){
           console.log(err);
-         return rejectWithValue(err.response.data?.message)
+         return rejectWithValue(err.response?.data?.message)
    }
 })
 
