@@ -26,7 +26,7 @@ function Bottomnav() {
            
                padding:"5px 30px"}}>
    
-         <NavLink to='/home' className='bottomnav-links'>
+         <NavLink to='/' className='bottomnav-links'>
           {({isActive})=>(
              
          
