@@ -1,7 +1,7 @@
 import React from 'react'
 import { useEffect } from 'react'
 import {useDispatch,useSelector} from 'react-redux'
-import { getallcartitemsthunk, increasecartitemqtythunk,decreasecartitemqtythunk } from '../components/redux/features/cartSlice'
+import { getallcartitemsthunk, increasecartitemqtythunk,decreasecartitemqtythunk, removecartitemthunk } from '../components/redux/features/cartSlice'
 
 
 
@@ -13,7 +13,9 @@ import Loader from '../components/loader.jsx'
 const Cart=()=>{
 
   const dispatch=useDispatch()
-  const {cart,carttotalprice,carttotaldiscountprice,decreasecartitemqtyloading,increasecartitemqtyloading,getallcartitemloading}=useSelector((state)=>state.cartopeartion)
+  const {cart,carttotalprice,carttotaldiscountprice,loading}=useSelector((state)=>state.cartopeartion)
+
+// ,increasecartitemqtyloading,getallcartitemloading,
 
 useEffect(()=>{
   dispatch(getallcartitemsthunk())
@@ -24,7 +26,7 @@ useEffect(()=>{
   return (
     <>
     {
-      getallcartitemloading && <Loader/>
+      loading.getallcartitemloading && <Loader/>
     }
       <div className={`container-fluid  ${styles.cartcont}`} >
 
@@ -69,9 +71,9 @@ useEffect(()=>{
 
                 {
 
-                  decreasecartitemqtyloading? "hello":
+                 
                   data.quantity===1 ?
-                   <Deleteicon className={`text-danger ${styles.minusicon}`} onClick={()=>dispatch()}/>:
+                   <Deleteicon className={`text-danger ${styles.minusicon}`} onClick={()=>dispatch(removecartitemthunk(data.prodId))}/>:
                    
                    
                    

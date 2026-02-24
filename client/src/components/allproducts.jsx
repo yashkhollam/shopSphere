@@ -1,34 +1,42 @@
 import React, { useEffect, useState } from 'react';
 import styles from '../css/products.module.css';
 import {useSelector,useDispatch} from 'react-redux'
-import { getallprodthunk } from "./redux/features/productSlice.js"
+import { getAllfilterddata, setCategory, setNextPage, setPrevPage } from "./redux/features/productSlice.js"
 
 import { Regularheart,Solidheart } from '../library/icons.jsx';
 import { addtocartthunk } from './redux/features/cartSlice.js';
 import toast from 'react-hot-toast';
 import Loader from './loader.jsx';
+import {useNavigate} from 'react-router-dom'
 
-function Products() {
+
+function Allproducts() {
     //  const [category,setcategory]=useState("all")
 // const [search,setsearch]=
+const navigate=useNavigate()
 const [islike,setIslike]=useState(false)
  
-const {Allproducts,searchtext,category,getallprodloading}=useSelector((state)=>state.productoperation)
+const {Allfilterddata,search,category,loading,totalPages,totalProducts,page,limit}=useSelector((state)=>state.productoperation)
    const dispatch=useDispatch()
 
 
 
    
 
+// useEffect(()=>{
+//     // console.log("component mounted")
+//     const timer=setTimeout(()=>{
+//         dispatch(getAllfilterddata({search,category}))
+      
+
+//     },2000)
+//     return ()=>clearTimeout(timer)
+// },[dispatch,search,category])
+
+
 useEffect(()=>{
-    console.log("component mounted")
-    const timer=setTimeout(()=>{
-        dispatch(getallprodthunk({searchtext,category}))
-
-    },2000)
-    return ()=>clearTimeout(timer)
-},[dispatch,searchtext,category])
-
+    dispatch(getAllfilterddata({search,category,page,limit}))
+},[dispatch,page,search,category])
 
 
 const handleaddcart=async(productId)=>{
@@ -37,21 +45,28 @@ const handleaddcart=async(productId)=>{
   const res= await dispatch(addtocartthunk(productId)).unwrap()
 
   toast.success(res.message)
+ 
+}
+
+
+const navigateproduct=(productId)=>{
+    navigate(`/product/${productId}`)
+    // console.log("product id =",productId)
 }
 
   return (
    <>   
      {
-        getallprodloading && <Loader/>
+        loading.getallprodloading && <Loader/>
      }
        
        <div className={`container-fluid  ${styles.products_container}`}> 
         <div className={`${styles.cardcontainer}`}>
             {
-                Array.isArray(Allproducts)?(Allproducts.map((data)=>(
+                Array.isArray(Allfilterddata)?(Allfilterddata.map((data,index)=>(
                     
                     
-                    <div className={`${styles.productcard}`}>
+                    <div className={`${styles.productcard}`} key={index}>
                       
                       
                       
@@ -74,7 +89,7 @@ const handleaddcart=async(productId)=>{
                              alt=""
                              className={` ${styles.prodimg}`} />
                         
-                        <div className="card-body p-0 ps-2 pe-2 ">
+                        <div className="card-body ps-3 pe-3 pb-2">
                             <p className='card-title fs-4 p-0 m-0   text-dark '>{data.name}</p>
                        
                         <div className={`fs-5 ${styles.price_cont}`}>
@@ -91,7 +106,11 @@ const handleaddcart=async(productId)=>{
 
                             <button className='cart btn text-light bg-warning' onClick={()=>handleaddcart(data._id)}>Add to Cart</button>
 
-                            <p className=' card-text'>view Details</p>
+                            {/* <p className=' card-text' onClick={()=>navigate(`${`/product/${data._id}`}`)}>view Details</p> */}
+
+                            <p className=' card-text text-primary'
+                            style={{cursor:"pointer"}}
+                            onClick={()=>navigateproduct(data._id)}>view Details</p>
                         </div>
                         </div>
                        
@@ -100,10 +119,26 @@ const handleaddcart=async(productId)=>{
                     </div>
                 ))):(<h1>product not found</h1>)
             }
+
+           
         </div>
+
+         <div className='d-flex align-items-center gap-3 mt-3  justify-content-center'
+         style={{paddingBottom:"70px"}}>
+                <button className='btn bg-success text-light'
+                        disabled={page===1}
+                        onClick={()=>dispatch(setPrevPage())}>prev</button>
+                <p className=' mb-0 '>{page}/{totalPages}</p>
+
+                <button className='btn bg-danger text-light'
+                        disabled={page===totalPages}
+                        onClick={()=>dispatch(setNextPage())}>
+                            next</button>
+
+            </div>
        </div>
    </>
   )
 }
 
-export default Products
+export default Allproducts

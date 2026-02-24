@@ -105,7 +105,7 @@ function Bottomnav() {
             :<RegularCart  className='navitem-icons'/>
           }
         
-         <p className='cart-count'>{cart.length}</p>
+         {/* <p className='cart-count'>{cart.length}</p> */}
          <p className='navitem-text'>cart</p>
       </div>
 

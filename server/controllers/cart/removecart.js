@@ -1,4 +1,5 @@
 import cartModel from "../../model/cart.js"
+import { getformatedcart } from "../../service/getformatedcart.js"
 
 export const removecartitem=async(req,res)=>{
     try{
@@ -7,7 +8,7 @@ export const removecartitem=async(req,res)=>{
         const {productId}=req.params
 
 
-        const cart=await cartModel.findOne({userId})
+        const cart=await cartModel.findOne({userId}).populate('products.productId')
 
         if(cart.products.length<=0){
             return res.status(401).json({
@@ -26,17 +27,17 @@ export const removecartitem=async(req,res)=>{
             }) 
          }
 
+
        
             cart.products.splice(productIndex,1)
 
             await cart.save()
         
+        const result=getformatedcart(cart)
 
-         return res.status(200).json({
-            success:true,
-            message:"product removed from cart",
-            data:cart
-         })
+        result.message="Product removed from cart"
+
+         return res.status(200).json(result)
        
     }
 

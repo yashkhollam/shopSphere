@@ -6,6 +6,7 @@ import { deleteproduct } from '../controllers/admin/products/deleteproduct.js';
 import {userAuthMiddleware} from '../Middleware/userAuthMiddleware.js';
 import { roleAuthorization } from '../Middleware/roleAuthorization.js';
 import { productfilter } from '../controllers/admin/products/productfilter.js';
+import { getProductById } from '../controllers/admin/products/getProductById.js';
 
 
 
@@ -17,6 +18,7 @@ productroute.post('/uploadproduct',upload.single("image"),userAuthMiddleware,rol
 
 
 // productroute.get('/getallproducts',getproducts)
-productroute.get('/getallproducts',productfilter)
+productroute.get('/getAllfilterddata',productfilter)
+productroute.get('/:productId',getProductById)
 productroute.delete('/deleteproduct/:id',deleteproduct)
 

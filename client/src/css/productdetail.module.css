@@ -1,0 +1,28 @@
+.productcont{
+    margin-top:60px;
+    /* background-color:red; */
+    display: flex;
+    justify-content: center;
+    background-color: #f4f7fb;
+     height:100vh;
+}
+
+.productrow{
+  max-width:900px;
+  width:100%;
+ box-shadow: rgba(40, 116, 240, 0.08) 0px 16px 30px;
+  border-radius:20px;
+  height:min-content;
+  padding:10px;
+  background-color:white;
+  padding-bottom:80px;
+
+}
+
+.prodimg{
+    height:400px;
+    width:100%;
+    object-fit:contain;
+    /* margin-top:30px; */
+   
+}

@@ -14,7 +14,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getMeThunk } from './components/redux/features/userauthSlice.js'
 import Protectedroutes from './components/protectedroutes.jsx'
 import Addproducts from './pages/addproducts.jsx'
-import Products from './components/products.jsx'
+
+import { getallcartitemsthunk } from './components/redux/features/cartSlice.js'
+import AllProducts from './components/allproducts.jsx'
+import ProductDetail from './pages/product.jsx'
 function App() {
 
 
@@ -26,7 +29,14 @@ const dispatch=useDispatch()
 useEffect(()=>{
   console.log("get thunk run")
    dispatch(getMeThunk())
+   dispatch(getallcartitemsthunk())
 },[dispatch])
+
+
+
+
+
+
 
 const router=createBrowserRouter([
   {
@@ -45,17 +55,18 @@ const router=createBrowserRouter([
         path:"/signup",
         element:<Signup/>
       },
-      // {
-      //   path:"/product",
-      //   element:<Product/>
-      // },
+     
       {
         path:"/signupotpverify",
         element:<Signupotpverify/>
       },
       {
-        path:'/products',
-        element:<Products/>
+        path:'/allproducts',
+        element:<AllProducts/>
+      },
+      {
+        path:`/product/:productId`,
+        element:<ProductDetail/>
       },
        {
        

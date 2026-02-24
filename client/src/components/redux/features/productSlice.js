@@ -2,10 +2,10 @@ import { createSlice,createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 
-// export const getallprodthunk=createAsyncThunk('/product/getall',async(_,{rejectWithValue})=>{
+// export const getAllfilterddata=createAsyncThunk('/product/getall',async(_,{rejectWithValue})=>{
 
 //     try{
-//          const res=await axios.get(`${import.meta.env.VITE_API_URL}/product/getallproducts`)
+//          const res=await axios.get(`${import.meta.env.VITE_API_URL}/product/getAllfilterddata`)
 //     return res.data
 //     }
    
@@ -17,10 +17,16 @@ import axios from "axios";
 
 
 
-export const getallprodthunk=createAsyncThunk(`/product/getfilterall`,async({searchtext,category},{rejectWithValue})=>{
+export const getAllfilterddata=createAsyncThunk(`/product/getfilterall`,async({search,category,limit,page},{rejectWithValue})=>{
 
     try{
-         const res=await axios.get(`${import.meta.env.VITE_API_URL}/product/getallproducts?search=${searchtext}&category=${category}`,{withCredentials:true})
+         const res=await axios.get(`${import.meta.env.VITE_API_URL}/product/getAllfilterddata`,
+        {params:{
+         search,
+         category,
+         limit,
+         page  
+        },withCredentials:true})
     return res.data
     }
    
@@ -31,10 +37,12 @@ export const getallprodthunk=createAsyncThunk(`/product/getfilterall`,async({sea
 })
 
 
-export const getprodbyIdthunk=createAsyncThunk('/product/getprodbyId',async(id,{rejectWithValue})=>{
+export const getprodbyIdthunk=createAsyncThunk('/product/getprodbyId',async(productId,{rejectWithValue})=>{
 
     try{
-         const res=await axios.get(`${import.meta.env.VITE_API_URL}/products/getallprodbyId/${id}`)
+         const res=await axios.get(`${import.meta.env.VITE_API_URL}/product/${productId}`)
+         console.log("from thun=",productId)
+         
     return res.data
     }
    
@@ -95,10 +103,15 @@ export const deleteprodthunk=createAsyncThunk('/product/deleteprodthunk',async(i
 const ProductSlice=createSlice({
     name:"productoperation",
     initialState:{
-        Allproducts:[],
-        searchtext:"",
-        category:"",
+        Allfilterddata:[],
         product:null,
+        totalProducts:null,
+        search:"",
+        category:"",
+        page:1,
+        limit:6,
+        totalPages:0,
+       
         error:null,
         loading:{
             getallprodloading:true,
@@ -112,11 +125,26 @@ const ProductSlice=createSlice({
 
     reducers:{
         setSearchtext:(state,action)=>{
-            state.searchtext=action.payload 
+            state.search=action.payload
+            state.page=1;
+            
         },
 
         setCategory:(state,action)=>{
             state.category=action.payload
+            state.page=1
+        },
+        setNextPage:(state)=>{
+            if(state.page<state.totalPages){
+             state.page+=1;
+            }
+            
+        },
+        setPrevPage:(state)=>{
+            if(state.page>1){
+               state.page-=1;
+            }
+        
         }
     }
         
@@ -124,17 +152,21 @@ const ProductSlice=createSlice({
 ,
     extraReducers:(builder)=>{
          builder
-         //getallproducts
-         .addCase(getallprodthunk.pending,(state,)=>{
+         //getAllfilterddata
+         .addCase(getAllfilterddata.pending,(state,)=>{
              state.loading.getallprodloading=true;
              state.error=false;
          })
-         .addCase(getallprodthunk.fulfilled,(state,action)=>{
-            state.Allproducts=action.payload.data;
+         .addCase(getAllfilterddata.fulfilled,(state,action)=>{
+            state.Allfilterddata=action.payload.data;
+            state.totalPages=action.payload.totalPages;
+            state.totalProducts=action.payload.totalProducts;
+            state.page=action.payload.currentPage
+          
            state.loading.getallprodloading=false;
             state.error=false;
          })
-         .addCase(getallprodthunk.rejected,(state,action)=>{
+         .addCase(getAllfilterddata.rejected,(state,action)=>{
               state.loading.getallprodloading=false;
              state.error=action.payload;
          })
@@ -178,7 +210,7 @@ const ProductSlice=createSlice({
             const updatedproduct=action.payload.data;
 
             if(updatedproduct){
-                state.Allproducts=state.Allproducts.map((p)=>p._id===updatedproduct._id ? updatedproduct:p)
+                state.Allfilterddata=state.Allfilterddata.map((p)=>p._id===updatedproduct._id ? updatedproduct:p)
             }
            state.loading.updateprodloading=false;
             state.error=false;
@@ -196,7 +228,7 @@ const ProductSlice=createSlice({
          .addCase(deleteprodthunk.fulfilled,(state,action)=>{
             const deletedproduct=action.payload.data;
             if(deletedproduct){
-               state.Allproducts=state.Allproducts.filter((p)=>p._id!==deletedproduct._id)
+               state.Allfilterddata=state.Allfilterddata.filter((p)=>p._id!==deletedproduct._id)
             }
           
            state.loading.deleteprodloading=false;
@@ -211,5 +243,5 @@ const ProductSlice=createSlice({
 })
 
 
-export const {setSearchtext,setCategory}=ProductSlice.actions
+export const {setSearchtext,setCategory,setNextPage,setPrevPage}=ProductSlice.actions
 export default ProductSlice.reducer

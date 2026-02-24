@@ -37,7 +37,7 @@ const navigate=useNavigate()
   const handlecategory=async(category)=>{
      dispatch(setCategory(category))
      console.log(category)
-     navigate('/products')
+     navigate('/allproducts')
   }
   return (
     <>

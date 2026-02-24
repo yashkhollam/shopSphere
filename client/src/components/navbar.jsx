@@ -116,23 +116,32 @@ import Profiledropdown from './profiledropdown.jsx';
 import '../css/pracnavbar.css'
 
 import {useDispatch,useSelector} from 'react-redux'
-import { setSearchtext} from './redux/features/productSlice.js';
+import { setCategory, setSearchtext} from './redux/features/productSlice.js';
+
 
 
 function Navbar() {
- const {cart}=useSelector((state)=>state.cartopeartion)
+ const {page,limit}=useSelector((state)=>state.productoperation)
  const navigate=useNavigate()
    const [searchdata,setSearchdata]=useState("")
   const [isshowprofiledropdown,setisshowprofiledropdown]=useState(false)
 
+  
 const dispatch=useDispatch();
 
-
+// useEffect(()=>{
+  
+// },[dispatch])
 
 const handlesearch=(e)=>{
-   setSearchdata(e.target.value)
-   setCategory("")
-   navigate('/products')
+  const value=e.target.value
+ setSearchdata(value)
+ 
+
+ if(value.trim()!==""){
+   navigate('/allproducts')
+  }
+  
     
 }
 
@@ -140,7 +149,13 @@ const handlesearch=(e)=>{
 
 
 useEffect(()=>{
-   dispatch(setSearchtext(searchdata))
+
+  const timer=setTimeout(()=>{
+      dispatch(setSearchtext(searchdata));
+  },3000)
+   
+   return ()=>clearTimeout(timer) 
+    
 },[searchdata])
 
   return (
@@ -227,13 +242,13 @@ useEffect(()=>{
                     {isActive ? <SolidCart className='cart-icon'/>:<RegularCart  className='cart-icon'/> 
                      }
                       <p className='cart-txt'>cart</p>
-                      <p style={{backgroundColor:"yellowgreen",
+                      {/* <p style={{backgroundColor:"yellowgreen",
                                  width:"20px",
                                  height:"20px",
                                  textAlign:"center",
                                   borderRadius:"50%",
                                   position:"absolute",
-                                  right:"0"}}>{cart.length}</p>
+                                  right:"0"}}>{cart.length}</p> */}
                     
               </div>
                 )}

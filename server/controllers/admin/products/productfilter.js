@@ -4,10 +4,14 @@ import ProductModel from "../../../model/products.js"
 export const productfilter=async(req,res)=>{
     try{
       
-        const {search,category="all"}=req.query
+        const {search,
+            category="all",
+            page=1,
+            limit=6}=req.query
     
     const query={}
-
+    const noofpages=Number(page);
+    const nooflimits=Number(limit)
     // if(query.search===query.category){
 
     // }
@@ -22,21 +26,30 @@ export const productfilter=async(req,res)=>{
     } 
 
    
-if(category && category!=="all"){
+else if(category && category!=="all"){
     query.category=category
 }
 
 
+const skip=(noofpages-1)*nooflimits
 
 
+
+const totalproducts=await ProductModel.countDocuments(query)
     const result=await ProductModel.find(query)
+                                    .skip(skip)
+                                    .limit(limit)
                                 
-                                    
+     
+                                
 
     return res.status(200).json({
         success:true,
         message:"filter product",
-        data:result
+        data:result,
+        totalProducts:totalproducts,
+        totalPages:Math.ceil(totalproducts/limit),
+        currentPage:noofpages
     })
 
     }
