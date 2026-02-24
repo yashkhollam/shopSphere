@@ -109,9 +109,9 @@ const navigate=useNavigate()
           
           
           <img  src={data.imgurl}
-                className={`${styles.productcategoryimg}`} />
-          <p>{data.name}</p> 
-          <p className="d-none" ></p>
+                className={`  ${styles.productcategoryimg}`} />
+          {/* <p className={`${styles.categoryname}`}>{data.name}</p>  */}
+         
      </div>
     ))
   ):
