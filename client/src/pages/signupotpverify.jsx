@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react'
 import '../css/signupotpverify.css'
 import { NavLink ,Navigate, useLocation, useNavigate} from 'react-router-dom'
 import {toast} from 'react-hot-toast'
-import { useDispatch } from 'react-redux'
+import { useDispatch,useSelector } from 'react-redux'
 import { accOTPverifythunk } from '../components/redux/features/userauthSlice'
+import Loader from '../components/loader'
 
 function Signupotpverify() {
 
@@ -12,7 +13,7 @@ function Signupotpverify() {
   const navigate=useNavigate()
  const email=location.state?.email;
  const dispatch=useDispatch()
-
+const {loading}=useSelector((state)=>state.userAuth)
 
 
  
@@ -54,6 +55,9 @@ function Signupotpverify() {
 
   return (
    <>
+     {
+        loading.accOTPverifyloading && <Loader/> 
+     }
       <div className="container-fluid form-container">
      
      <form action="" className='OTP-verify-form' onSubmit={submitform}>

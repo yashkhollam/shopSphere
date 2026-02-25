@@ -4,6 +4,7 @@ import '../css/profilelist.css'
 import { NavLink, useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
 import {logoutthunk} from '../components/redux/features/userauthSlice.js'
+import Loader from './loader.jsx'
 
 function Profiledropdown() {
 
@@ -21,7 +22,7 @@ const handlelogout=async()=>{
           const res=await dispatch(logoutthunk()).unwrap()
 
           toast.success(res.message)
-          navigate('/home')
+          navigate('/login')
     }
 
     catch(err){
@@ -34,25 +35,7 @@ const handlelogout=async()=>{
     <>
 
      {
-          logoutloading && 
-          <div  style={{
-                 position:"absolute",
-                 background: "rgba(255,255,255,0.4)",
-                 display:"flex",
-                 justifyContent:"center",
-                 alignItems:"center",
-                //  minHeight:"100vh",
-                   height:"100vh",
-                  width:"100%",
-                  zIndex:"999",
-                  top:"0",
-                   left:"0",
-                   
-
-          }}></div>
-
-
-
+          logoutloading && <Loader/>
         }
 
       <div className=' profilelistcontainer' 
@@ -101,7 +84,7 @@ const handlelogout=async()=>{
            
            
             <li className='profilelistitems ' >
-                { isAuthenticated ? `Hello ${user.username.toUpperCase()}` :"Hello user"}
+                { isAuthenticated ? `Hello ${user?.username.toUpperCase()}` :"Hello user"}
 
         </li>
        
@@ -111,6 +94,20 @@ const handlelogout=async()=>{
 
             </NavLink>
         </li>
+
+
+       { user?.role==="admin" && isAuthenticated ?
+             <li  className='profilelistitems' >
+                
+            
+            <NavLink className="navbar-link"
+                     to='/adminpanel'>
+                admin panel
+            </NavLink> 
+
+            
+               </li>:""
+        }
 
         {
             isAuthenticated ?

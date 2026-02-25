@@ -113,7 +113,7 @@ const cartSlice=createSlice({
                })
                .addCase(addtocartthunk.fulfilled,(state,action)=>{
                 
-                 state.cart=action.payload.data;
+                 state.cart=action.payload?.data;
                   state.carttotalprice=action.payload.carttotalprice;
                   state.carttotaldiscountprice=action.payload.carttotaldiscountprice;
                   state.deliverycharge=action.payload.deliverycharge;
@@ -132,7 +132,7 @@ const cartSlice=createSlice({
                    state.error=false;
                })
                .addCase(getallcartitemsthunk.fulfilled,(state,action)=>{
-                  state.cart=action.payload.data;
+                  state.cart=action.payload?.data;
                   state.carttotalprice=action.payload.carttotalprice;
                   state.carttotaldiscountprice=action.payload.carttotaldiscountprice
                   state.deliverycharge=action.payload.deliverycharge;
@@ -154,7 +154,7 @@ const cartSlice=createSlice({
                    state.error=false;
                })
                .addCase(removecartitemthunk.fulfilled,(state,action)=>{
-                  state.cart=action.payload.data;
+                  state.cart=action.payload?.data;
                   state.carttotalprice=action.payload.carttotalprice;
                   state.carttotaldiscountprice=action.payload.carttotaldiscountprice;
                   state.deliverycharge=action.payload.deliverycharge;
@@ -174,7 +174,7 @@ const cartSlice=createSlice({
                    state.error=false;
                })
                .addCase(increasecartitemqtythunk.fulfilled,(state,action)=>{
-                  state.cart=action.payload.data;
+                  state.cart=action.payload?.data;
                   state.carttotalprice=action.payload.carttotalprice;
                   state.carttotaldiscountprice=action.payload.carttotaldiscountprice;
                   state.deliverycharge=action.payload.deliverycharge;
@@ -196,7 +196,7 @@ const cartSlice=createSlice({
                    state.error=false;
                })
                .addCase(decreasecartitemqtythunk.fulfilled,(state,action)=>{
-                  state.cart=action.payload.data;
+                  state.cart=action.payload?.data;
                   state.carttotalprice=action.payload.carttotalprice;
                   state.carttotaldiscountprice=action.payload.carttotaldiscountprice;
                   state.deliverycharge=action.payload.deliverycharge;

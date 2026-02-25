@@ -73,7 +73,7 @@ function Bottomnav() {
      </NavLink> */}
 
 
-     <NavLink to='/login' className="bottomnav-links">
+     <NavLink to='/profile' className="bottomnav-links">
        {({isActive})=>(
              
  <div className={`text-center ${isActive ? "bottomnav-links active":"bottomnav-links"}`}>
@@ -105,7 +105,7 @@ function Bottomnav() {
             :<RegularCart  className='navitem-icons'/>
           }
         
-         {/* <p className='cart-count'>{cart.length}</p> */}
+         <p className='cart-count'>{cart?.length}</p>
          <p className='navitem-text'>cart</p>
       </div>
 

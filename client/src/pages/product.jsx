@@ -5,12 +5,13 @@ import { getprodbyIdthunk } from '../components/redux/features/productSlice'
 import styles from  '../css/productdetail.module.css';
 import { addtocartthunk } from '../components/redux/features/cartSlice';
 import{toast} from 'react-hot-toast'
+import Loader from '../components/loader';
 
 function ProductDetail() {
 
  const {productId}=useParams()
  const dispatch=useDispatch()
- const {product,getprodbyIDloading,loading}=useSelector((state)=>state.productoperation)
+ const {product,loading}=useSelector((state)=>state.productoperation)
 
 //  console.log("from product com",productId)
  
@@ -31,6 +32,8 @@ function ProductDetail() {
     }
  }
   return (
+  <>
+   {loading.getprodbyIDloading && <Loader/>}
    <div className={`container-fluid ${styles.productcont}`}>
         <div className={`row mt-4 ${styles.productrow}`}>
           <div className="col-sm-12 col-lg-6 p-0">
@@ -71,7 +74,9 @@ function ProductDetail() {
                       onClick={()=>handlecart(product?._id)}>Add to cart</button>
             </div>
         </div>
-   </div>
+   </div> 
+   
+   </>
   )
 }
 

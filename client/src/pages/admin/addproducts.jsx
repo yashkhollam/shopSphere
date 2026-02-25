@@ -1,12 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
-import styles from "../css/addproduct.module.css";
-import { AddimageIcon } from "../library/icons";
-import { useDispatch } from "react-redux";
+import styles from "../../css/addproduct.module.css"
+import { AddimageIcon } from "../../library/icons.jsx"
+import { useDispatch ,useSelector} from "react-redux";
 import { toast } from "react-hot-toast";
-import { uploadprodthunk } from "../components/redux/features/productSlice.js";
+import { uploadprodthunk } from "../../components/redux/features/admin/adminproductSlice.js"
+import Loader from "../../components/loader.jsx"
 
 function Addproducts() {
   const dispatch = useDispatch();
+  const {loading}=useSelector((state)=>state.productoperation)
   const ref=useRef()
   const [imgpreview, setImgpreview] = useState(null);
   const [selectedcategory, setseceltedcategory] = useState("");
@@ -117,6 +119,7 @@ function Addproducts() {
 
   return (
     <>
+     {loading.addprodloading && <Loader/>}
       <div className={`container-fluid ${styles.form_wrapper}`}>
         <form action="" className={styles.form_container} onSubmit={submitform}>
           <h1 className="text-center mt-4 ">Add Products</h1>

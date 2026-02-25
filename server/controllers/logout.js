@@ -8,10 +8,11 @@ export const logout=async(req,res)=>{
        res.clearCookie("JWTTOKEN",{
                   httpOnly:true,
                 //   secure:process.env.NODE_ENV==="production", //true in production
-                 secure:true, 
-                  sameSite:"none", 
-                // sameSite:"lax", //none in production
+                
+               // sameSite:"lax", //none in production
                
+                sameSite:"none",//localhost practise
+                secure:true,   
        })
 
        return res.status(200).json({

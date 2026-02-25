@@ -4,6 +4,7 @@ import {toast} from 'react-hot-toast'
 import {useNavigate} from 'react-router-dom';
 import {useDispatch,useSelector} from 'react-redux'
 import { cretaeaccthunk } from '../components/redux/features/userauthSlice.js';
+import Loader from '../components/loader.jsx';
  
 function Signup() {
 const navigate=useNavigate()
@@ -53,29 +54,7 @@ const handlenavigation=()=>{
   return (
    <>
       {
-          createaccloading && 
-          <div  style={{
-                 position:"absolute",
-                 background: "rgba(255,255,255,0.4)",
-                 display:"flex",
-                 justifyContent:"center",
-                 alignItems:"center",
-                //  minHeight:"100vh",
-                   height:"100vh",
-                  width:"100%",
-                  zIndex:"999",
-                  top:"0",
-                   left:"0",
-                   
-
-          }}>
-              <div className="spinner-border" role="status" />
-              
-
-                
-               
-          
-          </div>
+          createaccloading && <Loader/>
       }
       
      

@@ -13,11 +13,15 @@ import Profile from './pages/profile.jsx';
 import { useDispatch, useSelector } from 'react-redux'
 import { getMeThunk } from './components/redux/features/userauthSlice.js'
 import Protectedroutes from './components/protectedroutes.jsx'
-import Addproducts from './pages/addproducts.jsx'
+import Addproducts from './pages/admin/addproducts.jsx'
 
 import { getallcartitemsthunk } from './components/redux/features/cartSlice.js'
 import AllProducts from './components/allproducts.jsx'
 import ProductDetail from './pages/product.jsx'
+import Adminpanel from './pages/admin/adminpanel.jsx'
+import Adminviewallproduct from './pages/admin/adminviewallproduct.jsx'
+import Orders from './pages/admin/orders.jsx'
+import Allusers from './pages/admin/allusers.jsx'
 function App() {
 
 
@@ -68,6 +72,15 @@ const router=createBrowserRouter([
         path:`/product/:productId`,
         element:<ProductDetail/>
       },
+      {
+        path:'/profile',
+        element:<Profile/>
+      },
+      // ,{
+      //   path:'/addproduct',
+      //   element:<Addproducts/>
+      // },
+    
        {
        
         element:<Protectedroutes/>,
@@ -75,22 +88,36 @@ const router=createBrowserRouter([
          { 
            path:'/cart' ,
            element:<Cart/>,
-           }
+           },
+           {
+
+
+        path:'/adminpanel',
+        element:<Adminpanel/>,
+        children:[
+          {
+            path:'/adminpanel/addproduct',
+            element:<Addproducts/>
+          },
+          {
+            path:'/adminpanel/viewproduct',
+            element:<Adminviewallproduct/>
+          },
+          {
+            path:'/adminpanel/orders',
+            element:<Orders/>
+          },
+          {
+            path:'/adminpanel/allusers',
+            element:<Allusers/>
+          },
         ]
-      
-            
-       
-        
-        
       },
-      {
-        path:'/profile',
-        element:<Profile/>
-      },{
-        path:'/addproduct',
-        element:<Addproducts/>
-      }
-    
+        ] 
+      },
+
+      
+      
     ]
   }
 ])

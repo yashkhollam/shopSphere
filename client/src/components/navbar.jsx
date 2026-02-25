@@ -1,127 +1,15 @@
 import React, { useEffect, useState } from 'react';
-// import '../css/navbar.css';
 import { NavLink, useNavigate } from 'react-router-dom';
 import {MagnifyingGlassIcon,RegularProfile,SolidProfile,RegularCart,SolidCart} from '../library/icons.jsx'
 import Profiledropdown from './profiledropdown.jsx';
-
-// function Navbar() {
-
-// const [isshowprofiledropdown,setisshowprofiledropdown]=useState(false)
-
-
-//   return (
-//     <>
-
-//        <div className="container-fluid nav-container p-0 " 
-//            >
-//         <nav className='navbar p-0  h-100'>
-        
-//         {/* <NavLink to='/home'>
-//             <div className="shopeSpherelogo-cont"
-//                style={{cursor:"pointer"}}
-//                 >
-//                   <img src="shopeSpherelogo.jpeg" alt="shopeSpherelogo" srcset=""
-//                   className='logo' />
-//                 </div>
-//         </NavLink>
-//           */}
-//          <div className="shopeSpherelogo-cont"
-//                style={{cursor:"pointer"}}
-//                 >
-//                   <img src="shopeSpherelogo.jpeg" alt="shopeSpherelogo" srcset=""
-//                   className='logo' />
-//                 </div>
-
-
-
-
-//           <div className='search-container'>
-//            <MagnifyingGlassIcon className='search-icon'/>
-//             <input type="search "
-//                    className='form-control'
-//                     placeholder='Search for Products,Brands and More ...' 
-//                     style={{
-//                       paddingLeft:"40px",
-                     
-//                     }}
-//                   />
-//           </div>
-
-
-//           <div className='d-none d-md-flex'>
-//              <ul className='d-flex '
-//                  style={{
-//                   listStyleType:"none",
-//                   gap:"45px",
-//                   padding:"0 0px 0 0",
-//                   margin:"0",
-//                   cursor:"pointer"
-//                  }}>
-
-//             {/* <NavLink to='/product' className={({isActive})=>`${isActive ? "navbar-link active":"navbar-link"}`}>
-//               <li className='navbar-item-text'>Products</li>
-//             </NavLink> */}
-            
-//            <li className="navbar-item"
-//                 onMouseEnter={()=>setisshowprofiledropdown(true)}
-//                 onMouseLeave={()=>setisshowprofiledropdown(false)}
-//                 style={{position:"relative"}}>
- 
-//     <div className="nav-content" 
-        
-//          >
-
-
-
-
-
-//       <RegularProfile className="nav-icon" />
-//       <span className="navbar-item-text">Profile</span>
-//     </div>
-  
-
-//   {isshowprofiledropdown && <Profiledropdown/>}
-// </li>
-
-            
-             
-            
-//             <li className='navbar-item '>
-//              <NavLink to='/cart' className="navbar-link">
-//               <div className='nav-content'>
-//                   <RegularCart className='nav-icon'/> 
-//                   <span className='navbar-item-text'>Cart</span>
-//               </div>
-              
-//              </NavLink>
-//              </li>
-              
-           
-
-//              </ul>
-//           </div>
-//         </nav>
-//        </div>
-//     </>
-//   )
-// }
-
-// export default Navbar
-
-
-
-
-
-// import React from 'react'
 import '../css/pracnavbar.css'
-
 import {useDispatch,useSelector} from 'react-redux'
-import { setCategory, setSearchtext} from './redux/features/productSlice.js';
+import {setSearchtext} from './redux/features/productSlice.js';
 
 
 
 function Navbar() {
- const {page,limit}=useSelector((state)=>state.productoperation)
+  const {cart}=useSelector((state)=>state.cartopeartion)
  const navigate=useNavigate()
    const [searchdata,setSearchdata]=useState("")
   const [isshowprofiledropdown,setisshowprofiledropdown]=useState(false)
@@ -242,13 +130,13 @@ useEffect(()=>{
                     {isActive ? <SolidCart className='cart-icon'/>:<RegularCart  className='cart-icon'/> 
                      }
                       <p className='cart-txt'>cart</p>
-                      {/* <p style={{backgroundColor:"yellowgreen",
+                      <p style={{backgroundColor:"yellowgreen",
                                  width:"20px",
                                  height:"20px",
                                  textAlign:"center",
                                   borderRadius:"50%",
                                   position:"absolute",
-                                  right:"0"}}>{cart.length}</p> */}
+                                  right:"0"}}>{cart.length}</p>
                     
               </div>
                 )}

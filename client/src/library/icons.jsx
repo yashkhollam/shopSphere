@@ -26,3 +26,5 @@ export {TrashIcon as Deleteicon} from '@heroicons/react/24/solid'
 
 export {PlusIcon} from '@heroicons/react/24/outline'
 export{MinusIcon}  from '@heroicons/react/24/outline'
+
+export {Bars3Icon} from '@heroicons/react/24/solid'

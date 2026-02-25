@@ -1,5 +1,6 @@
 import cloudinary from '../../../config/cloudinary.js';
 import ProductModel from '../../../model/products.js';
+import { getformatedcart } from '../../../service/getformatedcart.js';
 
 
 export const uploadproduct=async(req,res)=>{
@@ -39,6 +40,7 @@ export const uploadproduct=async(req,res)=>{
            await ProductModel.create({name,price,discountprice,description,category,subcategory,brand,stocks,imgurl,publicId,createdBy:adminId})
 
        
+
 
 
 res.status(200).json({

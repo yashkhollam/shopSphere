@@ -1,4 +1,5 @@
 import cartModel from "../../model/cart.js"
+import { getformatedcart } from "../../service/getformatedcart.js"
 
 
 export const addtoCart=async(req,res)=>{
@@ -7,7 +8,7 @@ export const addtoCart=async(req,res)=>{
     //   const {userId}=req.body
        const {productId}=req.params
 
-       let cart=await cartModel.findOne({userId})
+       let cart=await cartModel.findOne({userId}).populate('products.productId')
 
 
        if(!cart){
@@ -17,7 +18,7 @@ export const addtoCart=async(req,res)=>{
            })
        }
        else{
-        const prodIndex= cart.products.findIndex((p)=>p.productId.toString()===productId.toString())
+        const prodIndex= cart.products.findIndex((p)=>p.productId._id.toString()===productId.toString())
        
 
 
@@ -29,10 +30,11 @@ export const addtoCart=async(req,res)=>{
        }
 
        await cart.save();
-       return res.status(200).json({
-        success:true,
-        message:"Product added to cart"
-       })
+
+       const result=getformatedcart(cart)
+
+       result.message="Product added to cart"
+       return res.status(200).json(result)
     }
 
     catch(err){

@@ -54,50 +54,6 @@ export const getprodbyIdthunk=createAsyncThunk('/product/getprodbyId',async(prod
 
 
 
-export const uploadprodthunk=createAsyncThunk('/product/uploadprodthunk',async(formdata,{rejectWithValue})=>{
-
-    try{
-         const res=await axios.post(`${import.meta.env.VITE_API_URL}/product/uploadproduct`,formdata,{withCredentials:true})
-    return res.data
-    }
-   
-    catch(err){
-       return rejectWithValue(err.response?.data?.message)
-    }
-   
-})
-
-
-export const updateproductthunk=createAsyncThunk('/product/updateproductthunk',async(formdata,{rejectWithValue})=>{
-
-    try{
-         const res=await axios.patch(`${import.meta.env.VITE_API_URL}/products/updateproduct/${formdata._id}`,formdata,{withCredentials:true})
-    return res.data
-    }
-   
-    catch(err){
-       return rejectWithValue(err.response?.data?.meassage || "Something went wrong")
-    }
-   
-})
-
-
-
-
-
-export const deleteprodthunk=createAsyncThunk('/product/deleteprodthunk',async(id,{rejectWithValue})=>{
-
-    try{
-         const res=await axios.delete(`${import.meta.env.VITE_API_URL}/product/deleteproduct/${id}`,{},{withCredentials:true})
-    return res.data
-    }
-   
-    catch(err){
-       return rejectWithValue(err.response?.data?.meassage || "Something went wrong")
-    }
-   
-})
-
 
 
 const ProductSlice=createSlice({
@@ -114,7 +70,7 @@ const ProductSlice=createSlice({
        
         error:null,
         loading:{
-            getallprodloading:true,
+            getallprodloading:false,
             getprodbyIDloading:false,
            addprodloading:false,
            deleteprodloading:false,
@@ -187,57 +143,6 @@ const ProductSlice=createSlice({
          })
 
 
-          //uploadproducts
-         .addCase(uploadprodthunk.pending,(state,action)=>{
-             state.loading.addprodloading=true;
-             state.error=false;
-         })
-         .addCase(uploadprodthunk.fulfilled,(state)=>{
-           state.loading.addprodloading=false;
-            state.error=false;
-         })
-         .addCase(uploadprodthunk.rejected,(state,action)=>{
-              state.loading.addprodloading=false;
-             state.error=action.payload;
-         })
-
-          //updateproduct
-         .addCase(updateproductthunk.pending,(state,action)=>{
-             state.loading.updateprodloading=true;
-             state.error=false;
-         })
-         .addCase(updateproductthunk.fulfilled,(state,action)=>{
-            const updatedproduct=action.payload.data;
-
-            if(updatedproduct){
-                state.Allfilterddata=state.Allfilterddata.map((p)=>p._id===updatedproduct._id ? updatedproduct:p)
-            }
-           state.loading.updateprodloading=false;
-            state.error=false;
-         })
-         .addCase(updateproductthunk.rejected,(state,action)=>{
-             state.loading.updateprodloading=false;
-             state.error=action.payload;
-         })
-
-          //deleteproduct
-         .addCase(deleteprodthunk.pending,(state)=>{
-             state.loading.deleteprodloading=true;
-             state.error=false;
-         })
-         .addCase(deleteprodthunk.fulfilled,(state,action)=>{
-            const deletedproduct=action.payload.data;
-            if(deletedproduct){
-               state.Allfilterddata=state.Allfilterddata.filter((p)=>p._id!==deletedproduct._id)
-            }
-          
-           state.loading.deleteprodloading=false;
-            state.error=false;
-         })
-         .addCase(deleteprodthunk.rejected,(state,action)=>{
-              state.loading.deleteprodloading=false;
-             state.error=action.payload;
-         })
          
     }
 })

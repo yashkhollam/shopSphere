@@ -3,16 +3,16 @@ import mongoose from 'mongoose';
 const ProductSchema=mongoose.Schema({
     name:{
         type:String,
-        required:true,
+        // required:true,
         unique:true
     },
     price:{
         type:Number,
-        required:true
+        // required:true
     },
     discountprice:{
         type:Number,
-        required:true    
+        // required:true    
     },
     description:{
         type:String, 

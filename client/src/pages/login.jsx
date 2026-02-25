@@ -1,23 +1,21 @@
 import React, { useState } from 'react'
 import '../css/login.css'
 import {useNavigate,NavLink, replace} from 'react-router-dom'
-import { useDispatch } from 'react-redux'
+import { useDispatch,useSelector } from 'react-redux'
 import { loginthunk } from '../components/redux/features/userauthSlice'
 import toast from 'react-hot-toast'
+import Loader from '../components/loader'
  
 function Login() {
 
-
-
-  const [formdata,setFormdata]=useState({email:"",password:""})
-
-
+const [formdata,setFormdata]=useState({email:"",password:""})
 const dispatch=useDispatch();
 const navigate=useNavigate()
-
 const handlenavigation=()=>{
   navigate('/signup')
 }
+
+const {loading}=useSelector((state)=>state.userAuth)
 
 
 
@@ -43,6 +41,9 @@ const submitform=async(e)=>{
 
   return (
    <>
+     {
+       loading.loginloading&& <Loader/>
+     }
      <div className="container-fluid form-container">
      
      <form action="" className='login-form' onSubmit={submitform}>
