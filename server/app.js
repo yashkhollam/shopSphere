@@ -8,6 +8,8 @@ import { userRouter } from './routes/userroutes.js';
 import { productroute } from './routes/productsroutes.js';
 import { usercartrouter } from './routes/usercart.js';
 import { adminproductroute } from './routes/admin/adminproduct.js';
+import { useropeationroutes } from './routes/admin/useroperationroutes.js';
+import { orderroute } from './routes/admin/orderroute.js';
 
 export const app=express()
 
@@ -16,8 +18,8 @@ const PORT=process.env.PORT;
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(cors({
-    //origin:process.env.frontend_url,
-     origin:"https://shop-sphere-snowy-psi.vercel.app",
+  //  origin:process.env.frontend_url,
+   origin:"https://shop-sphere-snowy-psi.vercel.app",
     credentials:true
 }))
 app.use(cookieParser())
@@ -30,6 +32,8 @@ app.use('/userauth',userRouter)
 app.use('/product',productroute)
 app.use('/usercart',usercartrouter)
 app.use('/admin/product',adminproductroute)
+app.use('/admin/users',useropeationroutes)
+app.use('/order',orderroute)
 
 app.get('/',(req,res)=>{
     res.status(200).json({

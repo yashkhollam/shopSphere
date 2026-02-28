@@ -7,7 +7,7 @@ function Protectedroutes() {
 
 
 
-const {isAuthenticated,isauthChecked}=useSelector((state)=>state.userAuth)
+const {isAuthenticated,isauthChecked,user}=useSelector((state)=>state.userAuth)
 
 
 if(!isauthChecked){

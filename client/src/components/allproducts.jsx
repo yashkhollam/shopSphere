@@ -16,7 +16,7 @@ function Allproducts() {
 const navigate=useNavigate()
 const [islike,setIslike]=useState(false)
  
-const {Allfilterddata,search,category,loading,totalPages,totalProducts,page,limit}=useSelector((state)=>state.productoperation)
+const {Allfilterddata,search,category,loading,totalPages,page,limit}=useSelector((state)=>state.productoperation)
    const dispatch=useDispatch()
 
 
@@ -84,8 +84,9 @@ const navigateproduct=(productId)=>{
                          
                        
                        </div>
-                       
+                        <p className='ps-2 pe-2 mt-2 ms-2 bg-dark rounded position-absolute text-light'>stock {data.stocks}</p>
                         <img src={data.imgurl} 
+                             loading='lazy'
                              alt=""
                              className={` ${styles.prodimg}`} />
                         
@@ -104,7 +105,11 @@ const navigateproduct=(productId)=>{
                             mt-4
                             ${styles.cont}`} >
 
-                            <button className='cart btn text-light bg-warning' onClick={()=>handleaddcart(data._id)}>Add to Cart</button>
+                            <button className='cart btn text-light bg-warning'
+                            disabled={data.stocks<=0?true:false}
+                            
+                            onClick={()=>handleaddcart(data._id)}>{data.stocks<=0 ?"out of stock" :"Add to cart" }</button>
+                            
 
                             {/* <p className=' card-text' onClick={()=>navigate(`${`/product/${data._id}`}`)}>view Details</p> */}
 

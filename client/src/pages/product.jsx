@@ -71,7 +71,12 @@ function ProductDetail() {
               
 
               <button className='btn bg-primary text-light p-2 mt-2'
-                      onClick={()=>handlecart(product?._id)}>Add to cart</button>
+                      onClick={()=>handlecart(product?._id)}
+                      
+                      disabled={product.stocks<=0? true :false}
+                      
+                      
+                      >{product.stocks<=0? "out of stocks" :"Add to cart"}</button>
             </div>
         </div>
    </div> 

@@ -37,7 +37,7 @@ export const getadminproductsthunk=createAsyncThunk(`/product/getadminproductsth
 })
 
 
-export const getprodbyIdthunk=createAsyncThunk('/product/getprodbyId',async(productId,{rejectWithValue})=>{
+export const getadminprodbyIdthunk=createAsyncThunk('/product/getprodbyId',async(productId,{rejectWithValue})=>{
 
     try{
          const res=await axios.get(`${import.meta.env.VITE_API_URL}/product/${productId}`)
@@ -68,15 +68,15 @@ export const uploadprodthunk=createAsyncThunk('/product/uploadprodthunk',async(f
 })
 
 
-export const updateproductthunk=createAsyncThunk('/product/updateproductthunk',async(formdata,{rejectWithValue})=>{
+export const updateproductthunk=createAsyncThunk('/product/updateproductthunk',async({id,formdata},{rejectWithValue})=>{
 
     try{
-         const res=await axios.patch(`${import.meta.env.VITE_API_URL}/products/updateproduct/${formdata._id}`,formdata,{withCredentials:true})
+         const res=await axios.patch(`${import.meta.env.VITE_API_URL}/admin/product/updateproduct/${id}`,formdata,{withCredentials:true})
     return res.data
     }
    
     catch(err){
-       return rejectWithValue(err.response?.data?.meassage || "Something went wrong")
+       return rejectWithValue(err.response?.data?.message)
     }
    
 })
@@ -88,12 +88,13 @@ export const updateproductthunk=createAsyncThunk('/product/updateproductthunk',a
 export const deleteprodthunk=createAsyncThunk('/product/deleteprodthunk',async(id,{rejectWithValue})=>{
 
     try{
-         const res=await axios.delete(`${import.meta.env.VITE_API_URL}/product/deleteproduct/${id}`,{},{withCredentials:true})
+         const res=await axios.delete(`${import.meta.env.VITE_API_URL}/admin/product/deleteproduct/${id}`,{withCredentials:true})
+         console.log("from thunk=",res.data.data)
     return res.data
     }
    
     catch(err){
-       return rejectWithValue(err.response?.data?.meassage || "Something went wrong")
+       return rejectWithValue(err.response?.data?.message)
     }
    
 })
@@ -115,10 +116,10 @@ const adminProductSlice=createSlice({
         error:null,
         loading:{
             getadminproloading:false,
-            getprodbyIDloading:false,
+            getadminprodbyIDloading:false,
            addprodloading:false,
            deleteprodloading:false,
-           updateprodloading:false,
+           updateadminprodloading:false,
            
         }
     },
@@ -172,17 +173,17 @@ const adminProductSlice=createSlice({
          })
 
           //getproductById
-         .addCase(getprodbyIdthunk.pending,(state,action)=>{
-             state.loading.getprodbyIDloading=true;
+         .addCase(getadminprodbyIdthunk.pending,(state,action)=>{
+             state.loading.getadminprodbyIDloading=true;
              state.error=false;
          })
-         .addCase(getprodbyIdthunk.fulfilled,(state,action)=>{
+         .addCase(getadminprodbyIdthunk.fulfilled,(state,action)=>{
             state.product=action.payload.data;
-            state.loading.getprodbyIDloading=false;
+            state.loading.getadminprodbyIDloading=false;
             state.error=false;
          })
-         .addCase(getprodbyIdthunk.rejected,(state,action)=>{
-             state.loading.getprodbyIDloading=false;
+         .addCase(getadminprodbyIdthunk.rejected,(state,action)=>{
+             state.loading.getadminprodbyIDloading=false;
              state.error=action.payload;
          })
 
@@ -203,20 +204,20 @@ const adminProductSlice=createSlice({
 
           //updateproduct
          .addCase(updateproductthunk.pending,(state,action)=>{
-             state.loading.updateprodloading=true;
+             state.loading.updateadminprodloading=true;
              state.error=false;
          })
          .addCase(updateproductthunk.fulfilled,(state,action)=>{
             const updatedproduct=action.payload.data;
 
             if(updatedproduct){
-                state.Allfilterddata=state.Allfilterddata.map((p)=>p._id===updatedproduct._id ? updatedproduct:p)
+                state.products=state.products.map((p)=>p._id===updatedproduct._id ? updatedproduct:p)
             }
-           state.loading.updateprodloading=false;
+           state.loading.updateadminprodloading=false;
             state.error=false;
          })
          .addCase(updateproductthunk.rejected,(state,action)=>{
-             state.loading.updateprodloading=false;
+             state.loading.updateadminprodloading=false;
              state.error=action.payload;
          })
 
@@ -227,9 +228,9 @@ const adminProductSlice=createSlice({
          })
          .addCase(deleteprodthunk.fulfilled,(state,action)=>{
             const deletedproduct=action.payload.data;
-            if(deletedproduct){
-               state.Allfilterddata=state.Allfilterddata.filter((p)=>p._id!==deletedproduct._id)
-            }
+            
+               state.products=state.products.filter((p)=>p._id!==deletedproduct)
+            
           
            state.loading.deleteprodloading=false;
             state.error=false;
@@ -243,5 +244,5 @@ const adminProductSlice=createSlice({
 })
 
 
-export const {setSearchtext,setCategory,setNextPage,setPrevPage}=adminProductSlice.actions
+export const {setCategory,setNextPage,setPrevPage}=adminProductSlice.actions
 export default adminProductSlice.reducer

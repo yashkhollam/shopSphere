@@ -2,6 +2,8 @@ import ProductModel from "../../../model/products.js"
 
 
 export const productfilter=async(req,res)=>{
+
+ 
     try{
       
         const {search,
@@ -38,7 +40,7 @@ const skip=(noofpages-1)*nooflimits
 const totalproducts=await ProductModel.countDocuments(query)
     const result=await ProductModel.find(query)
                                     .skip(skip)
-                                    .limit(limit)
+                                    .limit(nooflimits)
                                 
      
                                 

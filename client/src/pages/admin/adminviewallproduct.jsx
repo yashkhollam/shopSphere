@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import {useDispatch,useSelector} from 'react-redux'
-import { getadminproductsthunk, setCategory, setNextPage ,setPrevPage} from '../../components/redux/features/admin/adminproductSlice.js';
+import { deleteprodthunk, getadminproductsthunk, setCategory, setNextPage ,setPrevPage} from '../../components/redux/features/admin/adminproductSlice.js';
 import Loader from '../../components/loader.jsx'
+import { useNavigate } from 'react-router-dom';
+
+import toast from 'react-hot-toast';
 
 
 function Adminviewallproduct() {
-const [selectcategory,setSelectCategory]=useState("all")
+// const [selectcategory,setSelectCategory]=useState("all")
+
+const navigate=useNavigate()
   const dispatch=useDispatch()
         
   const {products,limit,category,page,totalPages,loading}=useSelector((state)=>state.adminproductoperation)
@@ -17,11 +22,23 @@ useEffect(()=>{
 
 
 
+const deleteproduct=async(id)=>{
+  try{
+      const res=await dispatch(deleteprodthunk(id)).unwrap()
+      toast.success(res.message)
+  }
+  catch(err){
+    toast.error(err)
+  }
+}
 
   return (
     <>
         {
           loading.getadminproloading&& <Loader/>
+        }
+        {
+          loading.deleteprodloading&& <Loader/>
         }
       <div className="container-fluid ">
       
@@ -70,9 +87,20 @@ useEffect(()=>{
                     <td style={{verticalAlign:"middle"}}>{data?.subcategory}</td>
                     <td style={{verticalAlign:"middle"}}>{data?.stocks}</td>
                     <td style={{verticalAlign:"middle"}}>
-                      <button className='btn bg-warning'>edit</button>
+                     
+                      <button className='btn bg-warning'
+                      onClick={()=>navigate(`/updateproduct/${data?._id}`)}
+                      >edit</button>
+                    
+                    
                     </td>
-                    <td style={{verticalAlign:"middle"}}> <button className='btn bg-danger text-light'>delete</button></td>
+
+                    <td style={{verticalAlign:"middle"}}> 
+
+                      <button className='btn bg-danger text-light'
+                              onClick={()=>deleteproduct(data?._id)} >delete</button>
+                      
+                      </td>
                  </tr>
                 ))
               }

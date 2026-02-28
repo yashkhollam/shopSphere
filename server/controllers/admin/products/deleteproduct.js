@@ -5,11 +5,13 @@ import ProductModel from "../../../model/products.js"
 export const deleteproduct=async(req,res)=>{
     try{
         const {id}=req.params
-           const product=await ProductModel.findOne({_id:id})
+           
 
-           if(!product){
+          const deletedproduct=await ProductModel.findByIdAndDelete(id)
+
+           if(!deletedproduct){
             return res.status(404).json({
-                success:true,
+                success:false,
                 message:"product not found"
            })
            }
@@ -19,16 +21,18 @@ export const deleteproduct=async(req,res)=>{
 //       message: "Not authorized"
 //    });
 // }
+          if(deletedproduct){
+               await cloudinary.uploader.destroy(deletedproduct.publicId)
 
-           await cloudinary.uploader.destroy(product.publicId)
-
-           await ProductModel.findByIdAndDelete(id)
+          }
+          
+      
 
 
            return res.status(200).json({
             success:true,
             message:"product deleted successfully",
-            data:product._id
+            data:deletedproduct._id  
            })
     }
 
@@ -37,7 +41,7 @@ export const deleteproduct=async(req,res)=>{
         return res.status(500).json({
             success:false,
             message:err.message,
-            data:product._id
+           
            })
     }
 }

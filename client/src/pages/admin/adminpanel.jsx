@@ -14,7 +14,9 @@ function Adminpanel() {
                        display:"flex",
                        alignItems:"center",
                        justifyContent:"right",
-                       boxShadow:"0 2px 4px black"
+                       boxShadow:"0 2px 4px black",
+                       backgroundColor:"black",
+                       color:"white"
                }}
               >
              

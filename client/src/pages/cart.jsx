@@ -9,9 +9,10 @@ import {MinusIcon,PlusIcon,Deleteicon} from '../library/icons.jsx'
 
 import styles from '../css/cart.module.css';
 import Loader from '../components/loader.jsx'
+import { useNavigate } from 'react-router-dom'
 
 const Cart=()=>{
-
+const navigate=useNavigate()
   const dispatch=useDispatch()
   const {cart,carttotalprice,carttotaldiscountprice,loading}=useSelector((state)=>state.cartopeartion)
 
@@ -138,6 +139,9 @@ useEffect(()=>{
    <span>Order total</span>
    <span>₹ {carttotaldiscountprice}</span>
 </div>
+
+<button className='btn bg-warning   w-100 mt-2 fw-bold'
+onClick={()=>navigate('/addaddress')}>Checkout</button>
                      
 
 

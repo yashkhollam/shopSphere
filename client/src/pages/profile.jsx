@@ -8,6 +8,11 @@ function profile() {
   <NavLink to='/adminpanel/addproduct'>
     adminpanel
   </NavLink>
+<br/>
+  <NavLink to='/addaddress'>add Address</NavLink>
+
+<br />
+   <NavLink to='/userorders'>get usersorders</NavLink>
 
     </div>
   )

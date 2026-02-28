@@ -8,8 +8,17 @@ export const addtoCart=async(req,res)=>{
     //   const {userId}=req.body
        const {productId}=req.params
 
+
+        if(req.user.isActive===false){
+        return res.status(401).json({
+            success:false,
+            message:"user account has been blocked"
+        })
+       }
+
        let cart=await cartModel.findOne({userId}).populate('products.productId')
 
+      
 
        if(!cart){
            cart=new cartModel({

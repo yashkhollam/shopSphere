@@ -22,6 +22,9 @@ import Adminpanel from './pages/admin/adminpanel.jsx'
 import Adminviewallproduct from './pages/admin/adminviewallproduct.jsx'
 import Orders from './pages/admin/orders.jsx'
 import Allusers from './pages/admin/allusers.jsx'
+import Updateproduct from './pages/admin/updateproduct.jsx'
+import AddAddress from './pages/addAddress.jsx'
+import UserAllOrders from './pages/userallorders.jsx'
 function App() {
 
 
@@ -31,7 +34,7 @@ function App() {
 const dispatch=useDispatch()
 
 useEffect(()=>{
-  console.log("get thunk run")
+  // console.log("get thunk run")
    dispatch(getMeThunk())
    dispatch(getallcartitemsthunk())
 },[dispatch])
@@ -90,14 +93,34 @@ const router=createBrowserRouter([
            element:<Cart/>,
            },
            {
+            path:'/updateproduct/:id',
+            element:<Updateproduct/>
+          },
+
+          {
+             path:'/addaddress',
+             element:<AddAddress/>
+          },
+
+          {
+            path:"/userorders",
+            element:<UserAllOrders/>
+          },
+           {
 
 
         path:'/adminpanel',
         element:<Adminpanel/>,
+      
+       
         children:[
           {
             path:'/adminpanel/addproduct',
-            element:<Addproducts/>
+            element:
+            
+             <Addproducts/>
+           
+            
           },
           {
             path:'/adminpanel/viewproduct',

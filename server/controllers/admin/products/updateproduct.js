@@ -7,6 +7,8 @@ export const updateproduct=async(req,res)=>{
 
     try{
        const {name,price,discountprice,description,category,subcategory,brand,stocks}=req.body
+
+       console.log("re.body=",req.body)
        const {id}=req.params
 
     

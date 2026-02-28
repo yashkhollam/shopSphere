@@ -1,13 +1,13 @@
 import {Router} from 'express'
 import upload from '../Middleware/multer.js';
 import { uploadproduct } from '../controllers/admin/products/addproducts.js';
-import { getproducts } from '../controllers/admin/products/getproducts.js';
-import { deleteproduct } from '../controllers/admin/products/deleteproduct.js';
+
+
 import {userAuthMiddleware} from '../Middleware/userAuthMiddleware.js';
 import { roleAuthorization } from '../Middleware/roleAuthorization.js';
 import { productfilter } from '../controllers/admin/products/productfilter.js';
 import { getProductById } from '../controllers/admin/products/getProductById.js';
-import { updateproduct } from '../controllers/admin/products/updateproduct.js';
+
 
 
 
@@ -21,7 +21,5 @@ productroute.post('/uploadproduct',upload.single("image"),userAuthMiddleware,rol
 // productroute.get('/getallproducts',getproducts)
 productroute.get('/getAllfilterddata',productfilter)
 productroute.get('/:productId',getProductById)
-productroute.delete('/deleteproduct/:id',deleteproduct)
 
-productroute.patch('/updateproduct/:id',upload.single("image"),updateproduct)
 
