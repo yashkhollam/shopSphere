@@ -90,7 +90,7 @@ const getStatusColor=(status)=>{
                         
 
                         {
-                           data.items.length>0? (data.items.map((order)=>(
+                           data?.items?.length>0? (data.items.map((order)=>(
                               openOrderId===data._id &&
                                 <div className={`${style.orderitemcontainer}`}>
                                   <div className="row w-100">
