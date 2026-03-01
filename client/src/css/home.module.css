@@ -1,3 +1,7 @@
+
+
+
+
 .homecontainer{
     margin-top: 60px;
     
@@ -115,8 +119,8 @@
     }
 } */
 
-.newproductcontainer,
-.trendingprodcont{
+.newproductcontainer
+{
   /* display:grid;
   grid-template-columns:repeat(3,auto); */
 
@@ -124,11 +128,9 @@
   flex-wrap: wrap;
   justify-content: center;
   gap:11px;
-  
- 
-  
- 
+
 }
+
 
 .newprocard,
 .trendingprodcard{
@@ -141,6 +143,46 @@
   border-radius: 25px;
   transition:transform 1s ease-out
 }
+
+.trendingprodcont{
+  /* display:grid;
+  grid-template-columns:repeat(3,auto); */
+
+  display: flex;
+  
+  justify-content: center;
+  gap:11px;
+  overflow-x: auto;
+   overflow-y: scroll;
+   scroll-behavior: smooth;
+   padding:20px;
+  /* width:100vw; */
+}
+
+
+.trendingprodcont::-webkit-scrollbar{
+  scrollbar-width: auto;
+
+}
+.trendingprodcard{
+  flex:0 0 auto;
+ 
+   height:400px;
+   width:70%;
+   max-width:350px;
+   background-color:white;
+   margin-top:20px;
+  
+   padding: 0 10px;
+   
+ 
+  border-radius: 25px;
+  transition:transform 1s ease-out
+}
+
+
+
+
 
 .newprocard:hover,
 .trendingprodcard:hover{
@@ -175,3 +217,80 @@
    margin-top:20px;
 }
 } */
+
+
+.deliverycont{
+   max-width:350px;
+   display: flex;
+   flex-direction: column;
+   justify-content:center;
+   align-items:center;
+   background-color:white;
+   margin-top:10px;
+    box-shadow: rgba(40, 116, 240, 0.08) 0px 36px 50px;
+  border-radius:40px;
+  padding:5px;
+   
+}
+
+.serviceicon{
+  /* background-color:white; */
+  /* background-color:red; */
+  border-radius:50%;
+  font-size:50px;
+  width:80px;
+  display: flex;
+   flex-direction: column;
+   justify-content:center;
+   align-items:center;
+  
+}
+
+
+.serviceheading{
+  font-size:18px;
+  font-weight: bold;
+  color: black;
+  margin-top:10px;
+ 
+}
+
+.servicesubhead{
+  color:rgba(0, 0, 0, 0.578);
+ 
+}
+/* 
+ style={{width:"200px",display:"flex",flexDirection:"column",justifyContent:"center",alignItems:"center"}} 
+
+  style={{backgroundColor:"pink",
+                      borderRadius:"50%",
+                      width:"120px",
+                      fontSize:"80px",
+                      display:"flex",
+                      alignItems:"center",
+                      justifyContent:"center",
+                      
+                      
+                      
+              }}  */
+
+              .brandfiltercont{
+                gap:30px;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content:space-evenly;
+                margin-top:2ll0px;
+              }
+
+              .brandcont{
+                background:linear-gradient(rgb(80, 139, 248),white);
+                margin-top:10px;
+                height:110px;
+                width:110px;
+                border-radius:50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-weight: bold;
+                
+              }

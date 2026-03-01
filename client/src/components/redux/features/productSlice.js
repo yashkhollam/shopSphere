@@ -17,13 +17,15 @@ import axios from "axios";
 
 
 
-export const getAllfilterddata=createAsyncThunk(`/product/getfilterall`,async({search,category,limit,page},{rejectWithValue})=>{
+export const getAllfilterddata=createAsyncThunk(`/product/getfilterall`,async({search,category,brand,limit,page},{rejectWithValue})=>{
 
     try{
+        console.log("from thunk=",brand)
          const res=await axios.get(`${import.meta.env.VITE_API_URL}/product/getAllfilterddata`,
         {params:{
          search,
          category,
+         brand,
          limit,
          page,  
        
@@ -101,6 +103,7 @@ const ProductSlice=createSlice({
         totalProducts:null,
         search:"",
         category:"",
+        brand:"",
         page:1,
         limit:8,
         totalPages:0,
@@ -133,6 +136,11 @@ const ProductSlice=createSlice({
         setCategory:(state,action)=>{
             state.category=action.payload
             state.page=1
+        },
+        setBrand:(state,action)=>{
+           
+           state.brand=action.payload;
+           state.page=1
         },
         setNextPage:(state)=>{
             if(state.page<state.totalPages){
@@ -227,5 +235,5 @@ const ProductSlice=createSlice({
 })
 
 
-export const {setSearchtext,setCategory,setNextPage,setPrevPage}=ProductSlice.actions
+export const {setSearchtext,setCategory,setBrand,setNextPage,setPrevPage}=ProductSlice.actions
 export default ProductSlice.reducer

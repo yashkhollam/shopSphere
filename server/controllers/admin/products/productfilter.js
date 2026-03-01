@@ -10,6 +10,7 @@ export const productfilter=async(req,res)=>{
             category="all",
             page=1,
             limit=8,
+            brand="all",
             isTrending}=req.query
     
     const query={}
@@ -38,6 +39,10 @@ if(isTrending!==undefined){
     query.isTrending=isTrending==="true"
 }
 
+
+if(brand && brand!=="all"){
+    query.brand=brand
+}
 const skip=(noofpages-1)*nooflimits
 
 

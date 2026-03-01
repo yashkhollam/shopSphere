@@ -16,7 +16,7 @@ function Allproducts() {
 const navigate=useNavigate()
 const [islike,setIslike]=useState(false)
  
-const {Allfilterddata,search,category,loading,totalPages,page,limit}=useSelector((state)=>state.productoperation)
+const {Allfilterddata,search,category,brand,loading,totalPages,page,limit}=useSelector((state)=>state.productoperation)
    const dispatch=useDispatch()
 
 
@@ -35,8 +35,8 @@ const {Allfilterddata,search,category,loading,totalPages,page,limit}=useSelector
 
 
 useEffect(()=>{
-    dispatch(getAllfilterddata({search,category,page,limit}))
-},[dispatch,page,search,category])
+    dispatch(getAllfilterddata({search,category,brand,page,limit}))
+},[dispatch,page,search,category,brand])
 
 
 const handleaddcart=async(productId)=>{

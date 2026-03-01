@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Carousel } from "bootstrap";
 import styles from '../css/home.module.css'
 import { useDispatch ,useSelector} from "react-redux";
-import { getAllfilterddata, getMostsoldproduct, getTrendingproduct, setCategory } from "../components/redux/features/productSlice";
+import { getAllfilterddata, getMostsoldproduct, getTrendingproduct, setBrand, setCategory } from "../components/redux/features/productSlice";
 import {useNavigate} from 'react-router-dom'
 
 
@@ -22,7 +22,7 @@ const {Allfilterddata,trendingproducts,mostsold}=useSelector((state)=>state.prod
 
   useEffect(() => {
   dispatch(getAllfilterddata({limit:8}))
-  dispatch(getTrendingproduct({limit:4,isTrending:true}))
+  dispatch(getTrendingproduct({limit:8,isTrending:true}))
   dispatch(getMostsoldproduct())
 
     const element = document.querySelector('#carouselExampleSlidesOnly');
@@ -47,11 +47,45 @@ const {Allfilterddata,trendingproducts,mostsold}=useSelector((state)=>state.prod
     {name:"Gaming",imgurl:"/product/games.png",value:"Gamings"},
   ]
 
+const custservice= [
+  {
+    icon: "🚚",
+    title: "Free & Fast Delivery",
+    description: "Get your products delivered quickly and safely to your doorstep."
+  },
+  {
+    icon: "💵",
+    title: "Cash on Delivery Available",
+    description: "Pay easily at the time of delivery with no upfront payment required."
+  },
+  {
+    icon: "🔄",
+    title: "Hassle-Free Returns",
+    description: "Not satisfied? Enjoy a smooth and easy return process."
+  },
+  {
+    icon: "📞",
+    title: "24/7 Customer Support",
+    description: "Our support team is always here to help you anytime."
+  }
+];
+
+const brands=["Apple","Samsung","Sony","OnePlus","Dell"]
+
+
 
   const handlecategory=async(category)=>{
      dispatch(setCategory(category))
      console.log(category)
      navigate('/allproducts')
+  }
+
+
+  const handlebrandfilter=async(brand)=>{
+    console.log(brand)
+
+    dispatch(setBrand(brand))
+   navigate('/allproducts')
   }
   return (
     <>
@@ -251,13 +285,68 @@ const {Allfilterddata,trendingproducts,mostsold}=useSelector((state)=>state.prod
               </div>
             ))
             
-            :(<h2>No trending product yet</h2>)
+            :(<h2>No most sold product yet</h2>)
            }
       </div>
   </div>
+
+
+
+  <div className={styles.choosesection}>
+       <h1 className={`text-start mt-5 ${styles.productsecheading}`}> Why Choose Us ?</h1>
+
+
+       <div style={{display:"flex",flexWrap:"wrap",gap:"10px",justifyContent:"center"}}>
+        {
+          custservice.map((data)=>(
+                <div className={styles.deliverycont}>
+                  <div className="row w-100"
+                        style={{display:"flex",alignItems:"center",justifyContent:"center"}}>
+                    <div className="col-4  ">
+                      <div className={styles.serviceicon}>{data.icon}</div>
+
+                    </div>
+
+
+                    <div className="col-8">
+                         <h5 className={styles.serviceheading}>{data.title}</h5>
+            <p className={styles.servicesubhead}>{data.description}</p>
+                    </div>
+                  </div>
+            
+         
+              </div>
+          ))
+        }
+         
+
+        
+
+          {/* <div>Cash on</div>
+          <div>Easy Returns</div>
+          <div>24/7 Support</div> */}
+       </div>
+  </div>
+
+
+
+  <div className={styles.brandfiltersection}>
+        <h1 className={`text-center mt-5 ${styles.productsecheading}`}> Shop By Brands</h1>
+      
+      
+        <div className={styles.brandfiltercont}>
+          {
+            brands.map((data)=>(  
+                          
+            <div className={styles.brandcont}
+                 onClick={()=>handlebrandfilter(data)} >{data}</div>
+            ))
+          }
+             
+        </div>
+  </div>
     </div>
       
-
 
 
 
