@@ -25,7 +25,8 @@ export const getAllfilterddata=createAsyncThunk(`/product/getfilterall`,async({s
          search,
          category,
          limit,
-         page  
+         page,  
+       
         },withCredentials:true})
     return res.data
     }
@@ -35,6 +36,39 @@ export const getAllfilterddata=createAsyncThunk(`/product/getfilterall`,async({s
     }
    
 })
+
+
+
+export const getTrendingproduct=createAsyncThunk('gettrendingproduct',async({limit,isTrending},{rejectWithValue})=>{
+    try{
+         const res=await axios.get(`${import.meta.env.VITE_API_URL}/product/getAllfilterddata`,{
+            params:{limit,isTrending},withCredentials
+            :true
+         })
+        console.log("thunk run")
+         return res.data
+    }
+
+    catch(err){
+        return rejectWithValue(err?.response?.data?.message)
+    }
+}) 
+
+
+
+
+export const getMostsoldproduct=createAsyncThunk('getMostsoldproduct',async(_,{rejectWithValue})=>{
+    try{
+         const res=await axios.get(`${import.meta.env.VITE_API_URL}/product/mostsold`)
+       
+         return res.data
+    }
+
+    catch(err){
+        return rejectWithValue(err?.response?.data?.message)
+    }
+}) 
+
 
 
 export const getprodbyIdthunk=createAsyncThunk('/product/getprodbyId',async(productId,{rejectWithValue})=>{
@@ -60,13 +94,20 @@ const ProductSlice=createSlice({
     name:"productoperation",
     initialState:{
         Allfilterddata:[],
+         trendingproducts:[],
+         mostsold:[],
         product:null,
+
         totalProducts:null,
         search:"",
         category:"",
         page:1,
-        limit:6,
+        limit:8,
         totalPages:0,
+
+       
+        
+    
        
         error:null,
         loading:{
@@ -75,6 +116,9 @@ const ProductSlice=createSlice({
            addprodloading:false,
            deleteprodloading:false,
            updateprodloading:false,
+           trendingprodloading:false,
+           updateprodtrendingstatusloading:false,
+           mostsoldporductloading:false
            
         }
     },
@@ -127,6 +171,40 @@ const ProductSlice=createSlice({
              state.error=action.payload;
          })
 
+        //trending prod
+
+       .addCase(getTrendingproduct.pending,(state,action)=>{
+             state.loading.trendingprodloading=true;
+             state.error=false;
+         })
+         .addCase(getTrendingproduct.fulfilled,(state,action)=>{
+            state.trendingproducts=action.payload.data;
+            state.loading.trendingprodloading=false;
+            state.error=false;
+         })
+         .addCase(getTrendingproduct.rejected,(state,action)=>{
+             state.loading.trendingprodloading=false;
+             state.error=action.payload;
+         })
+
+         //most sold product 
+
+         .addCase(getMostsoldproduct.pending,(state,action)=>{
+             state.loading.mostsoldporductloading=true;
+             state.error=false;
+         })
+         .addCase(getMostsoldproduct.fulfilled,(state,action)=>{
+            state.mostsold=action.payload.data;
+            state.loading.mostsoldporductloading=false;
+            state.error=false;
+         })
+         .addCase(getMostsoldproduct.rejected,(state,action)=>{
+             state.loading.mostsoldporductloading=false;
+             state.error=action.payload;
+         })
+       
+
+
           //getproductById
          .addCase(getprodbyIdthunk.pending,(state,action)=>{
              state.loading.getprodbyIDloading=true;
@@ -143,6 +221,7 @@ const ProductSlice=createSlice({
          })
 
 
+         
          
     }
 })

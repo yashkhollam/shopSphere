@@ -1,11 +1,15 @@
 .homecontainer{
     margin-top: 60px;
+    
+      background-color: #f4f7fb;
+    padding: 0 20px;
 }
 
 .movingtext{
  
     animation: movingtext 10s infinite linear;
      white-space: nowrap;
+     
     
 }
 
@@ -38,19 +42,38 @@
 
 .categorycont{
   
-  width: clamp(60px,20vw,120px);
+  width: clamp(100px,30vw,120px);
   height: clamp(60px,20vw,120px);
     /* box-shadow:0 0 2px 2px  rgba(0, 0, 0, 0.589);
     border-radius:50%; */
     text-align: center;
-    
-    background:linear-gradient( rgb(255, 72, 0), white);
+     box-shadow: rgba(40, 116, 240, 0.08) 0px 36px 50px;
+    /* background:linear-gradient( rgb(255, 72, 0), white); */
+    background:linear-gradient( rgb(203, 150, 86), white);
     border-radius:50%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     gap:0;
+  margin-top: 10px;
+    animation: category 0.9s  1s 1 ease-in;
+
+}
+
+
+@keyframes category {
+   0%{
+     opacity:0;
+      transform: translateY(100%);
+      
+   }
+
+   100%{
+    opacity: 1;
+    transform: translateY(0%);
+   
+   }
 }
 
 .productcategoryimg{
@@ -66,4 +89,89 @@
   margin:0;
   background-color:red;
   
+} */
+
+
+.productsecheading{
+  font-size:45px;
+  font-weight:bold;
+  padding:0;
+  margin:0;
+  color:black;
+  /* animation: heading 2s 1 ease-in ; */
+
+  
+}
+/* 
+@keyframes heading {
+    0%{
+      opacity:0;
+      transform: translateX(100);
+    }
+
+    100%{
+      opacity: 1;
+      transform: translateX(-100);
+    }
+} */
+
+.newproductcontainer,
+.trendingprodcont{
+  /* display:grid;
+  grid-template-columns:repeat(3,auto); */
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap:11px;
+  
+ 
+  
+ 
+}
+
+.newprocard,
+.trendingprodcard{
+   height:400px;
+   width:350px;
+   background-color:white;
+   margin-top:20px;
+   padding: 0 10px;
+ 
+  border-radius: 25px;
+  transition:transform 1s ease-out
+}
+
+.newprocard:hover,
+.trendingprodcard:hover{
+  transform:translateY(-2%);
+   box-shadow: rgba(40, 116, 240, 0.08) 0px 36px 50px;
+}
+
+
+
+.newproimg,
+.trendprodimg{
+  margin:0;
+  padding:0;
+  height:270px;
+  width:100%;
+  object-fit: contain;
+}
+
+
+/* 
+@media only screen and (max-width:800px) {
+    .newproductcontainer{
+       display:grid;
+  grid-template-columns:repeat(3,auto);
+    }
+
+
+    .newprocard{
+   height:300px;
+   width:200px;
+   border:2px solid black;
+   margin-top:20px;
+}
 } */

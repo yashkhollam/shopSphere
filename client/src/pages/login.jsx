@@ -97,7 +97,7 @@ const submitform=async(e)=>{
 
                      >Get Started</button>
 
-                     <NavLink to='/signupotpverify'>otp verify</NavLink>
+                   
         
      </form>
 

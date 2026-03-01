@@ -19,6 +19,24 @@ export const getallorderthunk=createAsyncThunk('getallorder',async(_,{rejectWith
 }) 
 
 
+
+
+export const getorderbyidthunk=createAsyncThunk('getorderbyid',async(id,{rejectWithValue})=>{
+    try{
+   
+        // console.log("from thunk",orderdetails)
+
+          const res=await axios.get(`${import.meta.env.VITE_API_URL}/order/getorderbyid/${id}`,{withCredentials:true})
+
+          return res.data
+    }
+
+    catch(err){
+        return rejectWithValue(err?.response?.data?.message)
+    }
+}) 
+
+
 export const updateorderstatusthunk=createAsyncThunk('updateorderstatus',async({id,orderStatus},{rejectWithValue})=>{
     try{
    
@@ -47,10 +65,12 @@ const adminorderoprationSlice=createSlice({
     name:"adminorderoperation",
     initialState:{
         allOrders:[],
+        order:null,
         error:null,
         loading:{
             getallorderloading:false,
-            updateorderstatusloading:false
+            updateorderstatusloading:false,
+            orderbyidloading:false
         }
     },
 
@@ -74,6 +94,25 @@ const adminorderoprationSlice=createSlice({
         state.error=action.payload;
      })
 
+     //get order by Id
+
+      .addCase(getorderbyidthunk.pending,(state)=>{
+        state.loading.orderbyidloading=true ;
+        state.error=null;
+     })
+
+     .addCase(getorderbyidthunk.fulfilled,(state,action)=>{
+        
+        state.order=action.payload.data
+        state.loading.orderbyidloading=false;
+        state.error=null;
+     })
+     .addCase(getorderbyidthunk.rejected,(state,action)=>{
+        
+        state.loading.orderbyidloading=false;
+        state.error=action.payload;
+     })
+
      //update order status
     .addCase(updateorderstatusthunk.pending,(state)=>{
         state.loading.updateorderstatusloading=true ;
@@ -82,7 +121,11 @@ const adminorderoprationSlice=createSlice({
 
      .addCase(updateorderstatusthunk.fulfilled,(state,action)=>{
         
-        // state.allOrders=action.payload.data
+        const {id,orderStatus}=action.payload.data
+
+        state.allOrders=state.allOrders.map((order)=>order._id===id? {...order , orderStatus}: order)
+
+
         state.loading.updateorderstatusloading=false;
         state.error=null;
      })

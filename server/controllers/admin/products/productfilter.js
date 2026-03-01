@@ -9,11 +9,13 @@ export const productfilter=async(req,res)=>{
         const {search,
             category="all",
             page=1,
-            limit=6}=req.query
+            limit=8,
+            isTrending}=req.query
     
     const query={}
     const noofpages=Number(page);
     const nooflimits=Number(limit)
+    
     // if(query.search===query.category){
 
     // }
@@ -28,10 +30,13 @@ export const productfilter=async(req,res)=>{
     } 
 
    
-else if(category && category!=="all"){
+ if(category && category!=="all"){
     query.category=category
 }
 
+if(isTrending!==undefined){
+    query.isTrending=isTrending==="true"
+}
 
 const skip=(noofpages-1)*nooflimits
 
@@ -39,8 +44,10 @@ const skip=(noofpages-1)*nooflimits
 
 const totalproducts=await ProductModel.countDocuments(query)
     const result=await ProductModel.find(query)
+                                    .sort({createdAt :-1})
                                     .skip(skip)
                                     .limit(nooflimits)
+                                    
                                 
      
                                 
@@ -50,7 +57,7 @@ const totalproducts=await ProductModel.countDocuments(query)
         message:"filter product",
         data:result,
         totalProducts:totalproducts,
-        totalPages:Math.ceil(totalproducts/limit),
+        totalPages:Math.ceil(totalproducts/nooflimits),
         currentPage:noofpages
     })
 

@@ -134,7 +134,10 @@ const newOrder=await orderModel.create({userId,items:orderItems,totalAmount,ship
 
 
 for (let updatedProduct of producttoupdate) {
+  updatedProduct.product.soldcount+=updatedProduct.quantity
+  console.log(updatedProduct.product.soldcount)
    updatedProduct.product.stocks -= updatedProduct.quantity
+    
    await updatedProduct.product.save()
 }
 

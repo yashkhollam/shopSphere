@@ -38,10 +38,16 @@ export const updateorderstatus=async(req,res)=>{
     }
 
 
-    if(orderdata.orderStatus==="delivered" || orderdata.orderStatus==="cancelled" ){
+    if(orderdata.orderStatus==="delivered") {
+          return res.status(400).json({
+            success:false,
+            message:"Order already delivered !!"
+        })
+    }
+     else if(orderdata.orderStatus==="cancelled" ){
         return res.status(400).json({
             success:false,
-            message:"Cannot update the order Status"
+            message:"Order already cancelled"
         })
     }
 
@@ -108,7 +114,11 @@ if(orderStatus==="cancelled"){
 
     return res.status(200).json({
         success:true,
-        message:`Order status update to ${orderStatus}`
+        message:`Order status update to ${orderStatus}`,
+        data:{
+            id:orderdata._id,
+            orderStatus:orderdata.orderStatus
+        }
     })
 
     

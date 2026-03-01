@@ -5,6 +5,7 @@ import Profiledropdown from './profiledropdown.jsx';
 import '../css/pracnavbar.css'
 import {useDispatch,useSelector} from 'react-redux'
 import {setSearchtext} from './redux/features/productSlice.js';
+import { getallcartitemsthunk } from './redux/features/cartSlice.js';
 
 
 
@@ -16,10 +17,6 @@ function Navbar() {
 
   
 const dispatch=useDispatch();
-
-// useEffect(()=>{
-  
-// },[dispatch])
 
 const handlesearch=(e)=>{
   const value=e.target.value
@@ -130,13 +127,16 @@ useEffect(()=>{
                     {isActive ? <SolidCart className='cart-icon'/>:<RegularCart  className='cart-icon'/> 
                      }
                       <p className='cart-txt'>cart</p>
-                      <p style={{backgroundColor:"yellowgreen",
+                      {
+                        cart.length>0 ? <p style={{backgroundColor:"yellowgreen",
                                  width:"20px",
                                  height:"20px",
                                  textAlign:"center",
                                   borderRadius:"50%",
                                   position:"absolute",
-                                  right:"0"}}>{cart.length}</p>
+                                  right:"0"}}>{cart.length}</p>:""
+                      }
+                      
                     
               </div>
                 )}

@@ -38,7 +38,17 @@ const ProductSchema=mongoose.Schema({
      createdBy:{
             type:mongoose.Schema.Types.ObjectId,
             ref:"userModel"
-        }
+        },
+            
+         isTrending:{
+               type:Boolean,
+               default:false  
+            },
+            soldcount:{
+                type:Number,
+                default:0
+            },
+        
     
 },{
     timestamps:true

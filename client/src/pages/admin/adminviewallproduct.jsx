@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import {useDispatch,useSelector} from 'react-redux'
-import { deleteprodthunk, getadminproductsthunk, setCategory, setNextPage ,setPrevPage} from '../../components/redux/features/admin/adminproductSlice.js';
+import { deleteprodthunk, getadminproductsthunk, setCategory, setNextPage ,setPrevPage, updateprodtrendingstatus} from '../../components/redux/features/admin/adminproductSlice.js';
 import Loader from '../../components/loader.jsx'
 import { useNavigate } from 'react-router-dom';
 
 import toast from 'react-hot-toast';
 
 
+
 function Adminviewallproduct() {
-// const [selectcategory,setSelectCategory]=useState("all")
+  const [isTrending,setIstrending]=useState()
 
 const navigate=useNavigate()
   const dispatch=useDispatch()
@@ -17,6 +18,7 @@ const navigate=useNavigate()
 
 useEffect(()=>{
     dispatch(getadminproductsthunk({category,page,limit}))
+
    
 },[category,limit,page,])
 
@@ -30,6 +32,16 @@ const deleteproduct=async(id)=>{
   catch(err){
     toast.error(err)
   }
+}
+
+
+const handleprodstatus=(e,id)=>{
+  console.log(e.target.checked)
+    dispatch(updateprodtrendingstatus({
+      id:id,
+      isTrending:e.target.checked
+    })) 
+
 }
 
   return (
@@ -65,6 +77,7 @@ const deleteproduct=async(id)=>{
                   <th>Price</th>
                   <th>Category</th>
                   <th>Stocks</th>
+                  <th>isTrending</th>
                   <th colSpan={2}>
                    Actions
                   </th>
@@ -86,6 +99,21 @@ const deleteproduct=async(id)=>{
                     <td style={{verticalAlign:"middle"}}>{data?.discountprice}</td>
                     <td style={{verticalAlign:"middle"}}>{data?.subcategory}</td>
                     <td style={{verticalAlign:"middle"}}>{data?.stocks}</td>
+
+
+                    <td style={{verticalAlign:"middle",cursor:"pointer"}}>
+                    
+                           
+                       
+                        <input type="checkbox"
+                               className='form-check-input fs-2'
+                               onChange={(e)=>handleprodstatus(e,data?._id)}
+                               checked={data?.isTrending}
+                               />
+                            
+                  
+                      
+                    </td>
                     <td style={{verticalAlign:"middle"}}>
                      
                       <button className='btn bg-warning'

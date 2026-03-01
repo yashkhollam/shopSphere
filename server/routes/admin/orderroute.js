@@ -5,6 +5,7 @@ import { createOrder } from '../../controllers/admin/order/createOrder.js';
 import { getuserOrderdata } from '../../controllers/admin/order/getuserorderdata.js';
 import { getAllorders } from '../../controllers/admin/order/getallorders.js';
 import { updateorderstatus } from '../../controllers/admin/order/updateorderstatus.js';
+import { getorderbyid } from '../../controllers/admin/order/getorderbyid.js';
 
 export const orderroute=Router()
 
@@ -15,4 +16,6 @@ orderroute.get('/getorderdata',userAuthMiddleware,getuserOrderdata)
 
 
 orderroute.get('/getallorderdata',userAuthMiddleware,roleAuthorization,getAllorders)
+
+orderroute.get('/getorderbyid/:id',userAuthMiddleware,roleAuthorization,getorderbyid)
 orderroute.patch('/updateorderstatus/:id',userAuthMiddleware,roleAuthorization,updateorderstatus)

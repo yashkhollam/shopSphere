@@ -101,6 +101,23 @@ export const deleteprodthunk=createAsyncThunk('/product/deleteprodthunk',async(i
 
 
 
+export const updateprodtrendingstatus=createAsyncThunk('updateprodtrendstatus',async({id,isTrending},{rejectWithValue})=>{
+     
+    try{
+         const res=await axios.patch(`${import.meta.env.VITE_API_URL}/product/updatetrendingprod/${id}`,{isTrending},{withCredentials:true})
+
+
+         return res.data
+    }
+
+    catch(err){
+        return rejectWithValue(err?.response?.data?.message)
+    }
+})
+
+
+
+
 const adminProductSlice=createSlice({
     name:"adminproductoperation",
     initialState:{
@@ -239,6 +256,26 @@ const adminProductSlice=createSlice({
               state.loading.deleteprodloading=false;
              state.error=action.payload;
          })
+
+
+          //updateproduct trending status
+                   .addCase(updateprodtrendingstatus.pending,(state,action)=>{
+                      state.loading.updateprodtrendingstatusloading=true;
+                      state.error=false;
+                  })
+                  .addCase(updateprodtrendingstatus.fulfilled,(state,action)=>{
+                     const {id,isTrending}=action.payload.data;
+         
+                     state.products=state.products.map((prod)=>prod._id===id? {...prod,isTrending}: prod)
+         
+                     state.loading.updateprodtrendingstatusloading=false;
+                     state.error=false;
+                  })
+                  .addCase(updateprodtrendingstatus.rejected,(state,action)=>{
+                      state.loading.updateprodtrendingstatusloading=false;
+                      state.error=action.payload;
+                  })
+         
          
     }
 })

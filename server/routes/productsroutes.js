@@ -7,6 +7,8 @@ import {userAuthMiddleware} from '../Middleware/userAuthMiddleware.js';
 import { roleAuthorization } from '../Middleware/roleAuthorization.js';
 import { productfilter } from '../controllers/admin/products/productfilter.js';
 import { getProductById } from '../controllers/admin/products/getProductById.js';
+import { updateTrendingStatus } from '../controllers/admin/products/addTrendingproduct.js';
+import { getmostsoldproduct } from '../controllers/admin/products/getmostsoldproduct.js';
 
 
 
@@ -20,6 +22,9 @@ productroute.post('/uploadproduct',upload.single("image"),userAuthMiddleware,rol
 
 // productroute.get('/getallproducts',getproducts)
 productroute.get('/getAllfilterddata',productfilter)
+productroute.get('/mostsold',getmostsoldproduct)
 productroute.get('/:productId',getProductById)
+
+productroute.patch('/updatetrendingprod/:id',updateTrendingStatus)
 
 

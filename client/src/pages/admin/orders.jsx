@@ -3,13 +3,14 @@ import { useSelector,useDispatch } from 'react-redux'
 import { getallorderthunk, updateorderstatusthunk } from '../../components/redux/features/admin/adminOrderoperationsSlice'
 import style from '../../css/allorder.module.css';
 import Swal from "sweetalert2";
-import {toast} from 'react-hot-toast'
+import {toast} from 'react-hot-toast';
+import {useNavigate} from 'react-router-dom'
 
 
 function Orders() {
 
 const dispatch=useDispatch()
-
+const navigate=useNavigate()
 useEffect(()=>{
   dispatch(getallorderthunk())
 },[dispatch])
@@ -92,15 +93,15 @@ catch(err){
            <tr key={index}>
             <td>{order.id}</td>
             <td>{order.username}</td>
-            <td>{order.totalAmount}</td>
+            <td className='text-decoration-underline'>₹ {order.totalAmount}</td>
             <td>
 
          <select name="orderStatus" className='form-select' onChange={(e)=>handleorderstatus(order.id,e.target.value)}>
-          <option value="" >{order.orderStatus}</option>
+          <option value="cancelled" >{order.orderStatus}</option>
 
            <option value="pending">pending</option>
 
-            <option value="shipped">shipped</option>
+            <option value="delivered">delivered</option>
 
              <option value="cancelled">cancelled</option>
               <option value="shipped">shipped</option>
@@ -112,7 +113,7 @@ catch(err){
             </td>
             <td>{order.paymentStatus}</td>
             <td>{order.createdDate}</td>
-             <td><button className='btn btn-sm btn-warning'>view details</button></td>
+             <td><button className='btn btn-sm btn-warning' onClick={()=>navigate(`/orderbyid/${order.id}`)}>view details</button></td>
            </tr>
          ))
          

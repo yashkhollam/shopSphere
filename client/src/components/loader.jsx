@@ -17,6 +17,7 @@ function Loader() {
                    left:"0",
           }}>
               <div className="spinner-border" role="status" />
+              <p>Please wait</p> 
          </div>
   )
 }

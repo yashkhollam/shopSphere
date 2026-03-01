@@ -71,7 +71,8 @@ const handlelogout=async()=>{
                     padding:"0",
                     display:"flex",
                     flexDirection:"column",
-                    marginTop:"10px"
+                    marginTop:"10px",
+                    cursor:'pointer'
                    
                     // gap:"20px"
                    
@@ -84,12 +85,12 @@ const handlelogout=async()=>{
            
            
             <li className='profilelistitems ' >
-                { isAuthenticated ? `Hello ${user?.username.toUpperCase()}` :"Hello user"}
+                { isAuthenticated ? `Hello ${user?.username.toUpperCase()}` :"Hello guest"}
 
         </li>
        
         <li  className='profilelistitems'>
-             <NavLink to="/profile" className="navbar-link">
+             <NavLink to="/profile" className="navbar-link text-dark text-decoration-none">
             Account
 
             </NavLink>
@@ -100,7 +101,7 @@ const handlelogout=async()=>{
              <li  className='profilelistitems' >
                 
             
-            <NavLink className="navbar-link"
+            <NavLink className="navbar-link text-dark text-decoration-none"
                      to='/adminpanel'>
                 admin panel
             </NavLink> 
@@ -111,14 +112,14 @@ const handlelogout=async()=>{
 
         {
             isAuthenticated ?
-            <li  className='profilelistitems' onClick={handlelogout}>
+            <li  className='profilelistitems fw-bold text-danger' onClick={handlelogout}>
                 logout
             </li>
 
 
             :
              <li  className='profilelistitems' >
-                 <NavLink to="/login" className="navbar-link">
+                 <NavLink to="/login" className="navbar-link text-primary text-decoration-none fw-bold">
                    login
                  </NavLink>
                 

@@ -25,6 +25,8 @@ import Allusers from './pages/admin/allusers.jsx'
 import Updateproduct from './pages/admin/updateproduct.jsx'
 import AddAddress from './pages/addAddress.jsx'
 import UserAllOrders from './pages/userallorders.jsx'
+import Orderbyid from './pages/admin/orderbyid.jsx'
+import Userinfo from './pages/userinfo.jsx'
 function App() {
 
 
@@ -75,10 +77,7 @@ const router=createBrowserRouter([
         path:`/product/:productId`,
         element:<ProductDetail/>
       },
-      {
-        path:'/profile',
-        element:<Profile/>
-      },
+      
       // ,{
       //   path:'/addproduct',
       //   element:<Addproducts/>
@@ -102,9 +101,31 @@ const router=createBrowserRouter([
              element:<AddAddress/>
           },
 
+          
           {
-            path:"/userorders",
+            path:'/orderbyid/:id',
+            element:<Orderbyid/>
+          },
+
+
+          {
+            path:"/profile",
+            element:<Profile/>,
+            children:[
+              {
+                index:true,
+                element:<Userinfo/>
+              },
+              {
+            path:"userorders",
             element:<UserAllOrders/>
+          },
+          {
+            path:'userinfo',
+            element:<Userinfo/>
+          }
+
+            ]
           },
            {
 
@@ -115,12 +136,13 @@ const router=createBrowserRouter([
        
         children:[
           {
+            index:true,
+            element:<Adminviewallproduct/>
+          },
+          {
             path:'/adminpanel/addproduct',
             element:
-            
-             <Addproducts/>
-           
-            
+             <Addproducts/>       
           },
           {
             path:'/adminpanel/viewproduct',

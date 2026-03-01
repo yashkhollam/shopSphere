@@ -1,0 +1,82 @@
+.ordercontainer{
+    /* margin-top:60px; */
+     background-color: #f4f7fb;
+     height:100vh;
+     margin-top:50px;
+     
+}
+
+.orderSummerycontainer{
+     
+    height:100vh;
+    width:auto;
+    display:block;
+     /* margin: 0 auto; */
+     background-color:white;
+       box-shadow: rgba(40, 116, 240, 0.08) 0px 36px 50px;
+}
+
+
+
+.orderSummarycard{
+    padding:10px;
+    
+    box-shadow: rgba(40, 116, 240, 0.08) 0px 36px 50px;
+    border-radius:20px;
+    background-color:rgba(43, 40, 40, 0.086);
+    
+}
+
+
+    /* padding:10px;
+    margin-top:10px;
+   box-shadow: rgba(40, 116, 240, 0.08) 0px 36px 50px;
+    border-radius:20px;
+    background-color:rgba(43, 40, 40, 0.086);
+     */
+
+
+
+.orderaddresswrapper,
+.userinfocard{
+     padding:10px;
+    margin-top:10px;
+   box-shadow: rgba(40, 116, 240, 0.08) 0px 36px 50px;
+    border-radius:20px;
+    background-color:rgba(43, 40, 40, 0.086);
+    
+}
+
+.productitemwrapper{
+    height:100vh;
+    
+    overflow-y:auto;
+    padding:10px;
+    margin-top:10px;
+   box-shadow: rgba(40, 116, 240, 0.08) 0px 36px 50px;
+    border-radius:20px;
+    background-color:rgba(43, 40, 40, 0.086);
+}
+
+.addresscontianer{
+
+}
+.orderproductscard{
+    margin-top:5px;
+    padding:10px;
+    background-color:white;
+     box-shadow: rgba(40, 116, 240, 0.08) 0px 36px 50px;
+      border-radius:20px;
+      
+
+}
+
+.orderprodimg{
+    height:90px;
+    width:100%;
+    object-fit: contain;
+   
+}
+
+
+
