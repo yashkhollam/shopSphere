@@ -150,25 +150,25 @@
 
   display: flex;
   
-  justify-content: center;
+  /* justify-content: center; */
   gap:11px;
   overflow-x: auto;
    overflow-y: scroll;
    scroll-behavior: smooth;
    padding:20px;
-  /* width:100vw; */
+  width:100%;
 }
 
 
 .trendingprodcont::-webkit-scrollbar{
-  scrollbar-width: auto;
+  display: none;
 
 }
 .trendingprodcard{
   flex:0 0 auto;
  
    height:400px;
-   width:70%;
+   /* width:70%; */
    max-width:350px;
    background-color:white;
    margin-top:20px;
