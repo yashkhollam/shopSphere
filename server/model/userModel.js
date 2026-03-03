@@ -21,42 +21,22 @@ const userdataSchema=new mongoose.Schema({
       default:"user",
       required:true
     },
-    hashOtp:{
-      type:String
+    
+     isActive:{
+        type:Boolean,
+        default:true
     },
+
     isverified:{
         type:Boolean,
         default:false,
     },
-    isActive:{
-        type:Boolean,
-        default:true
-    },
-    otpExpiredAt:{
-        type:Date
-    },
-    otpAttempts:{
-        type:Number,
-        default:0
-    },
-     otpAttemptBlockedUntil:{
-        type:Date
-    },
-    otpSendCount:{
-        type:Number,
-        default:0
-    }
-    ,
-    lastotpSendAt:{
-        type:Date
-    },
+
     unverifiedAccountExpiresAt:{
         type:Date,
         expires:0
     },
-    otpBlockedUntil:{
-        type:Date
-    },
+    
    
 },{
     timestamps:true

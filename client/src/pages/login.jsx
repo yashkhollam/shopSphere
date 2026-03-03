@@ -78,7 +78,7 @@ const submitform=async(e)=>{
                    className='mt-3 text-end'>
                
                 
-                <NavLink to={'/forgetpass'} >
+                <NavLink to={'/forgotpassword'} >
                   forgot password ?
                 </NavLink>
               </p>

@@ -87,7 +87,7 @@ catch(err){
 
    <tbody >
       {
-         allOrders.length>0?
+         allOrders?.length>0?
          
          allOrders.map((order,index)=>(
            <tr key={index}>

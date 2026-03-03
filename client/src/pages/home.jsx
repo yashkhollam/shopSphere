@@ -4,7 +4,8 @@ import styles from '../css/home.module.css'
 import { useDispatch ,useSelector} from "react-redux";
 import { getAllfilterddata, getMostsoldproduct, getTrendingproduct, setBrand, setCategory } from "../components/redux/features/productSlice";
 import {useNavigate} from 'react-router-dom'
-
+import { addtocartthunk } from "../components/redux/features/cartSlice";
+import {toast} from 'react-hot-toast'
 
 function Home() {
  
@@ -12,12 +13,6 @@ const dispatch=useDispatch()
 const navigate=useNavigate()
 
 const {Allfilterddata,trendingproducts,mostsold}=useSelector((state)=>state.productoperation)
-
-
-
-
-
-
 
 
   useEffect(() => {
@@ -76,6 +71,7 @@ const brands=["Apple","Samsung","Sony","OnePlus","Dell"]
 
   const handlecategory=async(category)=>{
      dispatch(setCategory(category))
+     dispatch(setBrand(""))
      console.log(category)
      navigate('/allproducts')
   }
@@ -85,8 +81,23 @@ const brands=["Apple","Samsung","Sony","OnePlus","Dell"]
     console.log(brand)
 
     dispatch(setBrand(brand))
+     dispatch(setCategory(""))
    navigate('/allproducts')
   }
+
+ 
+ const handlecart=async(productId)=>{
+    try{
+         const res=await dispatch(addtocartthunk(productId)).unwrap()
+         toast.success(res.message)
+    }
+
+    catch(err){
+      toast.error(err)
+    }
+ }
+
+
   return (
     <>
     <div className={`${styles.homecontainer}`}>
@@ -178,7 +189,7 @@ const brands=["Apple","Samsung","Sony","OnePlus","Dell"]
 
 
   <div className={`mt-5 ${styles.newproductsection}`}>
-     <h1 className={styles.productsecheading}>New Arrivals</h1>
+     <h1 className={styles.newarrivalheading}>New Arrivals</h1>
       <p className="p-0 m-0 text-muted ">Fresh drops from brands we love. Updated every week.</p>
 
  <div className={styles.newproductcontainer}>
@@ -204,7 +215,8 @@ const brands=["Apple","Samsung","Sony","OnePlus","Dell"]
          </div>
          
           
-          <button className="btn   bg-primary text-light">Add to cart</button>
+          <button className="btn bg-primary text-light"
+                  onClick={()=>handlecart(data._id)}> Add to cart</button>
 
         </div>
       ))
@@ -218,7 +230,7 @@ const brands=["Apple","Samsung","Sony","OnePlus","Dell"]
 
 
   <div className={`${styles.trendingprodsection}`}>
-      <h1 className={`text-center mt-5 ${styles.productsecheading}`}>Trending Products</h1>
+      <h1 className={`text-center mt-5 ${styles.trendprodheading}`}>Trending Products</h1>
       <p className="p-0 m-0 mt-2 text-muted text-center">Discover the most popular electronics customers are loving right now.</p>
 
 
@@ -242,7 +254,8 @@ const brands=["Apple","Samsung","Sony","OnePlus","Dell"]
                     <p className="fw-bold"> ₹ {data.discountprice}</p>
                    </div>
 
-                   <button className="btn btn-outline-danger">view Product</button>
+                   <button className="btn btn-outline-danger"
+                   onClick={()=>navigate(`/product/${data?._id}`)}>view Product</button>
               </div>
             ))
             
@@ -256,12 +269,12 @@ const brands=["Apple","Samsung","Sony","OnePlus","Dell"]
 
 
   
-  <div className={`${styles.trendingprodsection}`}>
-      <h1 className={`text-center mt-5 ${styles.productsecheading}`}>🏆🏆 Best Sellers</h1>
+  <div className={`${styles.bestsellersec}`}>
+      <h1 className={`text-center mt-5 ${styles.bestsellercheading}`}>🏆🏆 Best Sellers</h1>
       <p className="p-0 m-0 mt-2 text-muted text-center">Our top-performing products based on real customer purchases.</p>
 
 
-      <div className={styles.trendingprodcont}>
+      <div className={styles.bestsellerprodcont}>
            {
             mostsold.length>0?
             
@@ -281,7 +294,8 @@ const brands=["Apple","Samsung","Sony","OnePlus","Dell"]
                     <p className="fw-bold"> ₹ {data.discountprice}</p>
                    </div>
 
-                   <button className="btn btn-outline-warning">Add to cart</button>
+                   <button className="btn btn-outline-warning"
+                    onClick={()=>handlecart(data._id)}>Add to cart</button>
               </div>
             ))
             
@@ -293,7 +307,7 @@ const brands=["Apple","Samsung","Sony","OnePlus","Dell"]
 
 
   <div className={styles.choosesection}>
-       <h1 className={`text-start mt-5 ${styles.productsecheading}`}> Why Choose Us ?</h1>
+       <h1 className={`text-start mt-5 ${styles.chooseusheading}`}> Why Choose Us ?</h1>
 
 
        <div style={{display:"flex",flexWrap:"wrap",gap:"10px",justifyContent:"center"}}>
@@ -331,7 +345,7 @@ const brands=["Apple","Samsung","Sony","OnePlus","Dell"]
 
 
   <div className={styles.brandfiltersection}>
-        <h1 className={`text-center mt-5 ${styles.productsecheading}`}> Shop By Brands</h1>
+        <h1 className={`text-center mt-5 ${styles.shopbrandheading}`}> Shop By Brands</h1>
       
       
         <div className={styles.brandfiltercont}>

@@ -1,3 +1,5 @@
+
+
 import React from 'react'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -8,7 +10,7 @@ import Loader from '../components/loader';
 
 
 
-function Forgotpassword() {
+function Changepassword() {
 
   const [email,setEmail]=useState("")
   const dispatch=useDispatch()
@@ -44,12 +46,12 @@ function Forgotpassword() {
             {
               loading.forgotpasswordlaoding&& <Loader/>
             }
-            <div className="container-fluid form-container">
+            <div className="container-fluid form-container align-items-start">
             
             <form action="" className='login-form'
                             style={{height:"max-Content"}}
                             onSubmit={submitform}>
-             <h1 className='heading text-center pb-2'>Forgot Password</h1>
+             <h1 className='heading text-center pb-2'>Change Password</h1>
                
                 <div className='accconfirmation-cont'
                    >
@@ -102,4 +104,4 @@ function Forgotpassword() {
   )
 }
 
-export default Forgotpassword
+export default Changepassword

@@ -121,9 +121,9 @@ const adminorderoprationSlice=createSlice({
 
      .addCase(updateorderstatusthunk.fulfilled,(state,action)=>{
         
-        const {id,orderStatus}=action.payload.data
+        const updatedData=action.payload.data
 
-        state.allOrders=state.allOrders.map((order)=>order._id===id? {...order , orderStatus}: order)
+        state.allOrders=state.allOrders.map((order)=>order._id===updatedData.id? updatedData: order)
 
 
         state.loading.updateorderstatusloading=false;

@@ -11,14 +11,14 @@ function Bottomnav() {
 
    const {cart}=useSelector((state)=>state.cartopeartion)
   return (
-   <div className="container-fluid nav-contianer d-sm-none"
+   <div className="container-fluid nav-contianer d-sm-none "
        style={{  
                bottom:"0",
                 position:"fixed",
             //    width:"100%"
             padding:"0",
             height:"60px",
-           
+          
            
             
                

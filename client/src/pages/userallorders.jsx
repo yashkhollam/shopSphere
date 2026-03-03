@@ -44,19 +44,6 @@ const getStatusColor=(status)=>{
     <div className={`container-fluid ${style.userordercontainer} `}
          >
 
-{/* 
-
-// ----------------------------------------
-// Order #12345        [Processing]
-
-// Date: 12 Feb 2026
-// Payment: Pending
-// Total: ₹1499
-
-// Items:
-// - Product Name x2  ₹999
-// - Product Name x1  ₹500
-// ---------------------------------------- */}
 
         {
             userOrders?.length>0 ?(

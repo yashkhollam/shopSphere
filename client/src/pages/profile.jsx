@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink, Outlet } from "react-router-dom";
+// import { Bars3Icon } from "../library/icons.jsx";
 
 function profile() {
   return (
@@ -7,19 +8,31 @@ function profile() {
      style={{ marginTop: "60px", 
               width:"100%"
      }}>
-      <div className=" d-lg-none">
-        <button
-          className="btn btn-danger"
-          data-bs-toggle="offcanvas"
-          data-bs-target="#profilemenu"
-        >
-          menu
-        </button>
-      </div>
+     
+
+       <div className='d-lg-none pe-2'
+                     style={{
+                             height:"50px",
+                         
+                             display:"flex",
+                             alignItems:"center",
+                             justifyContent:"right",
+                             boxShadow:"0 2px 4px black",
+                             backgroundColor:"black",
+                             color:"white"
+                     }}
+                    >
+                   
+                    <Bars3Icon style={{height:"30px"}}
+                     data-bs-toggle="offcanvas"
+                     data-bs-target="#profilemenu"/>
+                   
+                </div>
 
 
      {/* slidebar */}
-      <div className="offcanvas offcanvas-start" id="profilemenu">
+      <div className="offcanvas offcanvas-end" id="profilemenu"
+          >
         <div className="offcanvas-header">
           <h1>Profile</h1>
 
@@ -29,41 +42,38 @@ function profile() {
           ></button>
         </div>
         <div className="offcanvas-body">
-            <ul className="list-group list-inline">
-            <li>
+             <ul className="list-group list-inline">
+            <li  data-bs-dismiss="offcanvas">
               <NavLink
                 to="userinfo"
                 className="list-group-item list-group-item-action "
-                data-bs-dismiss="offcanvas"
+                
               >
                 User Info
               </NavLink>
             </li>
-            <li>
+            <li  data-bs-dismiss="offcanvas">
               <NavLink
                 to="userorders"
                 className="list-group-item list-group-item-action "
-                 data-bs-dismiss="offcanvas"
               >
                 My Orders
               </NavLink>
             </li>
 
-            <li>
+            <li  data-bs-dismiss="offcanvas">
               <NavLink
                 to="/3"
                 className="list-group-item list-group-item-action "
-                 data-bs-dismiss="offcanvas"
               >
                 Address
               </NavLink>
             </li>
 
-             <li>
+             <li  data-bs-dismiss="offcanvas">
               <NavLink
-                to="/3"
+                to="changepassword"
                 className="list-group-item list-group-item-action "
-                 data-bs-dismiss="offcanvas"
               >
                 Change Password
               </NavLink>
@@ -91,7 +101,7 @@ function profile() {
       
    <div className=""
         >
-     <div className="row"
+     <div className="row p-0 m-0"
           style={{
                   width:"100%"
           }}>
@@ -152,7 +162,7 @@ function profile() {
 
 
           </div>
-          <div className="col-12 col-lg-9"
+          <div className="col-12 col-lg-9 p-0"
                style={{height:"100vh",
                        overflowY:"auto"
                }}>
@@ -166,5 +176,6 @@ function profile() {
     </div>
   );
 }
+import { Bars3Icon } from "../library/icons";
 
 export default profile;

@@ -115,7 +115,7 @@ const navigateproduct=(productId)=>{
 
                             <p className=' card-text text-primary'
                             style={{cursor:"pointer"}}
-                            onClick={()=>navigateproduct(data._id)}>view Details</p>
+                            onClick={()=>navigateproduct(data?._id)}>view Details</p>
                         </div>
                         </div>
                        

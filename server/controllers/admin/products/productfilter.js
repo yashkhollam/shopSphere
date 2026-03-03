@@ -41,7 +41,7 @@ if(isTrending!==undefined){
 
 
 if(brand && brand!=="all"){
-    query.brand=brand
+    query.brand=brand.toLowerCase()
 }
 const skip=(noofpages-1)*nooflimits
 

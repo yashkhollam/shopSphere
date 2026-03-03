@@ -115,10 +115,7 @@ if(orderStatus==="cancelled"){
     return res.status(200).json({
         success:true,
         message:`Order status update to ${orderStatus}`,
-        data:{
-            id:orderdata._id,
-            orderStatus:orderdata.orderStatus
-        }
+        data:orderdata
     })
 
     

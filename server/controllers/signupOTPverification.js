@@ -23,7 +23,7 @@ export const signupOTPverification=async(req,res)=>{
     })
   }
 
-  await OTPverificationservice(otp,user)
+  await OTPverificationservice(otp,user,"signup")
 
     user.isverified=true;
     user.unverifiedAccountExpiresAt=null

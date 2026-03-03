@@ -8,6 +8,8 @@ import { logout } from '../controllers/logout.js';
 import { resendotp } from '../controllers/resendotp.js';
 import { userAuthMiddleware } from '../Middleware/userAuthMiddleware.js';
 import { userProfile } from '../controllers/userprofile.js';
+import { forgotpassword } from '../controllers/forgotpassword.js';
+import { resetpassword } from '../controllers/verifyforgotpassotp.js';
 
 export const userRouter=Router();
 
@@ -17,5 +19,7 @@ userRouter.post('/verifyOTP',OTPverificationMiddleware,signupOTPverification);
 userRouter.post('/resendotp',resendotp)
 userRouter.post('/login',LoginValidation,login);
 userRouter.post('/logout',logout)
+userRouter.post('/forgotpassword',forgotpassword)
+userRouter.post('/resetpassword',resetpassword)
 
 userRouter.get('/getMe',userAuthMiddleware,userProfile)

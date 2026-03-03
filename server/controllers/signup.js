@@ -1,4 +1,5 @@
 import userModel from "../model/userModel.js"
+import { OtpModel } from "../model/otpModel.js"
 import bcrypt from 'bcrypt'
 import {OTPcreationservice} from "../service/OTPcreationservice.js"
 
@@ -9,6 +10,7 @@ export const Signup=async(req,res)=>{
           const {username,email,password}=req.body
 
           const user=await userModel.findOne({email})
+         
           // console.log(user)
 
           const accountexpiretime=new Date(Date.now()+ 30*60*1000)
@@ -29,8 +31,11 @@ export const Signup=async(req,res)=>{
 
             user.password=hashpassword;
              user.unverifiedAccountExpiresAt=accountexpiretime;
+              
+            await user.save()
 
-             await OTPcreationservice(user)
+           
+             await OTPcreationservice(user,"signup")
            
              
       
@@ -50,14 +55,17 @@ export const Signup=async(req,res)=>{
             username,
             email,
             password:hashpassword,
-            isverified:false   
+            isverified:false ,
+            unverifiedAccountExpiresAt:accountexpiretime
         })
 
-         await OTPcreationservice(newuser)
          
-          newuser.unverifiedAccountExpiresAt=accountexpiretime;
+         
+         await OTPcreationservice(newuser,"signup")
+        
+         
              
-            await newuser.save();
+           
          
               return res.status(200).json({
             success:true,

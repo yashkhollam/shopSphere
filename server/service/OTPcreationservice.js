@@ -126,13 +126,19 @@
 
 import axios from "axios";
 import bcrypt from "bcrypt";
+import { OtpModel } from "../model/otpModel.js";
 
- export const OTPcreationservice = async (user) => {
+ export const OTPcreationservice = async (user,purpose) => {
   try {
+   
+    // const userId=await OtpModel.findOne({_id:user._id})
+
+    await  OtpModel.deleteMany({userId:user._id,purpose})
     const otp = Math.floor(100000 + Math.random() * 900000);
 
     const hashOtp = await bcrypt.hash(otp.toString(), 10);
     const otpExpireTime = new Date(Date.now() + 3 * 60 * 1000);
+
 
     // Send Email via Brevo HTTP API
       await axios.post("https://api.brevo.com/v3/smtp/email",{
@@ -141,10 +147,10 @@ import bcrypt from "bcrypt";
             name:"ShopSphere"
         },
         to:[{email:user.email}],
-        subject:"OTP verification from SHOPSPHERE",
+        subject:`${purpose==="signup"?`OTP verification from SHOPSPHERE`:"Password Reset OTP ShopSphere"}`,
         htmlContent:
-        `
-        <h3>Hello ${user.username} </h3>
+        
+         `${purpose==="signup"? (`<h3>Hello ${user.username} </h3>
 
       
         <h3>Thank you for choosing ShopSphere.
@@ -159,9 +165,24 @@ import bcrypt from "bcrypt";
       
       <h3>Regards</h3>
       <h3>Team ShopSphere</h3>
-        `
-      
+        `):(
+          `<h3>Hello ${user.username},</h3>
 
+<h3>
+We received a request to reset your password for your ShopSphere account.
+Use the OTP below to proceed with resetting your password.
+
+If you did not request this password reset, please ignore this email. 
+Your account remains secure.
+</h3>
+
+<h1><center>${otp}</center></h1>
+
+<h4><center>OTP will expire in 3 minutes</center></h4>
+
+<h3>Regards</h3>
+<h3>Team ShopSphere</h3>`
+        )}`
       },
     {
         headers:{
@@ -169,15 +190,22 @@ import bcrypt from "bcrypt";
             "Content-Type":"application/json"
         },
     })
+   
+    
+    
+    await OtpModel.create({
+      userId:user._id,
+      purpose:purpose,
+       otpAttempts:0,
+    hashOtp:hashOtp,
+     lastotpSendAt:new Date(),
+    otpExpiredAt:otpExpireTime,
+    otpSendCount:1,
+   
 
-    user.otpAttempts = 0;
-    user.hashOtp=hashOtp;
-     user.lastotpSendAt=new Date();
-     user.otpAttempts=0;
-     user.otpExpiredAt=otpExpireTime;
+    })
 
-
-    await user.save();
+  
 
     return { success: true };
 

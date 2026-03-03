@@ -78,6 +78,37 @@ export const getMeThunk=createAsyncThunk('userAuth/getMeThunk',async(_,{rejectWi
    }
 })
 
+//forgot passwordthunk
+
+export const forgotpasswordthunk=createAsyncThunk('userAuth/forgotpasswordthunk',async(email,{rejectWithValue})=>{
+   try{
+       const res=await axios.post(`${import.meta.env.VITE_API_URL}/userauth/forgotpassword`,{email},{withCredentials:true})
+       return res.data
+
+       
+   }
+   catch(err){
+          console.log(err);
+         return rejectWithValue(err.response?.data?.message)
+   }
+})
+
+//resetpassword thunk
+
+export const resetpassowrdthunk=createAsyncThunk('userAuth/resetpassowrdthunk',async(formdata,{rejectWithValue})=>{
+   try{
+     console.log("from thunk",formdata)
+       const res=await axios.post(`${import.meta.env.VITE_API_URL}/userauth/resetpassword`,formdata,{withCredentials:true})
+       return res.data
+
+       
+   }
+   catch(err){
+          console.log(err);
+         return rejectWithValue(err.response?.data?.message)
+   }
+})
+
 
  const userAuthSlice=createSlice({
     name:"userAuth",
@@ -91,7 +122,9 @@ export const getMeThunk=createAsyncThunk('userAuth/getMeThunk',async(_,{rejectWi
           accOTPverifyloading:false,
           loginloading:false,
            logoutloading:false,
-           getmeloading:false
+           getmeloading:false,
+           forgotpasswordlaoding:false,
+           resetpasswordloading:false
         }
     },
   extraReducers:(builder)=>{
@@ -175,7 +208,37 @@ export const getMeThunk=createAsyncThunk('userAuth/getMeThunk',async(_,{rejectWi
          state.isauthChecked=true
        })
 
+    //forgot password
 
+    .addCase(forgotpasswordthunk.pending,(state)=>{
+           state.loading.forgotpasswordlaoding=true;
+           state.error=null
+       })
+       .addCase(forgotpasswordthunk.fulfilled,(state)=>{
+        state.loading.forgotpasswordlaoding=false;
+        state.error=null
+       })
+       .addCase(forgotpasswordthunk.rejected,(state,action)=>{
+         state.loading.forgotpasswordlaoding=false;
+         state.error=action.payload
+       })
+
+
+       //resetpassword
+
+
+       .addCase(resetpassowrdthunk.pending,(state)=>{
+           state.loading.resetpasswordloading=true;
+           state.error=null
+       })
+       .addCase(resetpassowrdthunk.fulfilled,(state)=>{
+        state.loading.resetpasswordloading=false;
+        state.error=null
+       })
+       .addCase(resetpassowrdthunk.rejected,(state,action)=>{
+         state.loading.resetpasswordloading=false;
+         state.error=action.payload
+       })
 
   }
 

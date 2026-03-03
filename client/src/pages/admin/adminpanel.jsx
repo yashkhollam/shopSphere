@@ -26,7 +26,7 @@ function Adminpanel() {
              
           </div>
 
-          <div className='offcanvas offcanvas-start w-100'
+          <div className='offcanvas offcanvas-end '
                 id='adminslidebar'
                 tabIndex="-1">
             <div className='offcanvas-header'>
