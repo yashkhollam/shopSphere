@@ -52,7 +52,7 @@ useEffect(()=>{
              <li className='logo-cont'>
 
                <NavLink to='/'>
-                    <img src="shopeSpherelogo.jpeg" alt="shopeSpherelogo"
+                    <img src="shopSpherelogo.png" alt="shopeSpherelogo"
                   className='logo-img img-fluid' />
                </NavLink>
                

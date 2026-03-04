@@ -39,7 +39,8 @@
 
 
 .logo-img{
-     height:10%; 
+    max-height:50px;
+    object-fit: contain;
     width:130px;
 }
 
