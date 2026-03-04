@@ -6,6 +6,7 @@ import { getAllfilterddata, getMostsoldproduct, getTrendingproduct, setBrand, se
 import {useNavigate} from 'react-router-dom'
 import { addtocartthunk } from "../components/redux/features/cartSlice";
 import {toast} from 'react-hot-toast'
+import Loader from "../components/loader";
 
 function Home() {
  
@@ -100,6 +101,7 @@ const brands=["Apple","Samsung","Sony","OnePlus","Dell"]
 
   return (
     <>
+    
     <div className={`${styles.homecontainer}`}>
         
          <div
@@ -200,7 +202,7 @@ const brands=["Apple","Samsung","Sony","OnePlus","Dell"]
     (
       Allfilterddata.map((data)=>(
         <div className={styles.newprocard}>
-          <p className="p-1 m-0 mt-2 text-center rounded position-absolute bg-success text-light ">{data.subcategory}</p>
+          <p className={styles.newarrivalcategory}>{data.subcategory}</p>
          
           <img src={data.imgurl}
                alt=""
@@ -240,6 +242,18 @@ const brands=["Apple","Samsung","Sony","OnePlus","Dell"]
             
             trendingproducts.map((data)=>(
               <div className={styles.trendingprodcard}>
+                <p className={data.discountedpercentage?styles.trendproddiscountper:""}>
+
+
+
+                  {data.discountedpercentage?
+                  
+                  data.discountedpercentage +"% off"
+                  
+                  :""}
+                  </p>
+                
+                
                  <img src={data?.imgurl} 
                       alt="trending porduct img"
                       className={styles.trendprodimg}/>
@@ -255,6 +269,8 @@ const brands=["Apple","Samsung","Sony","OnePlus","Dell"]
                    </div>
 
                    <button className="btn btn-outline-danger"
+                  
+               
                    onClick={()=>navigate(`/product/${data?._id}`)}>view Product</button>
               </div>
             ))
@@ -280,6 +296,7 @@ const brands=["Apple","Samsung","Sony","OnePlus","Dell"]
             
             mostsold.map((data)=>(
               <div className={styles.trendingprodcard}>
+                
                  <img src={data?.imgurl} 
                       alt="trending porduct img"
                       className={styles.trendprodimg}/>

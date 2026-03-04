@@ -80,6 +80,7 @@ if(orderStatus==="cancelled"){
       
   }
  
+      
        await orderdata.save()
        
 //    return res.status(200).json({
@@ -89,7 +90,8 @@ if(orderStatus==="cancelled"){
 
    return res.status(200).json({
           success:true,
-            message:"Order successfully cancelled"
+            message:"Order successfully cancelled",
+            data:orderdata
        })
 
 }

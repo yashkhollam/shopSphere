@@ -10,6 +10,10 @@ const ProductSchema=mongoose.Schema({
         type:Number,
         // required:true
     },
+    discountedpercentage:{
+        type:Number,
+       
+    },
     discountprice:{
         type:Number,
         // required:true    

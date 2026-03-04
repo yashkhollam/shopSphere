@@ -19,6 +19,7 @@ function Updateproduct() {
   const [formdata, setFormdata] = useState({
     name: "",
     price: "",
+    discountedpercentage:"",
     discountprice:"",
     description: "",
     category: "",
@@ -101,6 +102,7 @@ function Updateproduct() {
   const form = new FormData();
   form.append("name", formdata.name);
   form.append("price", formdata.price);
+  form.append("discountedpercentage", formdata.discountedpercentage);
   form.append("discountprice", formdata.discountprice);
   form.append("description", formdata.description);
   form.append("category", formdata.category);
@@ -123,6 +125,7 @@ function Updateproduct() {
       setFormdata({
         name: "",
         price: "",
+        discountedpercentage:"",
     discountprice:"",
         description: "",
         category: "",
@@ -171,12 +174,22 @@ function Updateproduct() {
           </div>
 
            <div className="input-cont mt-3">
-            <label className="form-label">discounted price :</label>
+            <label className="form-label">discounted Percentage :</label>
             <input
               type="number"
               className="form-control"
+              name="discountedpercentage"
+              value={formdata.discountedpercentage}
+              onChange={handleform}
+            />
+
+             <label className="form-label mt-3">discounted price :</label>
+            <input
+              type="number"
+               disabled={true}
+              className="form-control"
               name="discountprice"
-              value={formdata.discountprice}
+              value={Math.round(formdata.price-(formdata.discountedpercentage*formdata.price/100))}
               onChange={handleform}
             />
           </div>

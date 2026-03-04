@@ -50,6 +50,7 @@ export const getformatedcart=(cart)=>{
         prodstocks: item.productId.stocks,
         productimg: item.productId.imgurl,
         quantity: productqty,
+        discountedpercentage:item?.productId?.discountedpercentage,
         prodtotalprice: producttotal, 
         prototaldiscprice:productdiscounttotal
           

@@ -10,12 +10,14 @@ function Addproducts() {
   const dispatch = useDispatch();
   const {loading}=useSelector((state)=>state.productoperation)
   const ref=useRef()
+  
+  // const [finalprice,setFinalprice]=useState()
   const [imgpreview, setImgpreview] = useState(null);
   const [selectedcategory, setseceltedcategory] = useState("");
   const [formdata, setFormdata] = useState({
     name: "",
     price: "",
-    discountprice:"",
+    discountedpercentage :"",
     description: "",
     category: "",
     subcategory: "",
@@ -24,6 +26,10 @@ function Addproducts() {
     image: "",
   });
   const handleform = (e) => {
+
+  
+
+
     const { files, name, value } = e.target;
     if (files) {
       const imgurl = URL.createObjectURL(files[0]);
@@ -35,6 +41,9 @@ function Addproducts() {
       setFormdata({ ...formdata, [name]: value });
       console.log({ ...formdata, [name]: value });
     }
+
+    
+    // setFinalprice(discountprice)
 
     if (name === "category") setseceltedcategory(value);
     // setFormdata({...formdata,subcategory:""})
@@ -71,7 +80,7 @@ function Addproducts() {
   const form = new FormData();
   form.append("name", formdata.name);
   form.append("price", formdata.price);
-  form.append("discountprice", formdata.discountprice);
+  form.append("discountedpercentage", formdata.discountedpercentage);
   form.append("description", formdata.description);
   form.append("category", formdata.category);
   form.append("subcategory", formdata.subcategory);
@@ -99,7 +108,7 @@ function Addproducts() {
       setFormdata({
         name: "",
         price: "",
-    discountprice:"",
+    discountedpercentage:"",
         description: "",
         category: "",
         subcategory: "",
@@ -146,13 +155,24 @@ function Addproducts() {
           </div>
 
            <div className="input-cont mt-3">
-            <label className="form-label">discounted price :</label>
+            <label className="form-label">discounted percentage :</label>
             <input
               type="number"
+              min={1}
+              max={100}
               className="form-control"
-              name="discountprice"
-              value={formdata.discountprice}
+              name="discountedpercentage"
+              value={formdata.discountedpercentage}
               onChange={handleform}
+            />
+            
+             <label className="form-label mt-3">final price :</label>
+            <input
+              disabled={true}
+              className="form-control"
+              
+              value={Math.round(formdata.discountedpercentage?formdata.price-(formdata.discountedpercentage*formdata.price/100):"")}
+             
             />
           </div>
 
@@ -220,84 +240,84 @@ function Addproducts() {
 
            {
               
-               (formdata.category==="MobilesTablets"|| formdata.category==="LaptopsComputers") &&(
-               <div className="d-flex  mt-4  justify-content-center d-md-block">
+            //    (formdata.category==="MobilesTablets"|| formdata.category==="LaptopsComputers") &&(
+            //    <div className="d-flex  mt-4  justify-content-center d-md-block">
 
-              <div className="w-50 ps-5 " >
-                <label className="form-label bg-dark text-light p-2 rounded">RAM :</label>
-
-
-             <div className="form-check">
-                  <input type="radio"
-                         className="form-check-input"
-                         name="radioDefault" />
-                  <label className="form-check-label">4GB </label>
-                 </div>
+            //   <div className="w-50 ps-5 " >
+            //     <label className="form-label bg-dark text-light p-2 rounded">RAM :</label>
 
 
-                 <div className="form-check">
-                  <input type="radio"
-                         className="form-check-input"
-                         name="radioDefault" />
-                  <label className="form-check-label">8GB</label>
-                 </div>
+            //  <div className="form-check">
+            //       <input type="radio"
+            //              className="form-check-input"
+            //              name="radioDefault" />
+            //       <label className="form-check-label">4GB </label>
+            //      </div>
 
-                  <div className="form-check">
-                  <input type="radio"
-                         className="form-check-input"
-                         name="radioDefault" />
-                  <label className="form-check-label">12GB</label>
-                 </div>
+
+            //      <div className="form-check">
+            //       <input type="radio"
+            //              className="form-check-input"
+            //              name="radioDefault" />
+            //       <label className="form-check-label">8GB</label>
+            //      </div>
+
+            //       <div className="form-check">
+            //       <input type="radio"
+            //              className="form-check-input"
+            //              name="radioDefault" />
+            //       <label className="form-check-label">12GB</label>
+            //      </div>
 
                   
-                  <div className="form-check">
-                  <input type="radio"
-                         className="form-check-input"
-                         name="radioDefault" />
-                  <label className="form-check-label">16GB</label>
-                 </div>
-              </div>
+            //       <div className="form-check">
+            //       <input type="radio"
+            //              className="form-check-input"
+            //              name="radioDefault" />
+            //       <label className="form-check-label">16GB</label>
+            //      </div>
+            //   </div>
               
-            <div className="w-50 ps-5">
+            // <div className="w-50 ps-5">
                 
-                <label className="form-label bg-dark text-light p-2 rounded">Storage :</label>
+            //     <label className="form-label bg-dark text-light p-2 rounded">Storage :</label>
 
 
-             <div className="form-check">
-                  <input type="radio"
-                         className="form-check-input"
-                         name="storageRadio" />
-                  <label className="form-check-label">64GB</label>
-                 </div>
+            //  <div className="form-check">
+            //       <input type="radio"
+            //              className="form-check-input"
+            //              name="storageRadio" />
+            //       <label className="form-check-label">64GB</label>
+            //      </div>
 
 
-                 <div className="form-check">
-                  <input type="radio"
-                         className="form-check-input"
-                         name="storageRadio" />
-                  <label className="form-check-label">128GB</label>
-                 </div>
+            //      <div className="form-check">
+            //       <input type="radio"
+            //              className="form-check-input"
+            //              name="storageRadio" />
+            //       <label className="form-check-label">128GB</label>
+            //      </div>
 
-                  <div className="form-check">
-                  <input type="radio"
-                         className="form-check-input"
-                         name="storageRadio" />
-                  <label className="form-check-label">256GB</label>
-                 </div>
+            //       <div className="form-check">
+            //       <input type="radio"
+            //              className="form-check-input"
+            //              name="storageRadio" />
+            //       <label className="form-check-label">256GB</label>
+            //      </div>
 
                   
-                  <div className="form-check">
-                  <input type="radio"
-                         className="form-check-input"
-                         name="storageRadio" />
-                  <label className="form-check-label">512GB</label>
-                 </div>
+            //       <div className="form-check">
+            //       <input type="radio"
+            //              className="form-check-input"
+            //              name="storageRadio" />
+            //       <label className="form-check-label">512GB</label>
+            //      </div>
         
-            </div>
+            // </div>
                
 
-              </div>
-              )
+            //   </div>
+            //   )
            
            }
              

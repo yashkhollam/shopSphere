@@ -40,11 +40,16 @@ useEffect(()=>{
                     <div className={`${styles.cartcard}`} key={index}>
 
                       <div className="row h-100">
-                         
+                  
+                   <div>
+                            <p className={styles.discountper}>{data.discountedpercentage}% off</p>
+                      </div>
+                      
                      <div className={`col-3  ${styles.prodimgcont}`}>
                       <img src={data.productimg}
                        alt=""
-                       className={`${styles.cartimg}`} />
+                       className={`${styles.cartimg}`}
+                         />
                    </div>
                    
                   <div className={`col-8  ${styles.prodinfocont}`}>
@@ -125,18 +130,31 @@ useEffect(()=>{
 
                        <span className={`${styles.pricerow}`}>
                       <p>Delivery charges</p>
-                      <p> ₹ 40</p>
+                      <p className='text-muted text-decoration-line-through '> ₹ 0</p>
                       </span> 
 
+
+                       {/* <span className={`${styles.pricerow}`}>
+                      <p>Discount applied</p>
+                      <p>₹ {""}</p>
+                      </span>  */}
+
+                    
+
+                      <span className={`${styles.pricerow}`}>
+                      <p>total</p>
+                      <p className='text-muted '>₹ {carttotalprice}</p>
+                      </span>
 
                        <span className={`${styles.pricerow}`}>
-                      <p>total</p>
-                      <p>₹ {carttotalprice}</p>
-                      </span> 
+                      <p>After Discount</p>
+                      <p>₹ {carttotaldiscountprice}</p>
+                      </span>
+
 
 
                       <div className={styles.ordertotalcont}>
-   <span>Order total</span>
+   <span>Final Bill</span>
    <span>₹ {carttotaldiscountprice}</span>
 </div>
 

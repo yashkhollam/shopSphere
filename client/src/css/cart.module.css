@@ -53,6 +53,19 @@ margin-top:80px;
 
 }
 
+
+.discountper{
+   background-color: rgb(241, 199, 199);
+   position: absolute;
+   padding:4px 10px;
+   font-weight: bold;
+   color: red;
+   border-radius:20px;
+   font-size:10px;
+   margin:4px 0 0 4px ;
+   
+}
+
 .prodinfocont{
   /* background-color:blue; */
  width:100%;

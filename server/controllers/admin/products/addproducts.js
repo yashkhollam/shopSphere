@@ -6,7 +6,7 @@ import { getformatedcart } from '../../../service/getformatedcart.js';
 export const uploadproduct=async(req,res)=>{
     try{
         
-     const {name,price,discountprice,description,category,subcategory,brand,stocks}=req.body
+     const {name,price,discountedpercentage,description,category,subcategory,brand,stocks}=req.body
     const  adminId=req.user.id
         if(!req.file){
             return res.status(400).json({
@@ -25,7 +25,14 @@ export const uploadproduct=async(req,res)=>{
     })
   }
 
+  if(discountedpercentage>100){
+      return res.status(400).json({
+        success:false,
+        message:"Discount price should be less then 100"
+    })
+  }
 
+  const discountprice=price-(Number(discountedpercentage)*Number(price)/100)
 
 
      const {buffer,mimetype}=req.file
@@ -37,7 +44,7 @@ export const uploadproduct=async(req,res)=>{
         const imgurl=result.secure_url;
         const publicId=result.public_id
 
-           await ProductModel.create({name,price,discountprice,description,category,subcategory,brand,stocks,imgurl,publicId,createdBy:adminId})
+           await ProductModel.create({name,price,discountprice,discountedpercentage,description,category,subcategory,brand,stocks,imgurl,publicId,createdBy:adminId})
 
        
 
