@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { useSelector,useDispatch } from 'react-redux';
+import {useNavigate} from 'react-router-dom';
 import {toast} from 'react-hot-toast'
-import { createorderthunk } from '../components/redux/features/orderSlice';
+import { createorderthunk, setAddress } from '../components/redux/features/orderSlice';
 
 function AddAddress() {
-
+const navigate=useNavigate()
 const dispatch=useDispatch()
 const {cart}=useSelector((state)=>state.cartopeartion)
 
@@ -24,53 +25,75 @@ const handleform=(e)=>{
     setFormdata({...formdata,[e.target.name]:e.target.value})
 }
 
- let items=[]
+//  let items=[]
 
-for(let cartdata of cart){
-   items.push({productId:cartdata.prodId,quantity:cartdata.quantity})   
-}
+// for(let cartdata of cart){
+//    items.push({productId:cartdata.prodId,quantity:cartdata.quantity})   
+// }
 
-const orderdetails={items,shippingAddress:formdata,paymentMethod:"COD"}
-console.log(orderdetails)
+// const orderdetails={items,shippingAddress:formdata,paymentMethod:"COD"}
+// console.log(orderdetails)
 // console.log(items)
 
 // console.log("cart=",cart.prodId)
-const submitform=async(e)=>{
-       e.preventDefault()
-       try{
-          let res=await dispatch(createorderthunk(orderdetails)).unwrap()
+// const submitform=async(e)=>{
+//        e.preventDefault()
+//        try{
+//           let res=await dispatch(createorderthunk(orderdetails)).unwrap()
 
-          toast.success(res.message)
-          setFormdata({fullname:"",
+//           toast.success(res.message)
+//           setFormdata({fullname:"",
+//             phone:"",
+//             addressline:"",
+//             city:"",
+//             state:"",
+//             pincode:"",
+//             country:"india"})
+//        }
+
+//        catch(err){
+//               toast.error(err)
+//               console.log(err)
+//        }
+// }
+
+const submitform=(e)=>{
+       e.preventDefault()
+  try{
+   dispatch(setAddress(formdata))
+   navigate('/reviewOrder')
+    setFormdata({fullname:"",
             phone:"",
             addressline:"",
             city:"",
             state:"",
             pincode:"",
-            country:"india"})
-       }
-
-       catch(err){
-              toast.error(err)
-              console.log(err)
-       }
+            country:""})
+   
+  } 
+  catch(err){
+       toast.error(err.message)
+  }    
+       
 }
 
   return (
     <>
        <div className="container-fluid " 
             style={{marginTop:"70px",
-                  
+                     paddingBottom:"80px",
+                     backgroundColor:"#f4f7fb"
                   
             }}>
 
 
 
 
-          <form className='form border border-danger rounded'
+          <form className='form d-block mx-auto  bg-light border p-3 rounded'
                 style={{
                      maxWidth:"800px",
-                    padding:"10px 10px 80px 10px"
+                     boxShadow:"rgba(40, 116, 240, 0.08) 0px 16px 30px"
+              
                 }}
                 onSubmit={submitform}>
             <h2 className='text-center'>Add Address</h2>
@@ -142,7 +165,7 @@ const submitform=async(e)=>{
 </div> */}
 
 
-  <button className='btn bg-warning d-block mt-4 mx-auto' type='submit'> submit</button>
+  <button className='btn bg-warning d-block mt-4 mx-auto' type='submit'> Continue</button>
 
 
 

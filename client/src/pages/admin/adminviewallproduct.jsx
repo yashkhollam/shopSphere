@@ -9,7 +9,7 @@ import toast from 'react-hot-toast';
 
 
 function Adminviewallproduct() {
-  const [isTrending,setIstrending]=useState()
+  // const [isTrending,setIstrending]=useState()
 
 const navigate=useNavigate()
   const dispatch=useDispatch()
@@ -49,16 +49,17 @@ const handleprodstatus=(e,id)=>{
         {
           loading.getadminproloading&& <Loader/>
         }
-        {
-          loading.deleteprodloading&& <Loader/>
-        }
+        {/* {
+          loading.deleteprodIdloading&& <Loader/>
+        } */}
       <div className="container-fluid ">
       
-      <div className='p-4'>
+      <div className=''>
+         <h1 className='text-center mb-4  mt-3 '>All Products</h1>
         <select name="" 
                 // value={selectcategory}
                 id=""
-                className='form-select'
+                className='form-select mb-3'
                 onChange={(e)=>dispatch(setCategory(e.target.value))}>
           <option value="" disabled selected>Filter by category</option>
          <option value="MobilesTablets">Mobile & Tablet </option>
@@ -68,8 +69,9 @@ const handleprodstatus=(e,id)=>{
             <option value="Gamings">Gamings</option>
         </select>
       </div>
-
-         <table className='table table-bordered text-center table-responsive'>
+        
+        <div className='table-responsive'>
+          <table className='table table-bordered text-center table-responsive'>
             <thead>
                 <tr>
                   <th>Image</th>
@@ -126,7 +128,10 @@ const handleprodstatus=(e,id)=>{
                     <td style={{verticalAlign:"middle"}}> 
 
                       <button className='btn bg-danger text-light'
-                              onClick={()=>deleteproduct(data?._id)} >delete</button>
+                              onClick={()=>deleteproduct(data?._id)}
+                              disabled={loading.deleteprodIdloading===data?._id}
+
+                              >{loading.deleteprodIdloading===data?._id?"deleting":"delete"}</button>
                       
                       </td>
                  </tr>
@@ -135,9 +140,13 @@ const handleprodstatus=(e,id)=>{
               
             </tbody>
          </table>
+        </div>
+        
        
-         <div className='d-flex'>
+         <div className='d-flex justify-content-center gap-4 align-item-center'
+          style={{paddingBottom:"70px"}}>
           <button className='btn bg-success text-light'
+          disabled={page===1}
                   onClick={()=>dispatch(setPrevPage())}>
            
            
@@ -145,9 +154,10 @@ const handleprodstatus=(e,id)=>{
             
             </button>
           
-           <h5>{page}/{totalPages}</h5>
+           <h5 className='p-0 m-0 mt-2'>{page}/{totalPages}</h5>
           
           <button className='btn bg-danger text-light'
+            disabled={page===totalPages}
                   onClick={()=>dispatch(setNextPage())}>next</button>
          </div>
       </div>

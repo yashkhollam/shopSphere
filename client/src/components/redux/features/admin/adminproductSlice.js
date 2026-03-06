@@ -135,7 +135,7 @@ const adminProductSlice=createSlice({
             getadminproloading:false,
             getadminprodbyIDloading:false,
            addprodloading:false,
-           deleteprodloading:false,
+           deleteprodIdloading:null,
            updateadminprodloading:false,
            
         }
@@ -239,8 +239,8 @@ const adminProductSlice=createSlice({
          })
 
           //deleteproduct
-         .addCase(deleteprodthunk.pending,(state)=>{
-             state.loading.deleteprodloading=true;
+         .addCase(deleteprodthunk.pending,(state,action)=>{
+             state.loading.deleteprodIdloading=action.meta.arg;
              state.error=false;
          })
          .addCase(deleteprodthunk.fulfilled,(state,action)=>{
@@ -249,11 +249,11 @@ const adminProductSlice=createSlice({
                state.products=state.products.filter((p)=>p._id!==deletedproduct)
             
           
-           state.loading.deleteprodloading=false;
+           state.loading.deleteprodIdloading=null;
             state.error=false;
          })
          .addCase(deleteprodthunk.rejected,(state,action)=>{
-              state.loading.deleteprodloading=false;
+              state.loading.deleteprodIdloading=null;
              state.error=action.payload;
          })
 

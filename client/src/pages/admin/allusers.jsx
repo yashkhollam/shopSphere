@@ -36,10 +36,12 @@ function Allusers() {
   // console.log(isActive)
 
   return (
-    <div className="container-fluid">
-       <h2 className='text-center'>All Users</h2>
-
-       <table className='table text-center border table-striped '>
+    <div className="container-fluid "
+         style={{marginBottom:"200px"}}>
+       <h2 className='text-center fw-bold mt-3 mb-3'>All Users</h2>
+      
+      <div className='table-responsive '>
+          <table className='table text-center table-bordered table-striped '>
         <thead>
           <tr>
             <th>Sr no</th>
@@ -90,6 +92,8 @@ function Allusers() {
         </tbody>
 
        </table>
+      </div>
+       
     </div>
   )
 }

@@ -6,12 +6,14 @@
 .form_wrapper{
  /* background: linear-gradient(skyblue,white); */
    background-color: #f4f7fb;
+   /* background-color:red; */
  display: flex;
  justify-content: center;
  padding:0 10px 30px 10px;
  
  min-height:100vh;
  height:auto;
+/* width:100%; */
 
 }
  

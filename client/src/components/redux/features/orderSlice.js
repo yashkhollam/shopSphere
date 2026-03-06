@@ -44,6 +44,7 @@ const productorderSlice=createSlice({
     name:"productOrders",
     initialState:{
         userOrders:[],
+        address:"",
         error:null,
         loading:{
             createorderloading:false,
@@ -51,6 +52,11 @@ const productorderSlice=createSlice({
         }
     },
 
+    reducers:{
+      setAddress:(state,action)=>{
+       state.address=action.payload
+      }
+    },
 
     extraReducers:(builder)=>{
      builder
@@ -92,5 +98,5 @@ const productorderSlice=createSlice({
 })
 
 
-
+export const {setAddress}=productorderSlice.actions
 export default productorderSlice.reducer

@@ -5,12 +5,16 @@ import Profiledropdown from './profiledropdown.jsx';
 import '../css/pracnavbar.css'
 import {useDispatch,useSelector} from 'react-redux'
 import {setSearchtext} from './redux/features/productSlice.js';
-import { getallcartitemsthunk } from './redux/features/cartSlice.js';
+
 
 
 
 function Navbar() {
   const {cart}=useSelector((state)=>state.cartopeartion)
+  
+  const {user,isAuthenticated}=useSelector((state)=>state.userAuth)
+
+
  const navigate=useNavigate()
    const [searchdata,setSearchdata]=useState("")
   const [isshowprofiledropdown,setisshowprofiledropdown]=useState(false)
@@ -111,8 +115,9 @@ useEffect(()=>{
                   
 
 
-
-                 <NavLink to='/cart'
+                {
+                 isAuthenticated && user?.role==="user" &&
+                   <NavLink to='/cart'
                   style={{textDecoration:"none",color:"black"}} 
                   className={({isActive})=>(
                     `${isActive ? "navlink active" : "navlink" }`
@@ -128,7 +133,7 @@ useEffect(()=>{
                      }
                       <p className='cart-txt'>cart</p>
                       {
-                        cart.length>0 ? <p style={{backgroundColor:"yellowgreen",
+                       isAuthenticated && cart.length>0 ? <p style={{backgroundColor:"yellowgreen",
                                  width:"20px",
                                  height:"20px",
                                  textAlign:"center",
@@ -144,7 +149,9 @@ useEffect(()=>{
                  
               
               
- </NavLink>
+                 </NavLink>
+                }
+                
              </li>
 
              {/* <li className='d-none d-sm-flex' >

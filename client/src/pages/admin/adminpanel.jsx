@@ -1,24 +1,55 @@
 import React from 'react'
 import style from  '../../css/admin.module.css'
-import {NavLink, Outlet} from 'react-router-dom'
-import { Bars3Icon } from '@heroicons/react/24/solid'
+import {NavLink, Outlet, useNavigate} from 'react-router-dom'
+import { ArrowLeftIcon, Bars3Icon } from '@heroicons/react/24/solid'
+import { useSelector,useDispatch } from "react-redux";
+
 
 function Adminpanel() {
+
+
+
+
+const dispatch=useDispatch()
+  const navigate=useNavigate()
+ const {loading}=useSelector((state)=>state.userAuth)
+
+
+ 
+const handlelogout=async()=>{
+    try{
+          const res=await dispatch(logoutthunk()).unwrap()
+
+          toast.success(res.message)
+          navigate('/login')
+    }
+
+    catch(err){
+        toast.error(err)
+    }
+}
+
+
   return (
    <>
-       <div className={`container-fluid p-0  ${style.panelcont}`}>
-          <div className='d-lg-none pe-2'
+       <div className={`container-fluid p-0 ${style.panelcont}`}>
+          <div className='d-lg-none ps-2 pe-2 '
                style={{
                        height:"50px",
                    
                        display:"flex",
                        alignItems:"center",
-                       justifyContent:"right",
+                       justifyContent:"space-between",
                        boxShadow:"0 2px 4px black",
                        backgroundColor:"black",
-                       color:"white"
+                       color:"white",
+                       zIndex:999
+
                }}
               >
+                 <ArrowLeftIcon
+                     style={{height:"30px",fontSize:"50px",cursor:"pointer"}}
+                     onClick={()=>navigate(-1)} />
              
               <Bars3Icon style={{height:"30px"}}
                data-bs-toggle="offcanvas"
@@ -37,6 +68,17 @@ function Adminpanel() {
 
             <div className="offcanvas-body">
                  <ul className={`list-group list-inline`}>
+
+             <li  data-bs-dismiss="offcanvas">
+                          <NavLink
+                            to="/adminpanel/profile"
+                            className="list-group-item list-group-item-action "
+                            
+                          >
+                            My info
+                          </NavLink>
+               </li>
+
               <li data-bs-dismiss="offcanvas"
                               
                              >
@@ -64,7 +106,7 @@ function Adminpanel() {
                  data-bs-dismiss="offcanvas">
                   <NavLink to="/adminpanel/orders"
                             className='list-group-item list-group-item-action'>
-                      Orders
+                     All Orders
                   </NavLink>
                  </li>
 
@@ -73,19 +115,49 @@ function Adminpanel() {
                   data-bs-dismiss="offcanvas">
                   <NavLink to="/adminpanel/allusers"
                            className='list-group-item list-group-item-action'>
-                       Users
+                     All  Users
                   </NavLink>
                   </li>
+
+                  <li  data-bs-dismiss="offcanvas">
+                                <NavLink
+                                  to="/adminpanel/changepassword"
+                                  className="list-group-item list-group-item-action "
+                                >
+                                  Change Password
+                                </NavLink>
+                              </li>
+
+             <button className="btn bg-danger text-light  w-100 mt-5"
+                   style={{
+                          
+                   }}
+                   onClick={handlelogout}
+                   disabled={loading.logoutloading}>
+                {loading.logoutloading? "Logging out":"Logout"}
+            </button>
+                  
             </ul>
             </div>
           </div> 
 
          
-          <div className={`row ${style.row}`}>
-            <div className={`d-none d-lg-block col-lg-3 ${style.slidbarlist} `}
+          <div className={`row g-0 ${style.row}`}>
+            <div className={`d-none d-lg-block col-lg-3 ps-2 pe-2 ${style.slidbarlist} `}
                  >
 
-           <ul className={`list-group  list-unstyled`}>
+           <ul className={`list-group  list-unstyled `}>
+              
+               <li  data-bs-dismiss="offcanvas">
+                          <NavLink
+                            to="/adminpanel/profile"
+                            className="list-group-item list-group-item-action "
+                            
+                          >
+                            My info
+                          </NavLink>
+               </li>
+
               <li 
                               data-bs-dismiss="offcanvas"
                               
@@ -112,7 +184,7 @@ function Adminpanel() {
                  data-bs-dismiss="offcanvas">
                   <NavLink to="/adminpanel/orders"
                             className='list-group-item list-group-item-action'>
-                      Orders
+                      ALL Orders
                   </NavLink>
                  </li>
 
@@ -121,14 +193,30 @@ function Adminpanel() {
                   data-bs-dismiss="offcanvas">
                   <NavLink to="/adminpanel/allusers"
                            className='list-group-item list-group-item-action'>
-                       Users
+                      All Users
                   </NavLink>
-                  </li>
+                   </li>
+                    <li  data-bs-dismiss="offcanvas">
+                                <NavLink
+                                  to="/adminpanel/changepassword"
+                                  className="list-group-item list-group-item-action "
+                                >
+                                  Change Password
+                                </NavLink>
+                              </li>
+
+                     <button className="btn bg-danger text-light  w-100 mt-5"
+                  
+                   onClick={handlelogout}
+                   disabled={loading.logoutloading}>
+                {loading.logoutloading? "Logging out":"Logout"}
+            </button>
+                  
             </ul>
          
 
             </div>
-            <div className={`col-12 col-lg-8  ${style.dynamiccom}`}>
+            <div className={`col-12 col-lg-8 p-0   ${style.dynamiccom}`}>
                {
                    <Outlet/>
                }  

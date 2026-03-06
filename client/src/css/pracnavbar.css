@@ -9,6 +9,7 @@
    position: fixed;
    top:0;
    
+   
 }
 
 .navbar{
@@ -27,9 +28,10 @@
     width:100%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content:space-around;
     list-style-type: none;
      height: 100%;
+     
    
     
 
@@ -45,11 +47,13 @@
 }
 
 .searchbar-cont{
- 
-   flex:1;
+ position: relative;
+   /* flex:1; */
    margin:0 25px;
    display: flex;
   justify-content: center;
+ 
+  width:100%;
    
 }
 
@@ -93,10 +97,15 @@
       height:40px;
       border-radius:10px;
       gap:6px;
+       
      
 }
 
-
+.profile-cont{
+  position: absolute;
+  margin-right:50px;
+ 
+}
 
 
 .profile-txt,

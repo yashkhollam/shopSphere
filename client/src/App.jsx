@@ -12,7 +12,6 @@ import Cart from "./pages/cart.jsx";
 import Profile from "./pages/profile.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import { getMeThunk } from "./components/redux/features/userauthSlice.js";
-import Protectedroutes from "./components/protectedroutes.jsx";
 import Addproducts from "./pages/admin/addproducts.jsx";
 
 import { getallcartitemsthunk } from "./components/redux/features/cartSlice.js";
@@ -30,14 +29,27 @@ import Userinfo from "./pages/userinfo.jsx";
 import Forgotpassword from "./pages/forgotpassword.jsx";
 import ResetPassword from "./pages/resetPassword.jsx";
 import Changepassword from "./pages/changepassword.jsx";
+import Aboutus from "./pages/aboutus.jsx";
+import Revieworder from "./pages/revieworder.jsx";
+import Userprotectedroutes from "./components/protectedroutes/userprotectedroutes.jsx";
+import Adminprotectedroutes from "./components/protectedroutes/adminprotectedroutes.jsx";
+
+
 function App() {
   // const {user,isAuthenticated,getmeloading}=useSelector((state)=>state.userAuth)
   const dispatch = useDispatch();
 
   useEffect(() => {
     // console.log("get thunk run")
-    dispatch(getMeThunk());
-    dispatch(getallcartitemsthunk());
+    dispatch(getMeThunk()).then((res)=>{ //only if user login the getcart will dispatch
+
+      const  user=res.payload.data
+      
+       if(user && user.role==="user"){
+            dispatch(getallcartitemsthunk());
+       }
+    })
+   
   }, [dispatch]);
 
   const router = createBrowserRouter([
@@ -57,16 +69,20 @@ function App() {
         {
           path:'/resetpassword',
           element:<ResetPassword/>
+        },{
+          path:'/aboutus',
+          element:<Aboutus/>
+
         },
 
           {
-          element: <Protectedroutes />,
+          element: <Userprotectedroutes/>,
           children: [
             {path: "/cart",element: <Cart />},
-            {path: "/updateproduct/:id",element: <Updateproduct />},
+            
             {path: "/addaddress",element: <AddAddress />},
             {path: "/orderbyid/:id",element: <Orderbyid />},
-            
+            {path:"/revieworder",element:<Revieworder/>},
            
                {path: "/profile",element: <Profile />,
                  children: [
@@ -81,20 +97,20 @@ function App() {
             
             {
               
-              element:<Protectedroutes role="admin"/>,
-                  
-              
-              
+              element:<Adminprotectedroutes/>,
               children: [
                 {
-                  path:'adminpanel',
+                  path:'/adminpanel',
                   element:<Adminpanel/>,
                   children:[
                         {index: true,element: <Adminviewallproduct />},
-                {path: "/adminpanel/addproduct",element:<Addproducts />},
-                {path: "/adminpanel/viewproduct",element:<Adminviewallproduct />},
-                {path: "/adminpanel/orders",element: <Orders />},
-                {path: "/adminpanel/allusers",element: <Allusers />},
+                {path: "addproduct",element:<Addproducts />},
+                {path: "viewproduct",element:<Adminviewallproduct />},
+                {path: "orders",element: <Orders />},
+                {path: "allusers",element: <Allusers />},
+                {path: "updateproduct/:id",element: <Updateproduct />},
+                 { path: "profile", element: <Userinfo /> },
+        { path: "changepassword", element: <Changepassword /> }
                   ]
                 }
                

@@ -56,7 +56,7 @@ useEffect(()=>{
                     <span className='d-flex gap-2 '>
                           <p className={`p-0 m-0  ${styles.prodname}`}>{data.prodname}</p>
 
-                    <p className={` ${styles.prodbrand}`}>{data.prodbrand}</p>
+                    {/* <p className={` ${styles.prodbrand}`}>{data.prodbrand}</p> */}
                     </span>
                    
                   

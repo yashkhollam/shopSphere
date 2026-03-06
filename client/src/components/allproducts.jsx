@@ -42,10 +42,15 @@ useEffect(()=>{
 const handleaddcart=async(productId)=>{
     console.log(productId)
 
-  const res= await dispatch(addtocartthunk(productId)).unwrap()
+    try{
+     const res= await dispatch(addtocartthunk(productId)).unwrap()
 
   toast.success(res.message)
- 
+    }
+
+    catch(err){
+        toast.error(err)
+    }
 }
 
 

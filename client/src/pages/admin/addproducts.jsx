@@ -8,7 +8,7 @@ import Loader from "../../components/loader.jsx"
 
 function Addproducts() {
   const dispatch = useDispatch();
-  const {loading}=useSelector((state)=>state.productoperation)
+  const {loading}=useSelector((state)=>state.adminproductoperation)
   const ref=useRef()
   
   // const [finalprice,setFinalprice]=useState()

@@ -5,32 +5,34 @@ import {useNavigate} from 'react-router-dom';
 import {useDispatch,useSelector} from 'react-redux'
 import { cretaeaccthunk } from '../components/redux/features/userauthSlice.js';
 import Loader from '../components/loader.jsx';
+import { EyeIcon, EyeSlashIcon } from '../library/icons'
  
 function Signup() {
 const navigate=useNavigate()
   const dispatch=useDispatch()
   const {createaccloading}=useSelector((state)=>state.userAuth.loading)
   const data={username:"",email:"",password:""}
-  const [formadata,setFormdata]=useState(data)
+  const [formdata,setFormdata]=useState(data)
+  const [hidepass,setHidepass]=useState(false)
 
 
 const handleform=(e)=>{
-   setFormdata({...formadata,[e.target.name]:e.target.value})
-   console.log({...formadata,[e.target.name]:e.target.value})
+   setFormdata({...formdata,[e.target.name]:e.target.value})
+   console.log({...formdata,[e.target.name]:e.target.value})
 }
 
 
 const submitform=async(e)=>{
   e.preventDefault()
     try{
-       const res=await dispatch(cretaeaccthunk(formadata)).unwrap()
+       const res=await dispatch(cretaeaccthunk(formdata)).unwrap()
       const {message}=res
         toast.success(message)
        
       navigate('/signupotpverify',{
         
         state:{
-          email:formadata.email,
+          email:formdata.email,
           
           from:"/"
         }
@@ -75,7 +77,7 @@ const handlenavigation=()=>{
             <input type="text"
                    className='form-control form-inputs'
                    name='username'
-                   value={formadata.username}
+                   value={formdata.username}
                    onChange={handleform} />
          </div>
           <div>
@@ -83,16 +85,37 @@ const handlenavigation=()=>{
             <input type="email"
                    className='form-control form-inputs'
                     name='email'
-                   value={formadata.email}
+                   value={formdata.email}
                    onChange={handleform} />
          </div>
-          <div>
+        
+         <div style={{position:"relative"}}>
+             
              <label className='label'>password :</label>
-            <input type="password"
+
+            <div className='position-absolute  d-flex justify-content-end  pe-2 mt-3 end-0'
+            >
+          
+          {
+            hidepass ? 
+           
+           <EyeSlashIcon className='eyeicon'
+                    onClick={()=>setHidepass(!hidepass)}/>
+            : <EyeIcon className='eyeicon'
+                    onClick={()=>setHidepass(!hidepass)}/> 
+
+            
+          }
+           
+        
+        </div>
+            <input type={hidepass ?'password':'text'}
                    className='form-control form-inputs'
-                   name='password'
-                   value={formadata.password}
+                    name='password'
+                   value={formdata.password}
                    onChange={handleform} />
+           
+         
          </div>
 
          <button className='btn bg-success text-light d-block m-auto mt-5'

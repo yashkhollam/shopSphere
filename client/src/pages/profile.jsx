@@ -1,28 +1,53 @@
 import React from "react";
-import { NavLink, Outlet } from "react-router-dom";
-// import { Bars3Icon } from "../library/icons.jsx";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
+import { useSelector,useDispatch } from "react-redux";
 
 function profile() {
+ const dispatch=useDispatch()
+  const navigate=useNavigate()
+ const {user,loading}=useSelector((state)=>state.userAuth)
+
+
+ 
+const handlelogout=async()=>{
+    try{
+          const res=await dispatch(logoutthunk()).unwrap()
+
+          toast.success(res.message)
+          navigate('/login')
+    }
+
+    catch(err){
+        toast.error(err)
+    }
+}
+
   return (
-    <div className="container-fluid"
+    <div className="container-fluid p-0"
      style={{ marginTop: "60px", 
               width:"100%"
      }}>
      
 
-       <div className='d-lg-none pe-2'
+       <div className='d-lg-none ps-2 pe-2'
                      style={{
                              height:"50px",
                          
                              display:"flex",
                              alignItems:"center",
-                             justifyContent:"right",
+                             justifyContent:"space-between",
                              boxShadow:"0 2px 4px black",
                              backgroundColor:"black",
                              color:"white"
                      }}
                     >
                    
+             
+                  
+                   <ArrowLeftIcon
+                     style={{height:"30px",fontSize:"50px",cursor:"pointer"}}
+                     onClick={()=>navigate(-1)} />
+
                     <Bars3Icon style={{height:"30px"}}
                      data-bs-toggle="offcanvas"
                      data-bs-target="#profilemenu"/>
@@ -52,23 +77,45 @@ function profile() {
                 User Info
               </NavLink>
             </li>
+
+           
+           {
+            user?.role==="admin" &&
             <li  data-bs-dismiss="offcanvas">
+              <NavLink
+                to="/adminpanel"
+                className="list-group-item list-group-item-action "
+              >
+                Admin panel
+              </NavLink>
+            </li> 
+           }
+            
+
+          {
+            user?.role==="user" && 
+             <li  data-bs-dismiss="offcanvas">
               <NavLink
                 to="userorders"
                 className="list-group-item list-group-item-action "
               >
                 My Orders
               </NavLink>
-            </li>
+            </li> 
+          }
+           
+           
+           
 
-            <li  data-bs-dismiss="offcanvas">
+
+            {/* <li  data-bs-dismiss="offcanvas">
               <NavLink
                 to="/3"
                 className="list-group-item list-group-item-action "
               >
                 Address
               </NavLink>
-            </li>
+            </li> */}
 
              <li  data-bs-dismiss="offcanvas">
               <NavLink
@@ -90,8 +137,10 @@ function profile() {
            <button className="btn bg-danger text-light  w-100"
                    style={{
                            marginTop:"100%"
-                   }}>
-                logout
+                   }}
+                   onClick={handlelogout}
+                   disabled={loading.logoutloading}>
+                {loading.logoutloading? "Logging out":"Logout"}
             </button>
         </div>
       </div>
@@ -127,18 +176,18 @@ function profile() {
               </NavLink>
             </li>
 
-            <li>
+            {/* <li>
               <NavLink
                 to="/3"
                 className="list-group-item list-group-item-action "
               >
                 Address
               </NavLink>
-            </li>
+            </li> */}
 
              <li>
               <NavLink
-                to="/3"
+                to="changepassword"
                 className="list-group-item list-group-item-action "
               >
                 Change Password
@@ -156,8 +205,10 @@ function profile() {
          <button className="btn bg-danger text-light  w-100"
                    style={{
                            marginTop:"100%"
-                   }}>
-                logout
+                   }}
+                   onClick={handlelogout}
+                   disabled={loading.logoutloading}>
+                {loading.logoutloading? "Logging out":"Logout"}
             </button>
 
 
@@ -177,5 +228,7 @@ function profile() {
   );
 }
 import { Bars3Icon } from "../library/icons";
+import { ArrowLeftIcon } from "@heroicons/react/24/outline";
+import { logoutthunk } from "../components/redux/features/userauthSlice";
 
 export default profile;

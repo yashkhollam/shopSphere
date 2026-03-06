@@ -6,6 +6,7 @@ export const addtoCart=async(req,res)=>{
     try{
         const userId=req.user.id
     //   const {userId}=req.body
+   
        const {productId}=req.params
 
 
@@ -15,6 +16,14 @@ export const addtoCart=async(req,res)=>{
             message:"user account has been blocked"
         })
        }
+
+       if(req.user.role==="admin"){
+          return res.status(403).json({
+            success:false,
+            message:"Admin cannot add product to cart"
+        })
+       }
+
 
        let cart=await cartModel.findOne({userId}).populate('products.productId')
 

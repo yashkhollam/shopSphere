@@ -7,6 +7,7 @@ import {useNavigate} from 'react-router-dom'
 import { addtocartthunk } from "../components/redux/features/cartSlice";
 import {toast} from 'react-hot-toast'
 import Loader from "../components/loader";
+import Footer from "../components/footer";
 
 function Home() {
  
@@ -109,7 +110,7 @@ const brands=["Apple","Samsung","Sony","OnePlus","Dell"]
       id="carouselExampleSlidesOnly"
       className={`carousel slide `}
     >
-      <div className="carousel-inner" style={{ maxHeight: "410px", padding: "5px" }}>
+      <div className="carousel-inner" style={{ maxHeight: "400px", padding: "5px",borderRadius:"25px" }}>
 
         <div className="carousel-item active">
           <img
@@ -206,7 +207,8 @@ const brands=["Apple","Samsung","Sony","OnePlus","Dell"]
          
           <img src={data.imgurl}
                alt=""
-               className={styles.newproimg} />
+               className={styles.newproimg}
+               loading="lazy" />
           
           <h3 className="p-0 m-0 mt-2 fw-bold"
                style={{fontSize:"20px",color:"black"}}>{data.name}</h3>
@@ -256,7 +258,8 @@ const brands=["Apple","Samsung","Sony","OnePlus","Dell"]
                 
                  <img src={data?.imgurl} 
                       alt="trending porduct img"
-                      className={styles.trendprodimg}/>
+                      className={styles.trendprodimg}
+                      loading="lazy"/>
                   
                    <h3 className="p-0 m-0 mt-2 fw-bold"
                         style={{fontSize:"20px",color:"black"}}>{data.name}</h3>
@@ -299,7 +302,8 @@ const brands=["Apple","Samsung","Sony","OnePlus","Dell"]
                 
                  <img src={data?.imgurl} 
                       alt="trending porduct img"
-                      className={styles.trendprodimg}/>
+                      className={styles.trendprodimg}
+                      loading="lazy"/>
                   
                    <h3 className="p-0 m-0 mt-2 fw-bold"
                         style={{fontSize:"20px",color:"black"}}>{data.name}</h3>
@@ -376,6 +380,10 @@ const brands=["Apple","Samsung","Sony","OnePlus","Dell"]
              
         </div>
   </div>
+
+
+
+  <Footer/>
     </div>
       
 

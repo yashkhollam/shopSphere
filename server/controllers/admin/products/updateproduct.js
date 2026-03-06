@@ -8,9 +8,10 @@ export const updateproduct=async(req,res)=>{
     try{
        const {name,price,discountedpercentage,description,category,subcategory,brand,stocks}=req.body
 
-       console.log("re.body=",req.body)
+    //    console.log("re.body=",req.body)
        const {id}=req.params
-
+    
+     
     
        const product=await ProductModel.findById(id)
 
@@ -49,25 +50,30 @@ export const updateproduct=async(req,res)=>{
 }
      
     
+    product.name = name;
+
+const priceNumber = Number(price);
+const discountNumber = Number(discountedpercentage);
+const stocksNumber = Number(stocks);
+
+product.price = priceNumber;
+product.discountedpercentage = discountNumber;
+
+product.discountprice = Math.round(
+  priceNumber - (discountNumber * priceNumber / 100)
+);
+
+product.description = description;
+product.category = category;
+product.subcategory = subcategory;
+product.brand = brand;
+product.stocks = stocksNumber;
+
+await product.save();
     
-         
-     product.name=name;
-     product.price=price;
-     product.discountedpercentage=discountedpercentage;
-     product.discountprice=price-(Number(discountedpercentage)*Number(price)/100)
-     product.description=description;
-     product.category=category;
-     product.subcategory=subcategory;
-     product.brand=brand;
-     product.stocks=stocks
-     await product.save()
-
-
 
     
-
-    
-     console.log(product);
+    //  console.log(product);
     return res.status(200).json({
         
        success:true,

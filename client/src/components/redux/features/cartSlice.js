@@ -100,7 +100,11 @@ const cartSlice=createSlice({
         }
     },
 
-    
+    reducers:{
+        clearCart:(state)=>{
+          state.cart=[]
+        }
+    },
         
     
 
@@ -219,5 +223,5 @@ const cartSlice=createSlice({
 
 })
 
-
+export const {clearCart}=cartSlice.actions;
 export default cartSlice.reducer

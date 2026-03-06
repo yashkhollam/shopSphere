@@ -1,11 +1,16 @@
 
 import { orderModel } from '../../../model/orderModel.js';
 import productModel from '../../../model/products.js'
+import usercart from '../../../model/cart.js';
+import userModel from '../../../model/userModel.js';
 
 export const createOrder=async(req,res)=>{
   try{
     const userId=req.user.id
     // const {userId}=req.body
+
+    // const user=await userModel.findById(userId)
+    
        const  {items,shippingAddress,
        paymentMethod}=req.body;
 
@@ -13,6 +18,12 @@ export const createOrder=async(req,res)=>{
        let totalAmount=0
        let producttoupdate=[];
 
+        if(req.user.role==="admin"){
+          return res.status(403).json({
+            success:false,
+            message:"Admin cannot place order"
+        })
+       }
        
          if(!items){
           return res.status(400).json({
@@ -142,6 +153,8 @@ for (let updatedProduct of producttoupdate) {
 }
 
 
+
+await usercart.updateOne({userId:userId},{$set:{products:[]}})
 
 return res.status(201).json({
    success: true,

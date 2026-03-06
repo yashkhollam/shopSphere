@@ -1,0 +1,46 @@
+.footercont{
+  background-color:white;
+  margin-top: 50px;
+  padding:50px 5px;
+}
+
+.footersec{
+   /* background-color:black;
+   color:white; */
+   
+}
+
+.shopheading{
+    font-size:30px;
+    font-weight: bold;
+    color: black;
+}
+
+.shopsubheading{
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.475);
+
+}
+ h5{
+    font-size:25px;
+    cursor:auto;
+}
+
+ul{
+    list-style-type: none;
+    /* font-size:19px; */
+    /* color: rgba(0, 0, 0, 0.475); */
+    cursor: pointer;
+   
+}
+
+
+
+
+.explorehead,
+.custcarehead{
+  font-size:27px;
+  color: black;
+  font-weight:bold;
+}
+

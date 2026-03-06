@@ -9,7 +9,12 @@ import {Solidhome,Regularhome,RegularCart,SolidCart, RegularProfile,SolidProfile
 
 function Bottomnav() {
 
-   const {cart}=useSelector((state)=>state.cartopeartion)
+   const {user,cart}=useSelector((state)=>state.cartopeartion)
+  
+    const {isAuthenticated}=useSelector((state)=>state.userAuth)
+  
+  
+
   return (
    <div className="container-fluid nav-contianer d-sm-none "
        style={{  
@@ -92,7 +97,9 @@ function Bottomnav() {
        )}
      </NavLink>
 
-<NavLink to='/cart' className="bottomnav-links">
+{
+  user?.role=="admin" &&
+  <NavLink to='/cart' className="bottomnav-links">
        {({isActive})=>(
              
          
@@ -104,13 +111,18 @@ function Bottomnav() {
              <SolidCart  className='navitem-icons'/>
             :<RegularCart  className='navitem-icons'/>
           }
+         {
+           isAuthenticated && cart.length>0 &&  <p className='cart-count'>{cart.length}</p>
+         }
         
-         <p className='cart-count'>{cart?.length}</p>
+
          <p className='navitem-text'>cart</p>
       </div>
 
        )}
       </NavLink>
+}
+
     </nav>
    </div>
   )

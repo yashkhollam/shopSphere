@@ -12,7 +12,7 @@ function Profiledropdown() {
 const {user,isAuthenticated,logoutloading}=useSelector((state)=>state.userAuth)
 const dispatch=useDispatch()
 const navigate=useNavigate()
-console.log(user)
+// console.log(user)
 
 // const {}
 
@@ -89,12 +89,17 @@ const handlelogout=async()=>{
 
         </li>
        
-        <li  className='profilelistitems'>
+       
+       {
+        user?.role==="user" && isAuthenticated &&
+         <li  className='profilelistitems'>
              <NavLink to="/profile" className="navbar-link text-dark text-decoration-none">
             Account
 
             </NavLink>
         </li>
+       }
+       
 
 
        { user?.role==="admin" && isAuthenticated ?

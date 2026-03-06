@@ -10,7 +10,7 @@ export const updateorderstatus=async(req,res)=>{
          const {orderStatus}=req.body
          const {id}=req.params
 
-
+ 
     const orderdata=await orderModel.findById(id)
 
     if(!orderdata){

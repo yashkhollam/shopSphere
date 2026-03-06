@@ -46,10 +46,21 @@
   font-family: "Poppins", sans-serif;
 }
 
+
+.eyeicon{
+    height:20px;
+    /* position: absolute; */
+    
+   
+}
+
 .form-inputs{
  margin-top: 8px;
  font-family: "Poppins", sans-serif;
+ /* position: relative; */
+ 
 }
+
 
 .accconfirmation-cont{
     display: flex;

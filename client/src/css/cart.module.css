@@ -1,6 +1,6 @@
 .cartcont{
 
-margin-top:80px;  
+margin-top:60px;  
 
 
    background-color:rgba(255, 255, 255, 0.437) ;
@@ -11,7 +11,8 @@ margin-top:80px;
    max-width:1300px;
   
    justify-content:center; 
-    
+   padding-bottom:50px;
+   
 }
 
 
@@ -29,8 +30,9 @@ margin-top:80px;
 
 
 .cartcard{
-   height:150px;
+   height:max-content;
    /* max-width:600px; */
+   padding: 5px 0 ;
 
    margin-top:20px;
    box-shadow:0 0 2px 1px rgba(0, 0, 0, 0.46);
@@ -89,16 +91,17 @@ margin-top:80px;
    /* padding:0;
     margin:0; */
     font-size:1.3rem;
-    white-space:nowrap
+
+   
 
 
 }
-
+/* 
 .prodbrand{
-/* padding:0; */
+
 margin:0;
 color:white;
-/* box-shadow:0 0 1px 1px black; */
+
 width:fit-content;
 border-radius:20px;
 padding:0 10px;
@@ -106,7 +109,7 @@ margin-top:4px;
 background-color:rgb(109, 211, 109);
 border:none;
 
-}
+} */
 
 .proddescription{
    background-color:yellow;
@@ -140,6 +143,7 @@ border:none;
 .prodtotaldiscprice{
     font-weight:bold;
     text-decoration: underline;
+
 }
 
 

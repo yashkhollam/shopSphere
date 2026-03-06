@@ -1,0 +1,59 @@
+.aboutuscont{
+    /* background-color:pink; */
+  
+    /* margin-top:60px; */
+    height:100vh;
+     background-color: #f4f7fb;
+    display: flex;
+    flex-direction: column;
+   align-items: center;
+   justify-content: center;
+ 
+    
+}
+
+.herosec{
+   
+    background-color:skyblue;
+    height:max-content;
+  
+   max-width:800px;
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    
+    
+}
+
+.smallheading{
+    border:1px solid rgb(78, 78, 237);
+    color: rgb(78, 78, 237);
+    width:max-content;
+    height: max-content;
+    font-weight: 400;
+    padding: 5px 10px;
+    border-radius:20px;
+    font-size:17px;
+    
+}
+
+.mainheading{
+   font-size:3rem;
+   font-weight: bold;
+   text-align: center;
+   margin-top:20px;
+   
+}
+
+.aboutdesc{
+    margin-top:10px;
+    font-size:17px;
+    color: rgba(0, 0, 0, 0.595);
+}
+
+.missionsec{
+    background-color:palevioletred;
+    margin-top:50px;
+    
+}
