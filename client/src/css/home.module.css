@@ -6,7 +6,7 @@
     margin-top: 60px;
     
       background-color: #f4f7fb;
-    padding: 0 20px;
+    padding: 0 10px;
 }
 
 .movingtext{
@@ -48,11 +48,10 @@
   
   width: clamp(100px,30vw,120px);
   height: clamp(60px,15vw,120px);
-    /* box-shadow:0 0 2px 2px  rgba(0, 0, 0, 0.589);
-    border-radius:50%; */
-    text-align: center;
+   
+    
      box-shadow: rgba(40, 116, 240, 0.08) 0px 36px 50px;
-    /* background:linear-gradient( rgb(255, 72, 0), white); */
+   
     background:linear-gradient( rgb(203, 150, 86), white);
     border-radius:50%;
     display: flex;

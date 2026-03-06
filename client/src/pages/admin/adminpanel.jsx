@@ -3,6 +3,7 @@ import style from  '../../css/admin.module.css'
 import {NavLink, Outlet, useNavigate} from 'react-router-dom'
 import { ArrowLeftIcon, Bars3Icon } from '@heroicons/react/24/solid'
 import { useSelector,useDispatch } from "react-redux";
+import { logoutthunk } from '../../components/redux/features/userauthSlice';
 
 
 function Adminpanel() {

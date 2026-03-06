@@ -214,7 +214,7 @@ for(let cartdata of cart){
 
         </div>
 
-         <div className={`col-12 col-lg-4 ${styles.totalpricecont}`}>
+         <div className={`col-12 col-lg-4 ${styles.totalpricecontainer}`}>
                          <h5 className=''>Price details</h5>
        
                          <div className={`${styles.totalpricewrapper}`}>
