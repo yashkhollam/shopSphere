@@ -9,10 +9,17 @@ import {Solidhome,Regularhome,RegularCart,SolidCart, RegularProfile,SolidProfile
 
 function Bottomnav() {
 
-   const {user,cart}=useSelector((state)=>state.cartopeartion)
+   const {cart}=useSelector((state)=>state.cartopeartion)
   
-    const {isAuthenticated}=useSelector((state)=>state.userAuth)
+    const {user,isAuthenticated}=useSelector((state)=>state.userAuth)
   
+
+    const scrollTop=()=>{
+        window.scroll({
+          top:0,
+          behavior:'smooth'
+        })
+    }
   
 
   return (
@@ -81,7 +88,8 @@ function Bottomnav() {
      <NavLink to='/profile' className="bottomnav-links">
        {({isActive})=>(
              
- <div className={`text-center ${isActive ? "bottomnav-links active":"bottomnav-links"}`}>
+ <div className={`text-center ${isActive ? "bottomnav-links active":"bottomnav-links"}`}
+ onClick={scrollTop}>
         
       
           {
@@ -97,9 +105,10 @@ function Bottomnav() {
        )}
      </NavLink>
 
-{
-  user?.role=="admin" &&
-  <NavLink to='/cart' className="bottomnav-links">
+  
+  {
+    user  && user?.role!=="admin" && isAuthenticated &&
+     <NavLink to='/cart' className="bottomnav-links">
        {({isActive})=>(
              
          
@@ -112,7 +121,7 @@ function Bottomnav() {
             :<RegularCart  className='navitem-icons'/>
           }
          {
-           isAuthenticated && cart.length>0 &&  <p className='cart-count'>{cart.length}</p>
+           isAuthenticated &&  <p className='cart-count'>{cart.length}</p>
          }
         
 
@@ -121,7 +130,8 @@ function Bottomnav() {
 
        )}
       </NavLink>
-}
+  }
+ 
 
     </nav>
    </div>
