@@ -6,9 +6,10 @@ export const getAllorders=async(req,res)=>{
      
         
    const allOrders=await orderModel.find()
-                                   .populate("userId","username email")
-                                   .sort({createdAt:-1})
+                                   
 
+
+      console.log(allOrders[0].userId)                             
 
    if(allOrders.length<=0){
     return res.status(200).json({
@@ -28,7 +29,7 @@ const formatedorderdetail=allOrders.map((data)=>{
 
     return {
         id:data._id,
-        username:data.userId.username,
+        username:data.shippingAddress.fullname,
         totalAmount:data.totalAmount,
         orderStatus:data.orderStatus,
         createdDate:formatedDate,

@@ -44,6 +44,9 @@ const ShippingAddressSchema=mongoose.Schema({
         type:String,
         required:true
       },
+      email:{
+        type:String
+      },
       addressline:{
         type:String,
         required:true
@@ -75,6 +78,8 @@ const orderSchema=mongoose.Schema({
         ref:"userModel",
         required:true
     },
+
+    
     items:{
      type:[orderItemSchema],
     required:true

@@ -4,6 +4,7 @@ import {roleAuthorization} from '../../Middleware/roleAuthorization.js'
 import { getallusers } from '../../controllers/admin/useroperations/getallusers.js';
 import { userStatus } from '../../controllers/admin/useroperations/userStatus.js';
 
+
 export const useropeationroutes=Router()
 
 
@@ -13,3 +14,4 @@ useropeationroutes.get('/getalluser',userAuthMiddleware,roleAuthorization,getall
 
 
 useropeationroutes.patch(`/updateuserstatus/:id`,userAuthMiddleware,roleAuthorization,userStatus)
+

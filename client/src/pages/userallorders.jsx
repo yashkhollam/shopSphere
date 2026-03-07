@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector,useDispatch } from 'react-redux'
-import { getallorderthunk } from '../components/redux/features/orderSlice';
-import style from '../css/userorder.module.css'
+import { cancelOrderthunk, getallorderthunk } from '../components/redux/features/orderSlice';
+import style from '../css/userorder.module.css';
+import {toast} from 'react-hot-toast';
 
 
 const UserAllOrders=()=>{
@@ -37,6 +38,18 @@ const getStatusColor=(status)=>{
 
   else if(status==="cancelled"){
       return "text-danger"
+  }
+}
+
+const cancelorder=async(id)=>{
+  try{
+      const res=await dispatch(cancelOrderthunk(id)).unwrap()
+
+      toast.success(res.message)
+  }
+
+  catch(err){
+     toast.error(err)
   }
 }
 
@@ -110,6 +123,9 @@ const getStatusColor=(status)=>{
                                 </div>
                             ))):(<h1>no items</h1>)
                         }
+
+
+                        <button className='btn bg-danger btn-sm text-light' onClick={()=>cancelorder(data._id)}>cancel Order</button>
 
                       </div>
                 ))

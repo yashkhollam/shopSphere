@@ -37,6 +37,17 @@ export const createorderthunk=createAsyncThunk('createorder',async(orderdetails,
 }) 
 
 
+export const cancelOrderthunk=createAsyncThunk('cancleorder',async(id,{rejectWithValue})=>{
+   try{
+     console.log("thunk",id)
+       const res=await axios.patch(`${import.meta.env.VITE_API_URL}/order/cancleOrder/${id}`,{},{withCredentials:true})
+
+       return res.data
+   }
+   catch(err){
+    return rejectWithValue(err?.response?.data?.message)
+   }
+})
 
 
 
@@ -48,7 +59,8 @@ const productorderSlice=createSlice({
         error:null,
         loading:{
             createorderloading:false,
-            getuserorderloading:false
+            getuserorderloading:false,
+            cancelorderloadingId:null,
         }
     },
 
@@ -90,6 +102,27 @@ const productorderSlice=createSlice({
      .addCase(getallorderthunk.rejected,(state,action)=>{
         
         state.loading.getuserorderloading=false;
+        state.error=action.payload;
+     })
+
+    // cancel order 
+     .addCase(cancelOrderthunk.pending,(state,action)=>{
+        state.loading.cancelorderloadingId=action.meta.arg ;
+        state.error=null;
+     })
+
+     .addCase(cancelOrderthunk.fulfilled,(state,action)=>{
+        const {orderId,orderStatus}=action.payload.data
+
+        state.userOrders=state.userOrders.map((order)=>(
+            order._id===orderId ? {...order,orderStatus}:order
+        ))
+        state.loading.cancelorderloadingId=null;
+        state.error=null;
+     })
+     .addCase(cancelOrderthunk.rejected,(state,action)=>{
+        
+        state.loading.cancelorderloadingId=null;
         state.error=action.payload;
      })
 

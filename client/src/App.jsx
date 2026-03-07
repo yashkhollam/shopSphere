@@ -81,7 +81,7 @@ function App() {
             {path: "/cart",element: <Cart />},
             
             {path: "/addaddress",element: <AddAddress />},
-            {path: "/orderbyid/:id",element: <Orderbyid />},
+           
             {path:"/revieworder",element:<Revieworder/>},
            
                {path: "/profile",element: <Profile />,
@@ -107,6 +107,7 @@ function App() {
                 {path: "addproduct",element:<Addproducts />},
                 {path: "viewproduct",element:<Adminviewallproduct />},
                 {path: "orders",element: <Orders />},
+                 {path: "orderbyid/:id",element: <Orderbyid />},
                 {path: "allusers",element: <Allusers />},
                 {path: "updateproduct/:id",element: <Updateproduct />},
                  { path: "profile", element: <Userinfo /> },

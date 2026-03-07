@@ -113,7 +113,7 @@ catch(err){
             </td>
             <td>{order.paymentStatus}</td>
             <td>{order.createdDate}</td>
-             <td><button className='btn btn-sm btn-warning' onClick={()=>navigate(`/orderbyid/${order.id}`)}>view details</button></td>
+             <td><button className='btn btn-sm btn-warning' onClick={()=>navigate(`/adminpanel/orderbyid/${order.id}`)}>view details</button></td>
            </tr>
          ))
          

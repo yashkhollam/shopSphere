@@ -10,6 +10,7 @@ export const getuserOrderdata=async(req,res)=>{
 
 
 const userorderdata=await orderModel.find({userId})
+.sort({createdAt:-1})
 
 
 if(userorderdata.length===0){

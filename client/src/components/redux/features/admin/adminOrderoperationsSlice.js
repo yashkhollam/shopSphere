@@ -124,7 +124,7 @@ const adminorderoprationSlice=createSlice({
         const updatedData=action.payload.data
 
           state.allOrders = state.allOrders.map((order)=>
-        order.id === updatedData._id ? updatedData : order
+        order._id === updatedData._id ? updatedData : order
     );
 
     // also update single order view if it is open

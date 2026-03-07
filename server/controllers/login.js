@@ -54,7 +54,7 @@ export const login=async(req,res)=>{
                 //   sameSite:"lax", //localhost practise
               
                 sameSite:"none", //none in production
-                secure:true,      
+                 secure:true,      
                 
                 maxAge:24*60*60*1000
             })

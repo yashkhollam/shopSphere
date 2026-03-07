@@ -107,7 +107,7 @@ function Bottomnav() {
 
   
   {
-    user  && user?.role!=="admin" && isAuthenticated &&
+   
      <NavLink to='/cart' className="bottomnav-links">
        {({isActive})=>(
              
