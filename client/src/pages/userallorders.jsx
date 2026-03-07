@@ -125,7 +125,7 @@ const cancelorder=async(id)=>{
                         }
 
 
-                        <button className='btn bg-danger btn-sm text-light' onClick={()=>cancelorder(data._id)}>cancel Order</button>
+                        <button className='btn bg-danger btn-sm text-light mt-3' onClick={()=>cancelorder(data._id)}>cancel Order</button>
 
                       </div>
                 ))

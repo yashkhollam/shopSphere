@@ -1,59 +1,128 @@
-.aboutuscont{
-    /* background-color:pink; */
-  
-    /* margin-top:60px; */
-    height:100vh;
-     background-color: #f4f7fb;
+.aboutuscontainer{
+  margin-top:60px;
+   background-color: #f4f7fb;
+    /* background-color:blue; */
     display: flex;
     flex-direction: column;
-   align-items: center;
-   justify-content: center;
- 
-    
+    align-items: center;
+    height: fit-content;
+  
 }
 
 .herosec{
-   
-    background-color:skyblue;
-    height:max-content;
-  
-   max-width:800px;
-    display: flex; 
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+   /* background-color: pink; */
+   max-width:900px;
+   text-align: center;
+   padding:5px;
     
     
 }
 
-.smallheading{
-    border:1px solid rgb(78, 78, 237);
-    color: rgb(78, 78, 237);
-    width:max-content;
-    height: max-content;
-    font-weight: 400;
-    padding: 5px 10px;
-    border-radius:20px;
-    font-size:17px;
+.smallheading,.whoareweheadinhg,.ourmissionhead{
+  /* background-color: red; */
+  width:max-content;
+  display: block;
+  margin:10px auto;
+  font-size:30px;
+  border-top:2px solid skyblue;
+  border-bottom:2px solid skyblue;
+ 
+  padding:10px 10px;
+ 
+   font-family: "Lobster Two", sans-serif;
+
     
 }
 
 .mainheading{
-   font-size:3rem;
-   font-weight: bold;
-   text-align: center;
-   margin-top:20px;
-   
+    margin-top:30px;
+    font-size:3rem;
+    font-weight: bold;
 }
 
 .aboutdesc{
-    margin-top:10px;
-    font-size:17px;
-    color: rgba(0, 0, 0, 0.595);
+  font-size:1.1rem;
+  margin-top:15px;
+  color: rgba(0, 0, 0, 0.563);
+
+}
+
+.whoaresec{
+ width:100%;
+   padding:0 5px;
+   /* background-color:black; */
+   border-top: 2px solid grey;
+   border-bottom: 2px solid grey;
+   
+   margin-top:60px;
+   
+}
+
+
+.aboutrow{
+ /* background-color: red; */
+ align-items: center;
+
+}
+/* 
+.whoareweheadinhg,.ourmissionhead{
+   font-family: "Lobster Two", sans-serif;
+   font-size:3rem;
+    text-align:center;
+    margin-top:20px;
+     border-top:2px solid skyblue;
+  border-bottom:2px solid skyblue;
+  width:fit-content;
+} */
+
+.whoarsecimg{
+  height:400px;
+  width:100%;
+  object-fit:cover;
+  border-radius:15px;
+}
+
+.whoarewedesc{
+  font-size: 3rem;
+  font-weight: bold;
+  text-align: end;
+
+  
 }
 
 .missionsec{
-    background-color:palevioletred;
-    margin-top:50px;
-    
+ 
+  width:100%;
+  padding:0 10px;
+}
+
+.missioncardwrappper{
+  display: flex;
+  flex-wrap: wrap;
+  gap:10px;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.missiondatacard{
+
+  margin-top: 4px;
+  max-width:340px;
+  text-align: center;
+  /* box-shadow: rgba(40, 116, 240, 0.08) 0px 16px 30px; */
+  box-shadow:0 5px 5px rgba(0, 0, 0, 0.395);
+  background-color:white;
+  border-radius:10px;
+}
+
+.missiondatacard:hover{
+  transform: translateY(-5px);
+  transition:1s ease;
+}
+
+
+
+
+.missionicon{
+  font-size:60px;
 }

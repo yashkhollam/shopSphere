@@ -134,10 +134,8 @@ const handlelogout=async()=>{
         */}
           </ul>
 
-           <button className="btn bg-danger text-light  w-100"
-                   style={{
-                           marginTop:"100%"
-                   }}
+           <button className="btn bg-danger text-light  w-100 mt-3"
+                   
                    onClick={handlelogout}
                    disabled={loading.logoutloading}>
                 {loading.logoutloading? "Logging out":"Logout"}
@@ -202,10 +200,8 @@ const handlelogout=async()=>{
         */}
           </ul>
         
-         <button className="btn bg-danger text-light  w-100"
-                   style={{
-                           marginTop:"100%"
-                   }}
+         <button className="btn bg-danger text-light  w-100 mt-3"
+                   
                    onClick={handlelogout}
                    disabled={loading.logoutloading}>
                 {loading.logoutloading? "Logging out":"Logout"}

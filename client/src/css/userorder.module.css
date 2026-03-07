@@ -9,7 +9,7 @@
        /* height:100vh; */
        padding-top:10px;
       
-      height:100vh;
+      height:fit-content
       
 
 }
@@ -38,10 +38,14 @@
   /* border:1px solid black; */
   margin-top:10px;
   padding:5px;
-  animation:orderdropdown 0.4s  ease-in;
-   box-shadow: rgba(40, 116, 240, 0.08) 0px 36px 50px;
+  /* animation:orderdropdown 0.4s  ease-in; */
+    /* box-shadow: rgba(40, 116, 240, 0.08) 0px -36px 50px; */
+     /* rgba(40, 116, 240, 0.08) 0px 36px 50px; */
   /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+  /* border:2px solid red; */
 
+  box-shadow:0 1px 10px rgba(0, 0, 0, 0.353);
+  border-radius:10px;
  }
 /* 
 @keyframes orderdropdown{

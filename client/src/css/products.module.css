@@ -85,7 +85,7 @@ margin:10px 0 0 10px;
 .prodimg{
     height:250px;
     width:80%;
-    object-fit:cover;
+    object-fit:contain;
     display:block;
     margin:auto;
    margin-top:20px;

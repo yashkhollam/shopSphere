@@ -1,7 +1,11 @@
 .footercont{
-  background-color:white;
+  /* background-color:white; */
+  background: linear-gradient(to top, white, skyblue);
+ 
   margin-top: 50px;
   padding:50px 5px;
+  height:max-content;
+
 }
 
 .footersec{
@@ -11,9 +15,11 @@
 }
 
 .shopheading{
-    font-size:30px;
+    font-size:26px;
     font-weight: bold;
     color: black;
+    /* background-color: red; */
+    white-space: nowrap;
 }
 
 .shopsubheading{

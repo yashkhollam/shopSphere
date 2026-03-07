@@ -39,7 +39,7 @@ const {Allfilterddata,trendingproducts,mostsold}=useSelector((state)=>state.prod
   const productcategory=[
     {name:"mobile",imgurl:"/product/iphone17pro.png",value:"MobilesTablets"},
     {name:"laptop",imgurl:"/product/mac air 13 laptop.png" ,value:"LaptopsComputers"},
-    {name:"Audio devices",imgurl:"/product/camers.webp",value:"AudioDevices"},
+    {name:"Audio devices",imgurl:"/product/audio.webp",value:"AudioDevices"},
     {name:"smart Gadgets",imgurl:"/product/watch.png",value:"SmartGadgets"},
     {name:"Gaming",imgurl:"/product/games.png",value:"Gamings"},
   ]
@@ -191,7 +191,7 @@ const brands=["Apple","Samsung","Sony","OnePlus","Dell"]
 
 
 
-  <div className={`mt-5 ${styles.newproductsection}`}>
+  <div className={`mt-5 ps-2 pe-2 ${styles.newproductsection}`}>
      <h1 className={styles.newarrivalheading}>New Arrivals</h1>
       <p className="p-0 m-0 text-muted ">Fresh drops from brands we love. Updated every week.</p>
 
@@ -327,7 +327,7 @@ const brands=["Apple","Samsung","Sony","OnePlus","Dell"]
 
 
 
-  <div className={styles.choosesection}>
+  <div className={`ps-2 pe-2 ${styles.choosesection}`}>
        <h1 className={`text-start mt-5 ${styles.chooseusheading}`}> Why Choose Us ?</h1>
 
 
@@ -365,7 +365,7 @@ const brands=["Apple","Samsung","Sony","OnePlus","Dell"]
 
 
 
-  <div className={styles.brandfiltersection}>
+  <div className={`  ps-2 pe-2${styles.brandfiltersection}`}>
         <h1 className={`text-center mt-5 ${styles.shopbrandheading}`}> Shop By Brands</h1>
       
       

@@ -18,7 +18,18 @@ const scrollTop=()=>{
 
      <div className={`col-12 col-md-6 ${style.connectussec}`}>
     <h1 className={style.shopheading}>SHOPSPHERE ELECTRONICS</h1>
-     <p className={style.shopsubheading}>ShopSphere is your destination for modern gadgets and smart electronics.</p>
+     <p className={style.shopsubheading}>ShopSphere is your destination for modern gadgets and smart electronics.Curating cutting-edge gadgets, smart home essentials, and premium accessories to help you live smarter every day.</p>
+
+     <div className='d-flex gap-5 fs-4 mt-5 mb-5'>
+      
+       <i className="fa-brands fa-solid fa-github text-light rounded-circle bg-dark p-2"></i>
+      
+       <i className="fa-brands fa-solid fa-linkedin text-light rounded-circle bg-dark p-2"></i>
+       
+        <i className="fa-brands fa-solid fa-instagram text-light rounded-circle bg-dark p-2"></i>
+       
+        <i className="fa-solid fa-envelope text-light rounded-circle bg-dark p-2"></i>
+     </div>
   </div>
  
  
@@ -99,6 +110,13 @@ const scrollTop=()=>{
       </li>
   </ul>
  </div>
+   <hr/>
+   <div>
+      <p className="text-center mt-3">
+  © {new Date().getFullYear()} ShopSphere • All rights reserved • 
+  <i className="fa-solid fa-laptop-code"></i>Designed & Developed by <strong>Yash Khollam</strong>
+</p>
+   </div>
   </div>
   
 

@@ -12,7 +12,7 @@ function Orderbyid() {
 const dispatch=useDispatch()
 
 const {id}=useParams()
-console.log(id)
+// console.log(id)
 
 useEffect(()=>{
     dispatch(getorderbyidthunk(id))
@@ -24,11 +24,16 @@ const {order,loading}=useSelector((state)=>state.adminorderoperation)
 
 
  
-const orderdata=new Date (order?.createdAt).toLocaleDateString("en-GB",{
+const orderdata=new Date (order?.createdAt).toLocaleTimeString("en-GB",{
     day:"2-digit",
     month:"short",
     year:"numeric"
 })
+
+
+
+
+
 
   return (
     <>

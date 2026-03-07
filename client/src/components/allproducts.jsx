@@ -96,9 +96,9 @@ const navigateproduct=(productId)=>{
                              className={` ${styles.prodimg}`} />
                         
                         <div className="card-body ps-3 pe-3 pb-2">
-                            <p className='card-title fs-4 p-0 m-0   text-dark '>{data.name}</p>
+                            <p className='fw-bold'>{data.name}</p>
                        
-                        <div className={`fs-5 ${styles.price_cont}`}>
+                        <div className={`${styles.price_cont}`}>
                          <p className='card-text text-muted text-decoration-line-through'>{`₹${data.price}`}</p>
                          <p className='card-text fw-bold text-primary'>{`₹ ${data.discountprice}`}</p>
                         </div>

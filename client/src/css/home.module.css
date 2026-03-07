@@ -1,12 +1,12 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Alan+Sans:wght@300..900&family=Bungee+Spice&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playwrite+HU:wght@100..400&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&family=TASA+Explorer:wght@400..800&family=UoqMunThenKhung&display=swap');
+
 
 
 .homecontainer{
     margin-top: 60px;
     
       background-color: #f4f7fb;
-    padding: 0 10px;
+    /* padding: 0 10px; */
 }
 
 .movingtext{
@@ -102,7 +102,7 @@
 .shopbrandheading{
   font-size:45px;
   font-weight:bold;
-  padding:0;
+  
   margin:0;
   color:black;
   /* animation: heading 2s 1 ease-in ; */
@@ -160,6 +160,10 @@
   border-radius: 25px;
   transition:transform 1s ease-out
 }
+
+
+
+
 
 .trendingprodcont{
   /* display:grid;
@@ -314,10 +318,19 @@
                 justify-content:space-evenly;
                 /* margin-top:20px; */
                 padding-bottom:50px;
+                
               }
 
+              
+
+
+
               .brandcont{
-                background:linear-gradient(rgb(80, 139, 248),white);
+                /* background:linear-gradient(#c9f0eb,white); */
+                /* background-color: #c9f0eb; */
+                box-shadow: rgba(40, 116, 240, 0.08) 0px 36px 50px;
+                background-color: rgb(35, 34, 34);
+                color: aliceblue;
                 margin-top:30px;
                 height:110px;
                 width:110px;
