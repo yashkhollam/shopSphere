@@ -16,6 +16,8 @@ export const productfilter=async(req,res)=>{
     const query={}
     const noofpages=Number(page);
     const nooflimits=Number(limit)
+
+    // console.log("brands:",brand)
     
     // if(query.search===query.category){
 
@@ -43,6 +45,8 @@ if(isTrending!==undefined){
 if(brand && brand!=="all"){
     query.brand=brand.toLowerCase()
 }
+
+console.log("brand:",query.brand)
 const skip=(noofpages-1)*nooflimits
 
 

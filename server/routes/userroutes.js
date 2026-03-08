@@ -10,6 +10,7 @@ import { userAuthMiddleware } from '../Middleware/userAuthMiddleware.js';
 import { userProfile } from '../controllers/userprofile.js';
 import { forgotpassword } from '../controllers/forgotpassword.js';
 import { resetpassword } from '../controllers/verifyforgotpassotp.js';
+import { usersupport } from '../controllers/usersupport.js';
 
 export const userRouter=Router();
 
@@ -23,3 +24,5 @@ userRouter.post('/forgotpassword',forgotpassword)
 userRouter.post('/resetpassword',resetpassword)
 
 userRouter.get('/getMe',userAuthMiddleware,userProfile)
+
+userRouter.post('/usersupport',userAuthMiddleware,usersupport)

@@ -44,7 +44,19 @@ export const uploadproduct=async(req,res)=>{
         const imgurl=result.secure_url;
         const publicId=result.public_id
 
-           await ProductModel.create({name,price,discountprice,discountedpercentage,description,category,subcategory,brand,stocks,imgurl,publicId,createdBy:adminId})
+           await ProductModel.create({
+            name,
+            price,
+            discountprice,
+            discountedpercentage,
+            description,
+            category,
+            subcategory,
+            brand:brand.toLowerCase(),
+            stocks,
+            imgurl,
+            publicId,
+            createdBy:adminId})
 
        
 

@@ -119,7 +119,7 @@ const handleprodstatus=(e,id)=>{
                     <td style={{verticalAlign:"middle"}}>
                      
                       <button className='btn bg-warning'
-                      onClick={()=>navigate(`/updateproduct/${data?._id}`)}
+                      onClick={()=>navigate(`/adminpanel/updateproduct/${data?._id}`)}
                       >edit</button>
                     
                     

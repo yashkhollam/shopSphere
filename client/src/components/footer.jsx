@@ -102,7 +102,8 @@ const scrollTop=()=>{
       </NavLink>
       </li>
     <li>
-      <NavLink  className='text-muted text-decoration-none'
+      <NavLink to='/contactus'
+       className='text-muted text-decoration-none'
       
        onClick={scrollTop} >
          Contact Us

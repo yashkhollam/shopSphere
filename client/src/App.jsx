@@ -33,6 +33,7 @@ import Aboutus from "./pages/aboutus.jsx";
 import Revieworder from "./pages/revieworder.jsx";
 import Userprotectedroutes from "./components/protectedroutes/userprotectedroutes.jsx";
 import Adminprotectedroutes from "./components/protectedroutes/adminprotectedroutes.jsx";
+import ContactUs from "./pages/contactus.jsx";
 
 
 function App() {
@@ -83,6 +84,7 @@ function App() {
             {path: "/addaddress",element: <AddAddress />},
            
             {path:"/revieworder",element:<Revieworder/>},
+            {path:'/contactus',element:<ContactUs/>},
            
                {path: "/profile",element: <Profile />,
                  children: [

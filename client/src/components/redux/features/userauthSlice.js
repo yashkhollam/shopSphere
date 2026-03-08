@@ -110,6 +110,19 @@ export const resetpassowrdthunk=createAsyncThunk('userAuth/resetpassowrdthunk',a
 })
 
 
+export const usercontactusthunk=createAsyncThunk('contactusthunk',async(formdata,{rejectWithValue})=>{
+   try{
+      const res=await axios.post(`${import.meta.env.VITE_API_URL}/userauth/usersupport`,formdata,{withCredentials:true})
+
+      return res.data
+   }
+
+   catch(err){
+    return rejectWithValue(err?.response?.data?.message)
+   }
+})
+
+
  const userAuthSlice=createSlice({
     name:"userAuth",
     initialState:{
@@ -124,7 +137,8 @@ export const resetpassowrdthunk=createAsyncThunk('userAuth/resetpassowrdthunk',a
            logoutloading:false,
            getmeloading:false,
            forgotpasswordlaoding:false,
-           resetpasswordloading:false
+           resetpasswordloading:false,
+           contactusloading:false
         }
     },
   extraReducers:(builder)=>{
@@ -237,6 +251,20 @@ export const resetpassowrdthunk=createAsyncThunk('userAuth/resetpassowrdthunk',a
        })
        .addCase(resetpassowrdthunk.rejected,(state,action)=>{
          state.loading.resetpasswordloading=false;
+         state.error=action.payload
+       })
+
+
+       .addCase(usercontactusthunk.pending,(state)=>{
+           state.loading.contactusloading=true;
+           state.error=null
+       })
+       .addCase(usercontactusthunk.fulfilled,(state)=>{
+        state.loading.contactusloading=false;
+        state.error=null
+       })
+       .addCase(usercontactusthunk.rejected,(state,action)=>{
+         state.loading.contactusloading=false;
          state.error=action.payload
        })
 

@@ -66,7 +66,7 @@ product.discountprice = Math.round(
 product.description = description;
 product.category = category;
 product.subcategory = subcategory;
-product.brand = brand;
+product.brand = brand.toLowerCase();
 product.stocks = stocksNumber;
 
 await product.save();
