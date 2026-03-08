@@ -1,0 +1,114 @@
+
+.contactuscont{
+ margin-top:60px;
+   /* background-color: pink; */
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  flex-direction: column;
+  background-color: #f4f7fb;
+  height:fit-content
+
+}
+
+.herosec{
+    height:fit-content;;
+   
+    max-width:1000px;
+    width:100%;
+    /* background-color:pink; */
+    text-align: center;
+    margin-top: 30px;
+    padding: 0 10px;
+}
+
+.herosec h5{
+     border-top:2px solid rgb(76, 187, 239);
+      border-bottom:2px solid rgb(76, 187, 239);
+   
+     width:fit-content;
+     display: block;
+     margin:0 auto;
+     font-size:15px;
+     padding:10px 10px;
+    
+}
+
+.herosec h1{
+    font-size:50px;
+    font-weight: bold;
+}
+
+.herosec p{
+    color: rgba(0, 0, 0, 0.582);
+}
+
+
+.faqsec{
+    /* background-color:palegreen; */
+    height:fit-content;;
+   
+    max-width:1000px;
+    width:100%;
+    margin-top:60px;
+    padding: 0 20px;
+
+}
+
+.faqcard{
+    background-color:white;
+    margin-top:0;
+    box-shadow: rgba(40, 116, 240, 0.08) 0px 36px 50px;
+    /* height:50px; */
+    padding:0 10px;
+    border-radius:18px;
+    /* border-top: 2px solid black;
+    border-bottom:2px solid black; */
+    
+
+}
+
+
+.quecont{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height:50px;
+}
+
+.contactsec{
+     display:flex;
+     justify-content:center;
+     align-items:center;
+     margin-top:130px;
+}
+
+
+
+
+
+  .mailicon{
+    color:#ef1616;
+    font-size:18px;
+    background-color:#ef98a4a5;
+    padding:14px;
+    border-radius:50%;
+   }
+
+   .phoneicon{
+    color:#3c8341;
+    font-size:18px;
+    background-color:#98f299a5;
+    padding:14px;
+    border-radius:50%;
+   }
+
+   .locationicon{
+    color:#1650ef;
+    font-size:18px;
+    background-color:#8ecfefa5;
+    padding:14px 16px;
+    border-radius:50%;
+
+   }
+

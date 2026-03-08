@@ -32,3 +32,5 @@ export {Bars3Icon} from '@heroicons/react/24/solid'
 export {ArrowRightIcon} from '@heroicons/react/24/solid';
 
 export {EyeIcon,EyeSlashIcon} from '@heroicons/react/24/solid';
+
+export {ChevronUpIcon,ChevronDownIcon} from '@heroicons/react/24/solid';

@@ -46,7 +46,7 @@ if(brand && brand!=="all"){
     query.brand=brand.toLowerCase()
 }
 
-console.log("brand:",query.brand)
+
 const skip=(noofpages-1)*nooflimits
 
 

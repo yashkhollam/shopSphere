@@ -59,12 +59,7 @@ const scrollTop=()=>{
       About
     </NavLink>
     </li>
-  <li>
-    <NavLink  className='text-muted text-decoration-none'
-     onClick={scrollTop}>
-        Support
-    </NavLink>
-    </li>
+  
   <li>
     <NavLink to='/cart'  className='text-muted  text-decoration-none'
      onClick={scrollTop}>
@@ -96,16 +91,21 @@ const scrollTop=()=>{
 
 
     <li>
-      <NavLink  className='text-muted text-decoration-none'
-       onClick={scrollTop}>
+      <NavLink to='/contactus#faqsec' 
+      className='text-muted text-decoration-none'
+     
+      >
           FAQ
       </NavLink>
       </li>
+    
+    
+    
     <li>
-      <NavLink to='/contactus'
+      <NavLink to='/contactus#contactussec'
        className='text-muted text-decoration-none'
       
-       onClick={scrollTop} >
+        >
          Contact Us
       </NavLink>
       </li>
