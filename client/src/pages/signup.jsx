@@ -18,7 +18,7 @@ const navigate=useNavigate()
 
 const handleform=(e)=>{
    setFormdata({...formdata,[e.target.name]:e.target.value})
-   console.log({...formdata,[e.target.name]:e.target.value})
+  //  console.log({...formdata,[e.target.name]:e.target.value})
 }
 
 

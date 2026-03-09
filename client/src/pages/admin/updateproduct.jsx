@@ -78,24 +78,17 @@ function Updateproduct() {
       setImgpreview(imgurl);
 
       setFormdata({ ...formdata, [name]: files[0] });
-      console.log({ ...formdata, [name]: files[0] });
+      // console.log({ ...formdata, [name]: files[0] });
     } else {
       setFormdata({ ...formdata, [name]: value });
-      console.log({ ...formdata, [name]: value });
+      // console.log({ ...formdata, [name]: value });
     }
 
     if (name === "category") setseceltedcategory(value);
     // setFormdata({...formdata,subcategory:""})
   };
 
-  // const handlecategory=(e)=>{
-
-  // }
-
-
-  // for (let key in formdata) {
-  //   form.append(key, formdata[key]);
-  // }  //optional
+  
 
   const submitform = async (e) => {
     
@@ -150,7 +143,7 @@ function Updateproduct() {
       <div className={`container-fluid  ${styles.form_wrapper}`}
        style={{marginTop:"70px"}}>
         <form action="" className={styles.form_container} onSubmit={submitform}>
-          <h1 className="text-center mt-4 ">Add Products</h1>
+          <h1 className="text-center mt-4 ">Update Products</h1>
           <div className="input-cont mt-3">
             <label className="form-label ">name :</label>
             <input

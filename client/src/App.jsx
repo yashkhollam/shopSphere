@@ -34,10 +34,12 @@ import Revieworder from "./pages/revieworder.jsx";
 import Userprotectedroutes from "./components/protectedroutes/userprotectedroutes.jsx";
 import Adminprotectedroutes from "./components/protectedroutes/adminprotectedroutes.jsx";
 import ContactUs from "./pages/contactus.jsx";
+import Terms from "./pages/terms.jsx";
+import PrivacyPolicy from "./pages/privacypolicy.jsx";
 
 
 function App() {
-  // const {user,isAuthenticated,getmeloading}=useSelector((state)=>state.userAuth)
+  
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -73,7 +75,12 @@ function App() {
         },{
           path:'/aboutus',
           element:<Aboutus/>
-
+        },
+        {
+          path:"/terms" ,element:<Terms/>
+        },
+        {
+           path:"/privacypolicy",element:<PrivacyPolicy/>
         },
 
           {

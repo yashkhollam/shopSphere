@@ -75,7 +75,8 @@ const scrollTop=()=>{
   <ul className='fs-5 text-muted'>
      <h5 className={style.custcarehead}>Customer Care</h5>
     <li>
-      <NavLink  className='text-muted text-decoration-none'
+      <NavLink  to='/terms'
+      className='text-muted text-decoration-none'
        onClick={scrollTop}>
         Terms & Conditions
         </NavLink></li>
@@ -83,7 +84,9 @@ const scrollTop=()=>{
 
     <li>
       
-      <NavLink  className='text-muted  text-decoration-none'
+          
+      <NavLink to="/privacypolicy"
+      className='text-muted  text-decoration-none'
        onClick={scrollTop}>
             Privacy Policy
       </NavLink>

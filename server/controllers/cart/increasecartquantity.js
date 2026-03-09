@@ -10,7 +10,7 @@ export const increasecartquantity=async(req,res)=>{
           const userId=req.user.id
       //   const {userId}=req.body
         const {productId}=req.params
-        console.log("ProductId from params:", productId)
+      //   console.log("ProductId from params:", productId)
  
         const cart=await cartModel.findOne({userId}).populate('products.productId')
 
@@ -79,7 +79,7 @@ export const increasecartquantity=async(req,res)=>{
 
 
     catch(err){
-        console.log(err)
+      //   console.log(err)
         return res.status(500).json({
             success:false,
             message:err.message,

@@ -34,3 +34,19 @@ export {ArrowRightIcon} from '@heroicons/react/24/solid';
 export {EyeIcon,EyeSlashIcon} from '@heroicons/react/24/solid';
 
 export {ChevronUpIcon,ChevronDownIcon} from '@heroicons/react/24/solid';
+export {
+  ShieldCheckIcon,
+  InformationCircleIcon,
+  CreditCardIcon,
+  LockClosedIcon,
+  ArrowPathIcon,
+  UserIcon,
+ClipboardDocumentListIcon,
+
+ServerIcon,
+
+
+} from "@heroicons/react/24/solid";
+
+
+// export {} from  '@heroicons/react/24/solid';

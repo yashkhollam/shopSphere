@@ -3,6 +3,7 @@ import { useSelector,useDispatch } from 'react-redux'
 import { cancelOrderthunk, getallorderthunk } from '../components/redux/features/orderSlice';
 import style from '../css/userorder.module.css';
 import {toast} from 'react-hot-toast';
+import Swal from "sweetalert2";
 
 
 const UserAllOrders=()=>{
@@ -41,17 +42,50 @@ const getStatusColor=(status)=>{
   }
 }
 
+// const cancelorder=async(id)=>{
+//   try{
+//       const res=await dispatch(cancelOrderthunk(id)).unwrap()
+
+//       toast.success(res.message)
+//   }
+
+//   catch(err){
+//      toast.error(err)
+//   }
+// }
+
+
+
 const cancelorder=async(id)=>{
-  try{
-      const res=await dispatch(cancelOrderthunk(id)).unwrap()
+ try{
 
-      toast.success(res.message)
-  }
+ 
+ const result=await Swal.fire({
+    title:"are you sure ?",
+    text:`You want to cancel order ?` ,
+    icon:"warning",
+    showCancelButton:true,
+    confirmButtonText:"Yes, Cancel it"
+  }) 
+  if(result.isConfirmed){
+    const res=await dispatch(cancelOrderthunk(id)).unwrap()
 
-  catch(err){
-     toast.error(err)
-  }
+    toast.success(res.message)
+    }
+
+  
+  
+ 
 }
+
+catch(err){
+  // console.log("from com",err)
+  toast.error(err)
+}
+
+}
+
+
 
   return (
     <div className={`container-fluid ${style.userordercontainer} `}
@@ -124,8 +158,12 @@ const cancelorder=async(id)=>{
                             ))):(<h1>no items</h1>)
                         }
 
+                      {
+                        data.orderStatus!=="delivered" && data.orderStatus!=="cancelled" &&
 
-                        <button className='btn bg-danger btn-sm text-light mt-3' onClick={()=>cancelorder(data._id)}>cancel Order</button>
+                         <button className='btn bg-danger btn-sm text-light mt-3' onClick={()=>cancelorder(data._id)}>cancel Order</button>
+                      }
+                       
 
                       </div>
                 ))

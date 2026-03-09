@@ -126,7 +126,7 @@ if(orderStatus==="cancelled"){
 
 
     catch(err){
-        console.log(err.message)
+        // console.log(err.message)
         return res.status(500).json({
             success:false,
             message:err.message

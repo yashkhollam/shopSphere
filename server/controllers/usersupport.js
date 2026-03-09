@@ -5,7 +5,7 @@ export const usersupport = async (req, res) => {
 
     const { name, useremail, subject, message } = req.body;
 
-    console.log("reqbody:",req.body)
+    // console.log("reqbody:",req.body)
     await axios.post(
       "https://api.brevo.com/v3/smtp/email",
       {

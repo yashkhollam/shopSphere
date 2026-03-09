@@ -40,7 +40,7 @@ export const getorderbyidthunk=createAsyncThunk('getorderbyid',async(id,{rejectW
 export const updateorderstatusthunk=createAsyncThunk('updateorderstatus',async({id,orderStatus},{rejectWithValue})=>{
     try{
    
-         console.log("from thunk",id,orderStatus)
+        //  console.log("from thunk",id,orderStatus)
 
           const res=await axios.patch(`${import.meta.env.VITE_API_URL}/order/updateorderstatus/${id}`,{orderStatus},{withCredentials:true})
 

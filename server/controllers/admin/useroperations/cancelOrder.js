@@ -9,7 +9,7 @@ export const  cancelOrder=async(req,res)=>{
         const orderId=req.params.id
 
     //  console.log("orderid",orderId)
-    console.log("req.user",req.user)
+    // console.log("req.user",req.user)
         const userOrder=await orderModel.findById(orderId)
         if(!userOrder){
         return res.status(404).json({
@@ -25,7 +25,7 @@ export const  cancelOrder=async(req,res)=>{
         }) 
         }
 
-        console.log("userid",userOrder)
+        // console.log("userid",userOrder)
 
         if(req.user.id!==userOrder.userId.toString()){
             return res.status(403).json({
@@ -71,7 +71,7 @@ export const  cancelOrder=async(req,res)=>{
     }
 
     catch(err){
-        console.log(err.message)
+        // console.log(err.message)
         return res.status(500).json({
             success:false,
             message:err.message

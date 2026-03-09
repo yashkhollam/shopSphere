@@ -41,7 +41,7 @@ export const getadminprodbyIdthunk=createAsyncThunk('/product/getprodbyId',async
 
     try{
          const res=await axios.get(`${import.meta.env.VITE_API_URL}/product/${productId}`)
-         console.log("from thun=",productId)
+        //  console.log("from thun=",productId)
          
     return res.data
     }
@@ -89,7 +89,7 @@ export const deleteprodthunk=createAsyncThunk('/product/deleteprodthunk',async(i
 
     try{
          const res=await axios.delete(`${import.meta.env.VITE_API_URL}/admin/product/deleteproduct/${id}`,{withCredentials:true})
-         console.log("from thunk=",res.data.data)
+        //  console.log("from thunk=",res.data.data)
     return res.data
     }
    

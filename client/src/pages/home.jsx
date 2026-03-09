@@ -74,7 +74,7 @@ const brands=["Apple","Samsung","Sony","OnePlus","Dell"]
   const handlecategory=async(category)=>{
      dispatch(setCategory(category))
      dispatch(setBrand(""))
-     console.log(category)
+    //  console.log(category)
      navigate('/allproducts')
   }
 

@@ -9,7 +9,7 @@ export const getAllorders=async(req,res)=>{
                                    
 
 
-      console.log(allOrders[0].userId)                             
+    //   console.log(allOrders[0].userId)                             
 
    if(allOrders.length<=0){
     return res.status(200).json({
@@ -48,7 +48,7 @@ const formatedorderdetail=allOrders.map((data)=>{
 
     }
     catch(err){
-         console.log(err.message)
+        //  console.log(err.message)
         return res.status(500).json({
             success:false,
             message:err.message

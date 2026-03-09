@@ -20,7 +20,7 @@ import axios from "axios";
 export const getAllfilterddata=createAsyncThunk(`/product/getfilterall`,async({search,category,brand,limit,page},{rejectWithValue})=>{
 
     try{
-        console.log("from thunk=",brand)
+        // console.log("from thunk=",brand)
          const res=await axios.get(`${import.meta.env.VITE_API_URL}/product/getAllfilterddata`,
         {params:{
          search,
@@ -47,7 +47,7 @@ export const getTrendingproduct=createAsyncThunk('gettrendingproduct',async({lim
             params:{limit,isTrending},withCredentials
             :true
          })
-        console.log("thunk run")
+        // console.log("thunk run")
          return res.data
     }
 

@@ -51,24 +51,27 @@ const faqs = [
 ];
 
 const dispatch=useDispatch()
- const {user,isAuthenticated}=useSelector((state)=>state.userAuth)
+ const {user,loading}=useSelector((state)=>state.userAuth)
+ 
 
-const [formdata,setFormdata]=useState({name:"", useremail:"", subject:"", message:""})
+const [formdata,setFormdata]=useState({name:user?.username, useremail:user?.email, subject:"", message:""})
 
 
 
-const handleAccordoin=(index)=>{
+const handleAccordoin=(index,e)=>{
 
     console.log("index",index)
 
     setOpenIndex(openIndex===index ? null : index)
+   
+
 }
 
 
 
 const handelform=(e)=>{
     setFormdata({...formdata,[e.target.name]:e.target.value})
-    console.log({...formdata,[e.target.name]:e.target.value})
+    // console.log({...formdata,[e.target.name]:e.target.value})
 } 
 
 
@@ -78,6 +81,7 @@ const submitform=async(e)=>{
       const res=await dispatch(usercontactusthunk(formdata)).unwrap()
 
       toast.success(res.message)
+      setFormdata({subject:"", message:""})
    }
    catch(err){
      toast.error(err)
@@ -113,7 +117,7 @@ const submitform=async(e)=>{
                                  <p className='p-0 m-0 fw-bold'>{data.question}</p>
                                 
                                  <p className='p-0 m-0'
-                                 onClick={()=>handleAccordoin(index)}>{openIndex===index ?
+                                 onClick={(e)=>handleAccordoin(index,e)}>{openIndex===index ?
                                  
                              
                                   <ChevronUpIcon style={{height:"20px",cursor:"pointer"}}/>
@@ -235,6 +239,7 @@ const submitform=async(e)=>{
                        value={formdata.subject}
                        name='subject'
                        onChange={handelform}
+                        disabled={loading.contactusloading}
                        style={{height:"50px",borderRadius:"17px"}}/>
 
 
@@ -245,10 +250,15 @@ const submitform=async(e)=>{
                        value={formdata.message}
                        name='message'
                        onChange={handelform}
+                        disabled={loading.contactusloading}
                        style={{height:"100px",borderRadius:"17px",paddingBottom:"55px"}}/>
 
-                <button className='btn bg-primary text-light d-block mt-5 mx-auto w-100'
-                         type="submit">Send Mail</button>
+                <button 
+                       className='btn bg-primary text-light d-block mt-5 mx-auto w-100'
+                       type="submit"
+                       disabled={loading.contactusloading}>
+                          {loading.contactusloading? "Sending mail":"Send Mail"}
+                </button>
 
               </form>
 
