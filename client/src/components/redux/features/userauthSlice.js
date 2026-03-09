@@ -112,7 +112,11 @@ export const resetpassowrdthunk=createAsyncThunk('userAuth/resetpassowrdthunk',a
 
 export const usercontactusthunk=createAsyncThunk('contactusthunk',async(formdata,{rejectWithValue})=>{
    try{
+
+      console.log("from thunk=",formdata) 
+
       const res=await axios.post(`${import.meta.env.VITE_API_URL}/userauth/usersupport`,formdata,{withCredentials:true})
+
 
       return res.data
    }

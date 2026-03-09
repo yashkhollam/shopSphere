@@ -6,8 +6,77 @@
     margin-top: 60px;
     
       background-color: #f4f7fb;
-    /* padding: 0 10px; */
+    padding: 0 10px;
 }
+
+
+
+.herosection{
+  box-shadow:0 5px 5px rgba(0, 0, 0, 0.377);
+    
+  background-color:#417ae6;
+  /* border:2px solid black; */
+ 
+ 
+  /* padding:0 30px; */
+  border-radius:35px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+  
+}
+
+
+.herosecrow{
+  /* background-color:pink; */
+  min-height:550px;
+  height:auto;
+  display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+
+.herosection h5{
+    color: white;
+    background-color: #6b9bf4;
+    font-size:16px;
+    /* border:1px solid white; */
+    width:max-content;
+    padding: 10px 10px;
+    border-radius:30px;
+}
+
+.herosection h1{
+  color: white;
+  font-size:3rem;
+   font-weight:bold;
+   text-align:start;
+  
+   margin-top:23px;
+}
+
+.herosection p{
+   color: white;
+   margin-top:16px;
+   font-size:17px;
+  
+}
+
+
+.carouselsec{
+  
+  background-color:white;
+   height:550px;
+   border-radius:30px;
+}
+
+.carouselcontainer{
+
+  height:550px;
+  /* border:2px solid rgb(9, 9, 9); */
+}
+
 
 .movingtext{
  
@@ -81,10 +150,10 @@
 
 .productcategoryimg{
    
-   height:auto;
+   height:100%;
    width:90%;
    
-    object-fit:cover;
+    object-fit:contain;
     /* background-color:yellow; */
 }
 
@@ -139,7 +208,7 @@
 .newarrivalcategory{
   background-color:rgb(206, 232, 206);
   width: max-content;
-  padding: 3px 5px;
+  /* padding: 3px 5px; */
   margin-top:5px;
   position: absolute;
   font-size:10px;

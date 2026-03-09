@@ -1,10 +1,13 @@
 .footercont{
   /* background-color:white; */
-  background: linear-gradient(to top, white, skyblue);
+  /* background: linear-gradient(to top, white, skyblue); */
+  /* background: linear-gradient(to top ,white,#417ae6); */
+  background-color:white;
  
   /* margin-top: 50px; */
   padding:50px 5px;
   height:max-content;
+  
 
 }
 
@@ -25,6 +28,7 @@
 .shopsubheading{
   font-size: 16px;
   color: rgba(0, 0, 0, 0.475);
+  /* color:white; */
 
 }
  h5{

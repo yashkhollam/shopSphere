@@ -84,9 +84,7 @@ const scrollTop=()=>{
 
     <li>
       
-          
-      <NavLink to="/privacypolicy"
-      className='text-muted  text-decoration-none'
+      <NavLink  className='text-muted  text-decoration-none'
        onClick={scrollTop}>
             Privacy Policy
       </NavLink>

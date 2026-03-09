@@ -104,59 +104,90 @@ const brands=["Apple","Samsung","Sony","OnePlus","Dell"]
     <>
     
     <div className={`${styles.homecontainer}`}>
-        
-         <div
+
+
+      <div className={`${styles.herosection}`}>
+           <div className={`row w-100 ${styles.herosecrow} `}>
+            <div className="col-12 col-lg-6 ps-4 pt-4">
+            
+               <h5>Welcome to ShopSphere</h5>
+               <h1>Discover the Latest Electronics at Unbeatable Prices .</h1>
+
+               <p>Shop smartphones, laptops, headphones, and smart gadgets from top brands. Experience secure shopping, fast delivery,and deals you won’t want to miss.</p>
+
+               <div className="d-flex gap-3 m-3">
+                <button className="btn bg-danger text-light">Shop Now</button>
+                <button className="btn btn-outline-light">Browse Products </button>
+               </div>
+
+            </div>
+           
+            <div className={`col-12 col-lg-6 ${styles.carouselsec}`}>
+                  <div
       
       id="carouselExampleSlidesOnly"
-      className={`carousel slide `}
+      className={`carousel slide ${styles.carouselcontainer}`}
     >
-      <div className="carousel-inner" style={{ maxHeight: "400px", padding: "5px",borderRadius:"25px" }}>
+      <div className="carousel-inner" style={{  padding: "5px",borderRadius:"25px" }}>
 
-        <div className="carousel-item active">
+        <div className="carousel-item active" style={{height:"550px"}}>
           <img
-            src="/bannerimg/banner1.jpeg"
+            src="/product/iphone17pro.png"
             className="d-block w-100"
             alt="slide1"
             style={{
-              objectFit: "cover",
+             
               borderRadius: "25px",
-              maxHeight: "400px"
+               objectFit:"contain",
+               height:"550px"
             }}
           />
         </div>
 
-        <div className="carousel-item">
+         <div className="carousel-item active " style={{height:"550px"}}>
           <img
-            src="/bannerimg/banner2.jpeg"
+            src="/product/audio.webp"
             className="d-block w-100"
-            alt="slide2"
+            alt="slide1"
             style={{
-              objectFit: "cover",
+             
               borderRadius: "25px",
-              maxHeight: "400px"
+               objectFit:"contain",
+               height:"550px"
             }}
           />
         </div>
 
-        <div className="carousel-item">
+         <div className="carousel-item active" style={{height:"550px"}}>
           <img
-            src="/bannerimg/banner3.jpeg"
+            src="/product/games.png"
             className="d-block w-100"
-            alt="slide3"
+            alt="slide1"
             style={{
-              objectFit: "cover",
+              
               borderRadius: "25px",
-              maxHeight: "400px"
+               objectFit:"contain",
+               height:"550px"
             }}
           />
         </div>
+
+       
 
       </div>
 
 
 
 
-    </div>
+                 </div>
+
+
+
+                
+            </div>
+           </div>
+        </div>  
+       
 
 
 <div className="overflow-hidden  py-2">
@@ -383,10 +414,10 @@ const brands=["Apple","Samsung","Sony","OnePlus","Dell"]
 
 
 
-  <Footer/>
+  
     </div>
       
-
+<Footer/>
 
 
     </>
