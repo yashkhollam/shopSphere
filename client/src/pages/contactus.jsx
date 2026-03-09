@@ -81,7 +81,10 @@ const submitform=async(e)=>{
       const res=await dispatch(usercontactusthunk(formdata)).unwrap()
 
       toast.success(res.message)
-      setFormdata({subject:"", message:""})
+      setFormdata(prev=>({
+        ...prev,
+        subject:"",
+        message:""}))
    }
    catch(err){
      toast.error(err)
