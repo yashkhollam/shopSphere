@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Carousel } from "bootstrap";
 import styles from '../css/home.module.css'
 import { useDispatch ,useSelector} from "react-redux";
-import { getAllfilterddata, getMostsoldproduct, getTrendingproduct, setBrand, setCategory } from "../components/redux/features/productSlice";
+import { getAllfilterddata, getMostsoldproduct, getTrendingproduct, setBrand, setCategory, setSearchtext } from "../components/redux/features/productSlice";
 import {useNavigate} from 'react-router-dom'
 import { addtocartthunk } from "../components/redux/features/cartSlice";
 import {toast} from 'react-hot-toast'
@@ -48,9 +48,10 @@ const scrollTo=()=>{
 
 
   const productcategory=[
-    {name:"mobile",imgurl:"/product/iphone17pro.png",value:"MobilesTablets"},
-    {name:"laptop",imgurl:"/bannerimg/macbanner.png" ,value:"LaptopsComputers"},
-    {name:"Audio devices",imgurl:"/product/audio.webp",value:"AudioDevices"},
+    {name:"mobile",imgurl:"/product/samsung.png",value:"MobilesTablets"},
+    {name:"laptop",imgurl:"/product/macbanner.png" ,value:"LaptopsComputers"},
+
+    {name:"Audio devices",imgurl:"/product/headphone.png",value:"AudioDevices"},
     {name:"smart Gadgets",imgurl:"/product/watch.png",value:"SmartGadgets"},
     {name:"Gaming",imgurl:"/product/games.png",value:"Gamings"},
   ]
@@ -85,6 +86,7 @@ const brands=["Apple","Samsung","Sony","OnePlus","Dell"]
   const handlecategory=async(category)=>{
      dispatch(setCategory(category))
      dispatch(setBrand(""))
+     dispatch(setSearchtext(""))
     //  console.log(category)
      navigate('/allproducts')
   }
@@ -154,7 +156,7 @@ const brands=["Apple","Samsung","Sony","OnePlus","Dell"]
 
         <div className={`carousel-item active ${styles.carusol}`}>
           <img
-            src="/product/iphone17pro.png"
+            src="/bannerimg/iphone17pro.png"
             draggable={"false"}
             className={styles.carusolimg}
             alt="slide1"
@@ -166,7 +168,7 @@ const brands=["Apple","Samsung","Sony","OnePlus","Dell"]
 
         <div className={`carousel-item  ${styles.carusol}`}>
           <img
-            src="/product/audio.webp"
+            src="/bannerimg/audio.webp"
              draggable={"false"}
             className={styles.carusolimg}
             alt="slide2"
@@ -178,7 +180,7 @@ const brands=["Apple","Samsung","Sony","OnePlus","Dell"]
 
         <div className={`carousel-item ${styles.carusol}`}>
           <img
-            src="/product/noise watch.webp"
+            src="/bannerimg/noise watch.webp"
              draggable={"false"}
             className={styles.carusolimg}
             alt="slide3"

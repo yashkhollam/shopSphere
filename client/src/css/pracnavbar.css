@@ -1,13 +1,15 @@
 .nav-container{
    
     height:60px;
-   background-color:bisque;
+   /* background-color:bisque; */
+   background-color:white;
    padding:0;
    display: flex;
    justify-content: center;
    z-index:9;
    position: fixed;
    top:0;
+   box-shadow:0 1px 5px rgba(0, 0, 0, 0.377);
    
    
 }
@@ -54,12 +56,15 @@
   justify-content: center;
  
   width:100%;
+ 
    
 }
 
 .search-wrapper{
     width:100%;
     max-width:550px;
+    
+   
   
   
 }
@@ -81,7 +86,9 @@
    width:100%;
    
     font-family: "Poppins", sans-serif;
- 
+ border:2px solid #417ae6 !important;
+    border-radius:30px !important;
+    
 }
 
 .profile-cont,
@@ -97,6 +104,8 @@
       height:40px;
       border-radius:10px;
       gap:6px;
+      border:2px solid #417ae6 !important;
+  
        
      
 }

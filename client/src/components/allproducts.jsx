@@ -21,18 +21,6 @@ const {Allfilterddata,search,category,brand,loading,totalPages,page,limit}=useSe
 
 
 
-   
-
-// useEffect(()=>{
-//     // console.log("component mounted")
-//     const timer=setTimeout(()=>{
-//         dispatch(getAllfilterddata({search,category}))
-      
-
-//     },2000)
-//     return ()=>clearTimeout(timer)
-// },[dispatch,search,category])
-
 
 useEffect(()=>{
     dispatch(getAllfilterddata({search,category,brand,page,limit}))
@@ -57,6 +45,15 @@ const handleaddcart=async(productId)=>{
 const navigateproduct=(productId)=>{
     navigate(`/product/${productId}`)
     // console.log("product id =",productId)
+}
+
+
+const stockstyle=(stock)=>{
+
+   if(stock>0) return "text-success"
+   
+   return "text-danger"
+   
 }
 
   return (
@@ -89,7 +86,10 @@ const navigateproduct=(productId)=>{
                          
                        
                        </div>
-                        <p className='ps-2 pe-2 mt-2 ms-2 bg-dark rounded position-absolute text-light'>stock {data.stocks}</p>
+                       
+                        <p className={`ps-2 pe-2 mt-2 ms-2 rounded border position-absolute ${stockstyle(data.stocks)}`}>{data.stocks > 0 ? "in stock" :"out of stock"}</p>
+
+
                         <img src={data.imgurl} 
                              loading='lazy'
                              alt=""

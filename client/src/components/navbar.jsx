@@ -4,7 +4,7 @@ import {MagnifyingGlassIcon,RegularProfile,SolidProfile,RegularCart,SolidCart} f
 import Profiledropdown from './profiledropdown.jsx';
 import '../css/pracnavbar.css'
 import {useDispatch,useSelector} from 'react-redux'
-import {setSearchtext} from './redux/features/productSlice.js';
+import {setCategory, setSearchtext} from './redux/features/productSlice.js';
 
 
 
@@ -32,6 +32,7 @@ const dispatch=useDispatch();
 const handlesearch=(e)=>{
   const value=e.target.value
  setSearchdata(value)
+ dispatch(setCategory(""))
  
 
  if(value.trim()!==""){
@@ -48,7 +49,7 @@ useEffect(()=>{
 
   const timer=setTimeout(()=>{
       dispatch(setSearchtext(searchdata));
-  },3000)
+  },2000)
    
    return ()=>clearTimeout(timer) 
     
@@ -79,7 +80,7 @@ useEffect(()=>{
 
 
                <input type="text" 
-                      className='form-control  searchbar ps-5'
+                      className='form-control ps-5 searchbar '
                       placeholder='Search for Products,Brands and More ...'
                     value={searchdata}
                     onChange={handlesearch}
