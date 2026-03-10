@@ -82,6 +82,7 @@ function App() {
         {
            path:"/privacypolicy",element:<PrivacyPolicy/>
         },
+         {path:'/contactus',element:<ContactUs/>},
 
           {
           element: <Userprotectedroutes/>,
@@ -91,7 +92,7 @@ function App() {
             {path: "/addaddress",element: <AddAddress />},
            
             {path:"/revieworder",element:<Revieworder/>},
-            {path:'/contactus',element:<ContactUs/>},
+           
            
                {path: "/profile",element: <Profile />,
                  children: [

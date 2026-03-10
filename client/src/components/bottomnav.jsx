@@ -9,9 +9,11 @@ import {Solidhome,Regularhome,RegularCart,SolidCart, RegularProfile,SolidProfile
 
 function Bottomnav() {
 
+
+
    const {cart}=useSelector((state)=>state.cartopeartion)
   
-    const {user,isAuthenticated}=useSelector((state)=>state.userAuth)
+    const {isAuthenticated}=useSelector((state)=>state.userAuth)
   
 
     const scrollTop=()=>{
@@ -40,8 +42,10 @@ function Bottomnav() {
            
                padding:"5px 30px"}}>
    
-         <NavLink to='/' className='bottomnav-links'>
-          {({isActive})=>(
+         <NavLink 
+               onClick={scrollTop}
+              to='/' className='bottomnav-links'>
+             {({isActive})=>(
              
          
       <div className={`text-center ${isActive ? "bottomnav-links active":"bottomnav-links"}`}>

@@ -7,8 +7,7 @@
   /* margin-top: 50px; */
   padding:50px 5px;
   height:max-content;
-  
-
+   box-shadow:3px 0 5px 3px rgba(0, 0, 0, 0.447);
 }
 
 .footersec{
@@ -35,6 +34,26 @@
     font-size:25px;
     cursor:auto;
 }
+
+
+
+.giticon,.linkedinicon,.instaicon,.mailicon{
+  color: white;
+  background-color:black;
+  padding:10px;
+  border-radius:50%;
+    transition:transform 0.5s ease
+}
+
+.giticon:hover,
+.linkedinicon:hover,
+.instaicon:hover,
+.mailicon:hover{
+  transform:scale(1.2);
+   color:#417ae6;
+
+}
+
 
 ul{
     list-style-type: none;

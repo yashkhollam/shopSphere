@@ -6,7 +6,8 @@ function Footer() {
 const scrollTop=()=>{
   window.scrollTo({
     top:0,
-    behavior:'smooth'
+    behavior:'smooth',
+    
   })
 }
 
@@ -20,16 +21,25 @@ const scrollTop=()=>{
     <h1 className={style.shopheading}>SHOPSPHERE ELECTRONICS</h1>
      <p className={style.shopsubheading}>ShopSphere is your destination for modern gadgets and smart electronics.Curating cutting-edge gadgets, smart home essentials, and premium accessories to help you live smarter every day.</p>
 
-     <div className='d-flex gap-5 fs-4 mt-5 mb-5'>
-      
-       <i className="fa-brands fa-solid fa-github text-light rounded-circle bg-dark p-2"></i>
-      
-       <i className="fa-brands fa-solid fa-linkedin text-light rounded-circle bg-dark p-2"></i>
-       
-        <i className="fa-brands fa-solid fa-instagram text-light rounded-circle bg-dark p-2"></i>
-       
-        <i className="fa-solid fa-envelope text-light rounded-circle bg-dark p-2"></i>
-     </div>
+    <div className='d-flex gap-5 ' style={{margin:"20px"}}>
+
+  <a href="https://github.com/yashkhollam?tab=repositories" target="_blank" rel="noopener noreferrer">
+    <i className={`fa-brands fa-github ${style.giticon}`}></i>
+  </a>
+
+  <a href="https://www.linkedin.com/in/yash-khollam-546bb72b2/" target="_blank" rel="noopener noreferrer">
+    <i className={`fa-brands fa-linkedin ${style.linkedinicon}`}></i>
+  </a>
+
+  <a
+  href="https://mail.google.com/mail/?view=cm&to=yashkhollam01@gmail.com"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+    <i className={`fa-solid fa-envelope ${style.mailicon}`}></i>
+  </a>
+
+</div>
   </div>
  
  
@@ -84,7 +94,9 @@ const scrollTop=()=>{
 
     <li>
       
-      <NavLink  className='text-muted  text-decoration-none'
+      <NavLink  to='/privacypolicy'
+      className='text-muted  text-decoration-none'
+
        onClick={scrollTop}>
             Privacy Policy
       </NavLink>
@@ -114,11 +126,19 @@ const scrollTop=()=>{
  </div>
    <hr/>
    <div>
-      <p className="text-center mt-3">
-  © {new Date().getFullYear()} ShopSphere • All rights reserved • 
-  <i className="fa-solid fa-laptop-code"></i>Designed & Developed by <strong>Yash Khollam</strong>
-</p>
-   </div>
+  <p className="text-center mt-3">
+    © {new Date().getFullYear()} ShopSphere • All rights reserved • 
+    <i className="fa-solid fa-laptop-code"></i> Designed & Developed by {" "}
+    <a 
+      href="https://yashkhollamportfolio.vercel.app/" 
+      target="_blank" 
+      rel="noopener noreferrer"
+      className=" fw-bold"
+    >
+      Yash Khollam
+    </a>
+  </p>
+</div>
   </div>
   
 

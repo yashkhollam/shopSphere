@@ -14,6 +14,13 @@ function Navbar() {
   
   const {user,isAuthenticated}=useSelector((state)=>state.userAuth)
 
+   const scrollTop=()=>{
+        window.scroll({
+          top:0,
+          behavior:'smooth'
+        })
+    }
+
 
  const navigate=useNavigate()
    const [searchdata,setSearchdata]=useState("")
@@ -55,7 +62,8 @@ useEffect(()=>{
            <ul className='group-list p-0'>
              <li className='logo-cont'>
 
-               <NavLink to='/'>
+               <NavLink to='/'
+                         onClick={scrollTop}>
                     <img src="shopSpherelogo.png" alt="shopeSpherelogo"
                   className='logo-img img-fluid' />
                </NavLink>

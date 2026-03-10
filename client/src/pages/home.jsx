@@ -16,6 +16,17 @@ const navigate=useNavigate()
 
 const {Allfilterddata,trendingproducts,mostsold}=useSelector((state)=>state.productoperation)
 
+const scrollTo=()=>{
+    const element=document.querySelector("#productcategory")
+
+    if(element){
+        element.scrollIntoView({
+          behavior:"smooth",
+          block:"center"
+        })
+    }
+}
+
 
   useEffect(() => {
   dispatch(getAllfilterddata({limit:8}))
@@ -38,7 +49,7 @@ const {Allfilterddata,trendingproducts,mostsold}=useSelector((state)=>state.prod
 
   const productcategory=[
     {name:"mobile",imgurl:"/product/iphone17pro.png",value:"MobilesTablets"},
-    {name:"laptop",imgurl:"/product/mac air 13 laptop.png" ,value:"LaptopsComputers"},
+    {name:"laptop",imgurl:"/bannerimg/macbanner.png" ,value:"LaptopsComputers"},
     {name:"Audio devices",imgurl:"/product/audio.webp",value:"AudioDevices"},
     {name:"smart Gadgets",imgurl:"/product/watch.png",value:"SmartGadgets"},
     {name:"Gaming",imgurl:"/product/games.png",value:"Gamings"},
@@ -108,69 +119,76 @@ const brands=["Apple","Samsung","Sony","OnePlus","Dell"]
 
       <div className={`${styles.herosection}`}>
            <div className={`row w-100 ${styles.herosecrow} `}>
-            <div className="col-12 col-lg-6 ps-4 pt-4">
+            <div className="col-12 col-lg-7 ps-4 pt-4">
             
                <h5>Welcome to ShopSphere</h5>
                <h1>Discover the Latest Electronics at Unbeatable Prices .</h1>
 
                <p>Shop smartphones, laptops, headphones, and smart gadgets from top brands. Experience secure shopping, fast delivery,and deals you won’t want to miss.</p>
 
-               <div className="d-flex gap-3 m-3">
-                <button className="btn bg-danger text-light">Shop Now</button>
-                <button className="btn btn-outline-light">Browse Products </button>
+               <div className="d-flex gap-3 mb-3 ">
+
+
+                <button className="btn text-light"
+                        style={{backgroundColor:"red"}}
+                         onClick={()=>navigate('/allproducts')}
+                        >
+                          
+                          Shop Now</button>
+
+
+                <button className="btn btn-outline-light"
+                         onClick={scrollTo}
+                          >Browse Products </button>
                </div>
 
             </div>
            
-            <div className={`col-12 col-lg-6 ${styles.carouselsec}`}>
-                  <div
+            <div className={`col-12 col-lg-5 ${styles.carouselsec}`}>
+                   <div
       
       id="carouselExampleSlidesOnly"
       className={`carousel slide ${styles.carouselcontainer}`}
     >
-      <div className="carousel-inner" style={{  padding: "5px",borderRadius:"25px" }}>
+      <div className="carousel-inner">
 
-        <div className="carousel-item active" style={{height:"550px"}}>
+        <div className={`carousel-item active ${styles.carusol}`}>
           <img
             src="/product/iphone17pro.png"
-            className="d-block w-100"
+            draggable={"false"}
+            className={styles.carusolimg}
             alt="slide1"
-            style={{
-             
-              borderRadius: "25px",
-               objectFit:"contain",
-               height:"550px"
-            }}
+            
+           
+          
           />
         </div>
 
-         <div className="carousel-item active " style={{height:"550px"}}>
+        <div className={`carousel-item  ${styles.carusol}`}>
           <img
             src="/product/audio.webp"
-            className="d-block w-100"
-            alt="slide1"
-            style={{
-             
-              borderRadius: "25px",
-               objectFit:"contain",
-               height:"550px"
-            }}
+             draggable={"false"}
+            className={styles.carusolimg}
+            alt="slide2"
+            
+           
+          
           />
         </div>
 
-         <div className="carousel-item active" style={{height:"550px"}}>
+        <div className={`carousel-item ${styles.carusol}`}>
           <img
-            src="/product/games.png"
-            className="d-block w-100"
-            alt="slide1"
-            style={{
-              
-              borderRadius: "25px",
-               objectFit:"contain",
-               height:"550px"
-            }}
+            src="/product/noise watch.webp"
+             draggable={"false"}
+            className={styles.carusolimg}
+            alt="slide3"
+            
+           
+          
           />
         </div>
+
+       
 
        
 
@@ -179,9 +197,14 @@ const brands=["Apple","Samsung","Sony","OnePlus","Dell"]
 
 
 
-                 </div>
+                 </div> 
 
-
+            {/* <div className={styles.carusol}>
+              <img src="/product/iphone17pro.png"
+               alt=""
+              srcset=""
+              className={styles.carusolimg} />
+            </div> */}
 
                 
             </div>
@@ -196,7 +219,7 @@ const brands=["Apple","Samsung","Sony","OnePlus","Dell"]
   </div>
 </div>
 
-<div className={`${styles.productcategory}`}>
+<div className={`${styles.productcategory}`} id="productcategory">
 
 {
   Array.isArray(productcategory)&&productcategory.length>0 ?(
@@ -222,7 +245,7 @@ const brands=["Apple","Samsung","Sony","OnePlus","Dell"]
 
 
 
-  <div className={`mt-5 ps-2 pe-2 ${styles.newproductsection}`}>
+  <div className={`mt-5 ${styles.newproductsection}`}>
      <h1 className={styles.newarrivalheading}>New Arrivals</h1>
       <p className="p-0 m-0 text-muted ">Fresh drops from brands we love. Updated every week.</p>
 
@@ -358,7 +381,7 @@ const brands=["Apple","Samsung","Sony","OnePlus","Dell"]
 
 
 
-  <div className={`ps-2 pe-2 ${styles.choosesection}`}>
+  <div className={` ${styles.choosesection}`}>
        <h1 className={`text-start mt-5 ${styles.chooseusheading}`}> Why Choose Us ?</h1>
 
 
@@ -396,7 +419,7 @@ const brands=["Apple","Samsung","Sony","OnePlus","Dell"]
 
 
 
-  <div className={`  ps-2 pe-2${styles.brandfiltersection}`}>
+  <div className={`${styles.brandfiltersection}`}>
         <h1 className={`text-center mt-5 ${styles.shopbrandheading}`}> Shop By Brands</h1>
       
       
