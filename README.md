@@ -117,7 +117,7 @@ Home Page:-
  ![Home Page](<screenshots/homepage.png>)
 
 Product Page :-
- ![alt text](<screenshots\product-page.png>)
+ ![alt text](<screenshots/product-page.png>)
 
 Cart Page :-
  ![alt text](<screenshots/cart-page.png>)
