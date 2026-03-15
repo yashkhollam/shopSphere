@@ -8,6 +8,7 @@ import { addtocartthunk } from './redux/features/cartSlice.js';
 import toast from 'react-hot-toast';
 import Loader from './loader.jsx';
 import {useNavigate} from 'react-router-dom'
+import Productcardskeleton from './skeleton/productcardskeleton.jsx';
 
 
 function Allproducts() {
@@ -58,13 +59,22 @@ const stockstyle=(stock)=>{
 
   return (
    <>   
-     {
-        loading.getallprodloading && <Loader/>
-     }
+     
        
        <div className={`container-fluid  ${styles.products_container}`}> 
         <div className={`${styles.cardcontainer}`}>
             {
+
+                loading.getallprodloading ? 
+                 
+                new Array(6).fill(6).map(()=>(
+                    <div>
+                          <Productcardskeleton/>
+
+                    </div>
+                ))
+                
+                :
                 Array.isArray(Allfilterddata)?(Allfilterddata.map((data,index)=>(
                     
                     

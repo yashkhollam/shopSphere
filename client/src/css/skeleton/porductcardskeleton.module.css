@@ -1,0 +1,90 @@
+
+
+.card{
+    height:400px;
+   width:320px;
+   margin-top:20px;
+   padding:10px 10px;
+  border-radius: 25px;
+
+  background-color:white;
+ 
+}
+
+
+
+.category{
+  width:100px;
+  height:20px;
+  margin:10px 5px;
+  position: absolute;
+  border-radius:10px;
+ background:linear-gradient(90deg, #e0e0e0 25%,
+  #f5f5f5 37%,
+  #e0e0e0 63%);
+  
+    animation:shimmereffect 1.5s infinite linear
+}
+
+.cardimg{
+  height:240px;
+  width:100%;
+   border-radius:10px; 
+    background:linear-gradient(90deg, #e0e0e0 25%,
+  #f5f5f5 37%,
+  #e0e0e0 63%);
+  
+    animation:shimmereffect 1.5s infinite linear;
+}
+
+.cardtitle{
+  margin-top: 5px;
+  height:40px;
+    border-radius:10px; 
+  background-color:white;
+  background:linear-gradient(90deg, #e0e0e0 25%,
+  #f5f5f5 37%,
+  #e0e0e0 63%);
+  
+    animation:shimmereffect 1.5s infinite linear
+}
+
+.cardprice,.discprice{
+  height:20px;
+  margin-top:15px;
+  width:90px;
+  border-radius:10px; 
+   background-color:rgb(255, 255, 255);
+   background:linear-gradient(90deg, #e0e0e0 25%,
+  #f5f5f5 37%,
+  #e0e0e0 63%);
+  
+    animation:shimmereffect 1.5s infinite linear
+   
+}
+
+
+
+.cardbutton{
+  height:40px;
+  width:120px;
+  border-radius:10px; 
+  border:none;
+  background:linear-gradient(90deg, #e0e0e0 25%,
+  #f5f5f5 37%,
+  #e0e0e0 63%);
+  
+    animation:shimmereffect 1.5s infinite linear
+}
+
+
+
+@keyframes shimmereffect {
+     0%{
+        background-position:-100px;
+     }
+
+     100%{
+      background-position: 200px;
+     }
+}

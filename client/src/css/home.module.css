@@ -245,11 +245,11 @@
 
 }
 
-.newprocard,
-.trendingprodcard{
+.newprocard{
    height:400px;
    width:320px;
    background-color:white;
+  
    margin-top:20px;
    padding: 0 10px;
  
@@ -262,18 +262,17 @@
 
 
 .trendingprodcont{
-  /* display:grid;
-  grid-template-columns:repeat(3,auto); */
+ 
 
-  display: flex;
+  display:flex;
   
-  /* justify-content: center; */
   gap:11px;
   overflow-x: auto;
    overflow-y: scroll;
    scroll-behavior: smooth;
-   /* padding:20px; */
   width:100%;
+  height:fit-content;
+  padding:5px;
   
 }
 
@@ -284,19 +283,12 @@
 }
 .trendingprodcard{
   flex:0 0 auto;
- 
-   height:400px;
-   /* width:70%; */
-   width:300px;
    max-width:300px;
    background-color:white;
-   /* margin-right:40px; */
-  
    padding: 0 10px;
   border-radius: 25px;
   transition:transform 1s ease-out;
   height:420px;
-  
    width:350px;
    
 }
@@ -327,7 +319,7 @@
 .newproimg,
 .trendprodimg{
   margin:0;
-  padding:0;
+  padding:0 0;
   height:250px;
   width:100%;
   object-fit: contain;

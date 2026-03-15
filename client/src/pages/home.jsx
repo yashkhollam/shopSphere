@@ -8,13 +8,16 @@ import { addtocartthunk } from "../components/redux/features/cartSlice";
 import {toast} from 'react-hot-toast'
 import Loader from "../components/loader";
 import Footer from "../components/footer";
+import Productcardskeleton from "../components/skeleton/productcardskeleton";
+import Trendingprodcardskeleton from "../components/skeleton/trendingprodcard";
+import style from '../css/skeleton/trendingprod.module.css'
 
 function Home() {
  
 const dispatch=useDispatch()
 const navigate=useNavigate()
 
-const {Allfilterddata,trendingproducts,mostsold}=useSelector((state)=>state.productoperation)
+const {Allfilterddata,trendingproducts,mostsold,loading}=useSelector((state)=>state.productoperation)
 
 const scrollTo=()=>{
     const element=document.querySelector("#productcategory")
@@ -247,6 +250,7 @@ const brands=["Apple","Samsung","Sony","OnePlus","Dell"]
 
 
 
+
   <div className={`mt-5 ${styles.newproductsection}`}>
      <h1 className={styles.newarrivalheading}>New Arrivals</h1>
       <p className="p-0 m-0 text-muted ">Fresh drops from brands we love. Updated every week.</p>
@@ -255,6 +259,20 @@ const brands=["Apple","Samsung","Sony","OnePlus","Dell"]
 
 
    {
+
+  loading.getallprodloading ? (
+  
+    new Array(8).fill(8).map(()=>(
+     <div>
+      <Productcardskeleton/>
+      </div>
+
+      
+    ))
+  
+)
+  
+  :
     Allfilterddata.length>0 ?
     (
       Allfilterddata.map((data)=>(
@@ -295,8 +313,26 @@ const brands=["Apple","Samsung","Sony","OnePlus","Dell"]
 
 
       <div className={styles.trendingprodcont}>
-           {
-            trendingproducts.length>0?
+
+      
+           
+            {
+
+           loading.trendingprodloading ? (
+               new Array(3).fill(3).map(()=>(
+                   
+                      <Trendingprodcardskeleton/>
+                  
+                   
+                      
+                 
+
+      
+    ))
+           )
+
+           : 
+           trendingproducts.length>0?
             
             trendingproducts.map((data)=>(
               <div className={styles.trendingprodcard}>
@@ -343,7 +379,8 @@ const brands=["Apple","Samsung","Sony","OnePlus","Dell"]
 
 
 
-  
+ 
+
   <div className={`${styles.bestsellersec}`}>
       <h1 className={`text-center mt-5 ${styles.bestsellercheading}`}>🏆🏆 Best Sellers</h1>
       <p className="p-0 m-0 mt-2 text-muted text-center">Our top-performing products based on real customer purchases.</p>
@@ -351,7 +388,19 @@ const brands=["Apple","Samsung","Sony","OnePlus","Dell"]
 
       <div className={styles.bestsellerprodcont}>
            {
-            mostsold.length>0?
+
+          loading.mostsoldporductloading ? (
+          
+            new Array(4).fill(4).map(()=>(
+               <div>
+                  <Trendingprodcardskeleton/>
+               </div>
+               
+            )))
+         
+
+
+           : mostsold.length>0?
             
             mostsold.map((data)=>(
               <div className={styles.trendingprodcard}>
