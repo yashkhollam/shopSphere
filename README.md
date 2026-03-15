@@ -1,7 +1,7 @@
 # 🛒 ShopSphere – MERN Stack E-Commerce Application
 
 ShopSphere is a full-stack e-commerce web application built using the **MERN stack (MongoDB, Express, React, Node.js)**.
-It allows users to browse electronic products, manage their cart, like products, and securely authenticate using JWT.
+It allows users to browse electronic products, manage their cart and securely authenticate using JWT.
 
 The project focuses on building a **modern scalable e-commerce architecture** with authentication, state management, and responsive UI.
 
