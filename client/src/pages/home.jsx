@@ -370,7 +370,7 @@ const brands=["Apple","Samsung","Sony","OnePlus","Dell"]
               </div>
             ))
             
-            :(<h2>No trending product yet</h2>)
+            :(<h2 className=" w-100 text-center">No trending product yet</h2>)
            }
       </div>
   </div>
