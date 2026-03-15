@@ -94,9 +94,6 @@ npm install
 Create a `.env` file inside the backend folder and add:
 
 PORT=9999
-MONGO_URI=mongodb+srv://yashkhollam01_db_user:ie8GxyyapCppeTwB@shopsphere.h3xl7l6.mongodb.net/shopsphere
-JWT_SECRET=shopSphere@6720
-
 ---
 
 # ▶️ Running the Project
