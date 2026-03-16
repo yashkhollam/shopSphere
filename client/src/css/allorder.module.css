@@ -7,7 +7,6 @@
 
 }
 
-
-.ordercard{
-    
+.tablecont::-webkit-scrollbar{
+    display: none;
 }

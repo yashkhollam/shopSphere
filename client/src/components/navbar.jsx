@@ -65,7 +65,7 @@ useEffect(()=>{
 
                <NavLink to='/'
                          onClick={scrollTop}>
-                    <img src="shopSpherelogo.png" alt="shopeSpherelogo"
+                    <img src="/shopSpherelogo.png" alt="shopeSpherelogo"
                   className='logo-img img-fluid' />
                </NavLink>
                

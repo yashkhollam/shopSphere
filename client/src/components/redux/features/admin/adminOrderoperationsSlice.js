@@ -5,11 +5,7 @@ import axios from 'axios';
 
 export const getallorderthunk=createAsyncThunk('getallorder',async(_,{rejectWithValue})=>{
     try{
-   
-        // console.log("from thunk",orderdetails)
-
           const res=await axios.get(`${import.meta.env.VITE_API_URL}/order/getallorderdata`,{withCredentials:true})
-
           return res.data
     }
 
@@ -23,11 +19,7 @@ export const getallorderthunk=createAsyncThunk('getallorder',async(_,{rejectWith
 
 export const getorderbyidthunk=createAsyncThunk('getorderbyid',async(id,{rejectWithValue})=>{
     try{
-   
-        // console.log("from thunk",orderdetails)
-
           const res=await axios.get(`${import.meta.env.VITE_API_URL}/order/getorderbyid/${id}`,{withCredentials:true})
-
           return res.data
     }
 

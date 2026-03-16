@@ -67,10 +67,7 @@ catch(err){
 
       <h2 className='text-center mt-3 mb-3 w-100 bg-primary text-light'>Order Summery</h2>
   
-  <div className='table-responsive p-0 m-0 '
-    style={{height:"100vh",
-             overflowY:"auto"
-    }}>
+  <div className={`table-responsive p-0 m-0 ${style.tablecont}`}>
         <table className='table table-bordered text-center table-striped ' style={{verticalAlign:"middle",whiteSpace:"nowrap"}}>
    <thead >
        <tr>

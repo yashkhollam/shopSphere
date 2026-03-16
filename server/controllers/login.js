@@ -50,8 +50,7 @@ export const login=async(req,res)=>{
        
             res.cookie('JWTTOKEN',token,{
                 httpOnly:true,
-                //    secure:process.env.NODE_ENV==="production", //true in production
-                //   sameSite:"lax", //localhost practise
+                
               
                 sameSite:"none", //none in production
                 secure:true,      

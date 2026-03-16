@@ -294,6 +294,7 @@ const brands=["Apple","Samsung","Sony","OnePlus","Dell"]
          
           
           <button className="btn bg-primary text-light"
+                  style={{position:"absolute",bottom:"10px",left:"20px"}}
                   onClick={()=>handlecart(data._id)}> Add to cart</button>
 
         </div>
@@ -382,7 +383,7 @@ const brands=["Apple","Samsung","Sony","OnePlus","Dell"]
  
 
   <div className={`${styles.bestsellersec}`}>
-      <h1 className={`text-center mt-5 ${styles.bestsellercheading}`}>🏆🏆 Best Sellers</h1>
+      <h1 className={`text-center mt-5 ${styles.bestsellercheading}`}> Best Sellers</h1>
       <p className="p-0 m-0 mt-2 text-muted text-center">Our top-performing products based on real customer purchases.</p>
 
 
@@ -421,6 +422,7 @@ const brands=["Apple","Samsung","Sony","OnePlus","Dell"]
                    </div>
 
                    <button className="btn btn-outline-warning"
+                    style={{position:"absolute",bottom:"10px",left:"20px"}}
                     onClick={()=>handlecart(data._id)}>Add to cart</button>
               </div>
             ))

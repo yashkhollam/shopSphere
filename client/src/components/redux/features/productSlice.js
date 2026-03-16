@@ -2,21 +2,6 @@ import { createSlice,createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 
-// export const getAllfilterddata=createAsyncThunk('/product/getall',async(_,{rejectWithValue})=>{
-
-//     try{
-//          const res=await axios.get(`${import.meta.env.VITE_API_URL}/product/getAllfilterddata`)
-//     return res.data
-//     }
-   
-//     catch(err){
-//         return rejectWithValue(err.response?.data?.meassage || "Something went wrong")
-//     }
-   
-// })
-
-
-
 export const getAllfilterddata=createAsyncThunk(`/product/getfilterall`,async({search,category,brand,limit,page},{rejectWithValue})=>{
 
     try{
@@ -77,8 +62,7 @@ export const getprodbyIdthunk=createAsyncThunk('/product/getprodbyId',async(prod
 
     try{
          const res=await axios.get(`${import.meta.env.VITE_API_URL}/product/${productId}`)
-         console.log("from thun=",productId)
-         
+        
     return res.data
     }
    

@@ -1,7 +1,6 @@
 .aboutuscontainer{
   margin-top:60px;
    background-color: #f4f7fb;
-    /* background-color:blue; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -10,7 +9,6 @@
 }
 
 .herosec{
-   /* background-color: pink; */
    max-width:900px;
    text-align: center;
    padding:5px;
@@ -19,16 +17,13 @@
 }
 
 .smallheading,.whoareweheadinhg,.ourmissionhead{
-  /* background-color: red; */
   width:max-content;
   display: block;
   margin:10px auto;
   font-size:30px;
   border-top:2px solid skyblue;
   border-bottom:2px solid skyblue;
- 
   padding:10px 10px;
- 
    font-family: "Lobster Two", sans-serif;
 
     
@@ -50,30 +45,17 @@
 .whoaresec{
  width:100%;
    padding:0 5px;
-   /* background-color:black; */
    border-top: 2px solid grey;
    border-bottom: 2px solid grey;
-   
    margin-top:60px;
    
 }
 
 
 .aboutrow{
- /* background-color: red; */
  align-items: center;
-
 }
-/* 
-.whoareweheadinhg,.ourmissionhead{
-   font-family: "Lobster Two", sans-serif;
-   font-size:3rem;
-    text-align:center;
-    margin-top:20px;
-     border-top:2px solid skyblue;
-  border-bottom:2px solid skyblue;
-  width:fit-content;
-} */
+
 
 .whoarsecimg{
   height:400px;
@@ -109,7 +91,6 @@
   margin-top: 4px;
   max-width:340px;
   text-align: center;
-  /* box-shadow: rgba(40, 116, 240, 0.08) 0px 16px 30px; */
   box-shadow:0 5px 5px rgba(0, 0, 0, 0.395);
   background-color:white;
   border-radius:10px;
@@ -119,9 +100,6 @@
   transform: translateY(-5px);
   transition:1s ease;
 }
-
-
-
 
 .missionicon{
   font-size:60px;

@@ -2,14 +2,12 @@
 import { orderModel } from '../../../model/orderModel.js';
 import productModel from '../../../model/products.js'
 import usercart from '../../../model/cart.js';
-import userModel from '../../../model/userModel.js';
+
 
 export const createOrder=async(req,res)=>{
   try{
     const userId=req.user.id
-    // const {userId}=req.body
-
-    // const user=await userModel.findById(userId)
+    
     
        const  {items,shippingAddress,
        paymentMethod}=req.body;

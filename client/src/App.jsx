@@ -15,7 +15,7 @@ import { getMeThunk } from "./components/redux/features/userauthSlice.js";
 import Addproducts from "./pages/admin/addproducts.jsx";
 
 import { getallcartitemsthunk } from "./components/redux/features/cartSlice.js";
-import AllProducts from "./components/allproducts.jsx";
+import AllProducts from "./pages/allproducts.jsx"
 import ProductDetail from "./pages/product.jsx";
 import Adminpanel from "./pages/admin/adminpanel.jsx";
 import Adminviewallproduct from "./pages/admin/adminviewallproduct.jsx";

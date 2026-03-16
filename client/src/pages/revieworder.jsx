@@ -15,19 +15,21 @@ function Revieworder() {
     const dispatch=useDispatch()
     const navigate=useNavigate()
   const {cart,carttotalprice,carttotaldiscountprice,loading}=useSelector((state)=>state.cartopeartion)
-    const { address }=useSelector((state) => state.productOrders)
+    
 
-    console.log(address)
+   
 
  let items=[]
 
 for(let cartdata of cart){
    items.push({productId:cartdata.prodId,quantity:cartdata.quantity})   
 }
-
-
+ 
+  
+  let address=JSON.parse(localStorage.getItem("address"))
     const orderdetails={items,shippingAddress:address,paymentMethod:"COD"}
 
+    console.log("adderss=",address)
     
 
     const submitform=async(e)=>{
@@ -38,6 +40,7 @@ for(let cartdata of cart){
           toast.success(res.message)
 
           dispatch(clearCart())
+          localStorage.clear("address")
           navigate('/')
           
          
@@ -45,7 +48,7 @@ for(let cartdata of cart){
 
        catch(err){
               toast.error(err)
-              console.log(err)
+             
        }
 }
 

@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import styles from '../css/products.module.css';
 import {useSelector,useDispatch} from 'react-redux'
-import { getAllfilterddata, setCategory, setNextPage, setPrevPage } from "./redux/features/productSlice.js"
+import { getAllfilterddata, setCategory, setNextPage, setPrevPage } from "../components/redux/features/productSlice.js"
 
 import { Regularheart,Solidheart } from '../library/icons.jsx';
-import { addtocartthunk } from './redux/features/cartSlice.js';
+import { addtocartthunk } from '../components/redux/features/cartSlice.js';
 import toast from 'react-hot-toast';
-import Loader from './loader.jsx';
+import Loader from '../components/loader.jsx';
 import {useNavigate} from 'react-router-dom'
-import Productcardskeleton from './skeleton/productcardskeleton.jsx';
+import Productcardskeleton from '../components/skeleton/productcardskeleton.jsx';
 
 
 function Allproducts() {
