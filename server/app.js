@@ -18,9 +18,9 @@ const PORT=process.env.PORT;
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(cors({
-      origin:"https://shop-sphere-snowy-psi.vercel.app",
-    //  origin:process.env.frontend_url,
-     credentials:true
+    origin:["http://localhost:5173",
+            "https://shop-sphere-snowy-psi.vercel.app"],
+    credentials:true
 }))
 app.use(cookieParser())
 
