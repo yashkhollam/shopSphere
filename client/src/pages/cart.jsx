@@ -130,7 +130,7 @@ useEffect(()=>{
 
                        <span className={`${styles.pricerow}`}>
                       <p>Delivery charges</p>
-                      <p className='text-muted text-decoration-line-through '> ₹ 0</p>
+                      <p className='text-muted text-decoration-line-through '> ₹ 99</p>
                       </span> 
 
 
